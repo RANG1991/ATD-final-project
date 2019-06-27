@@ -14,9 +14,9 @@ class App extends React.Component{
       this.setState({rests: rests})
   };
 
-    addUsername = (username) =>
+    addUsername = (username, location, img) =>
     {
-        let users = [...this.state.users, username];
+        let users = [...this.state.users, {username: username, location: location, img: img}];
         this.setState({users: users})
     };
 
