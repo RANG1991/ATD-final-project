@@ -1,21 +1,18 @@
 import React from "react"
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Dropzone from "react-dropzone";
 
 class LoginUser extends React.Component
 {
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
-        this.state = {username : "", location: "", errorUsername : "", img: null, errorImage: ""};
+        this.state = {username : "", location: "", errorUsername : ""};
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangeLocation = this.onChangeLocation.bind(this);
         this.handleSubmit= this.handleSubmit.bind(this);
     }
 
-    onChangeUsername(event)
-    {
+    onChangeUsername(event) {
         if (this.props.checkIfExists(event.target.value)) {
             this.setState({errorUsername: 'user name already exist!'});
         }
@@ -30,44 +27,22 @@ class LoginUser extends React.Component
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log(event);
         if (this.props.checkIfExists(this.state.username)) {
             this.setState({errorUsername: 'user name already exist!'});
+            return;
         }
-        else {
-            this.props.addUsername(this.state.username, this.state.location, this.state.img);
-        }
+        this.props.addUsernameHelper(this.state.username, this.state.location);
     }
 
     render() {
         return (
-            <div>
-            <Dropzone onDrop={acceptedFiles => {
-                if (acceptedFiles.length > 0)
-                {
-                    this.setState({img: acceptedFiles[0]})
-                }
-                else {
-                    this.setState({errorImage: "you have to choose an image!"})
-                }
-            }}>
-                {({getRootProps, getInputProps}) => (
-                    <section>
-                        <div {...getRootProps()}>
-                            <input {...getInputProps()} />
-                            <p>please drop your image here!</p>
-                        </div>
-                    </section>
-                )}
-            </Dropzone>
-            <form autoComplete="on" onSubmit={this.handleSubmit}>
+            <form autoComplete="on">
                 <TextField id="outlined-name" error={this.state.errorUsername !== ''} helperText= {this.state.errorUsername} label="User Name" onChange={this.onChangeUsername} margin="normal" variant="outlined"/>
                 <TextField id="outlined-name" label="Location" onChange={this.onChangeLocation} margin="normal" variant="outlined"/>
-                <Button variant="contained" style={style}>
+                <Button variant="contained" style={style} onClick={this.handleSubmit}>
                     Submit
                 </Button>
             </form>
-            </div>
         );
     }
 

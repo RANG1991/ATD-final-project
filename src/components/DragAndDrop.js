@@ -1,58 +1,35 @@
 import React from 'react'
-import Box from '@material-ui/core/Box';
+import Dropzone from "react-dropzone";
+
+
+const thumbsContainer = {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 16
+};
 
 class DragAndDrop extends React.Component {
 
-    constructor(props)
-    {
-        super(props);
-        this.dragCounter = 0;
-        this.state = {dragging : false};
-    }
-
-    handleDrag = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-    };
-
-    handleDragIn = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        this.dragCounter++;
-        if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
-            this.setState({dragging: true})
-        }
-    };
-
-    handleDragOut = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        this.dragCounter--;
-        if (this.dragCounter > 0) {
-            return
-        }
-        this.setState({dragging: false})
-    };
-
-    handleDrop = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        this.setState({drag: false});
-        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-            this.props.handleDrop(e.dataTransfer.files);
-            e.dataTransfer.clearData();
-            this.dragCounter = 0
-        }
+    onFilesDrop = (acceptedFiles) => {
+        this.props.addImage(acceptedFiles);
     };
 
     render() {
-        return (
-            <Box component="div" m={50} clone>
-            <div onDragEnter={this.handleDragIn} onDragLeave={this.handleDragOut} onDragOver={this.handleDrag} onDrop={this.handleDrop}>
-                {this.state.dragging && <div>drop here your image please</div>}
-            </div>
-            </Box>
-        )
+        return (<Dropzone onDrop={this.onFilesDrop}>
+            {({getRootProps, getInputProps}) => (
+                <section>
+                    <div {...getRootProps()}>
+                        <input {...getInputProps()} />
+                        <p>{this.props.errorImage}</p>
+                    </div>
+                    <aside style={thumbsContainer}>
+                        {this.props.img}
+                    </aside>
+                </section>
+            )}
+        </Dropzone>)
+
     }
 }
 export default DragAndDrop

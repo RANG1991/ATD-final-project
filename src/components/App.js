@@ -14,15 +14,15 @@ class App extends React.Component{
       this.setState({rests: rests})
   };
 
-    addUsername = (username, location, img) =>
+    addUsername = (username, location, imagePath) =>
     {
-        let users = [...this.state.users, {username: username, location: location, img: img}];
+        let users = [...this.state.users, {username: username, location: location, imagePath: imagePath}];
         this.setState({users: users})
     };
 
     checkIfExists = (username) =>
     {
-        return (this.state.users.includes(username));
+        return (Array.from(this.state.users, x => x.username).includes(username));
     };
 
 
