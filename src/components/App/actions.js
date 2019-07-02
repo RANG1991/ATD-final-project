@@ -38,12 +38,26 @@ function addImage(acceptedFiles)
     }
 }
 
+function onClickLoginNavBar() {
+    return {
+        type: AppActionsConstants.ON_CLICK_LOGIN_NAV_BAR
+    }
+}
+
+function onClickHomeNavBar() {
+    return {
+        type: AppActionsConstants.ON_CLICK_HOME_NAV_BAR
+    }
+}
+
     let AppActions  = {
         addRestaurant,
         changeUserName,
         changeLocation,
         handleSubmitLogin,
-        addImage
+        addImage,
+        onClickLoginNavBar,
+        onClickHomeNavBar
     };
 
 export default AppActions

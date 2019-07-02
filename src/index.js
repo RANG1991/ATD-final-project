@@ -4,11 +4,9 @@ import App from './components/App/App';
 import {createStore} from 'redux'
 import { Provider } from 'react-redux';
 import reducers from './reducers';
-import createBrowserHistory from "history/createBrowserHistory"
+import {createBrowserHistory} from "history"
 
-export const history = createBrowserHistory({
-    forceRefresh: false
-});
+export const history = createBrowserHistory();
 
 const store = createStore(reducers);
 

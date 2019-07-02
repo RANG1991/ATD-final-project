@@ -1,36 +1,42 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import AppActions from "./App/actions";
+import {connect} from "react-redux";
+import {withRouter} from "react-router";
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 1,
-    },
-}));
+class ButtonAppBar extends React.Component {
 
-export default function ButtonAppBar(props) {
-    const classes = useStyles();
-
-    return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar>
-                    <Typography variant="h6" className={classes.title}>
-                        {props.message}
-                    </Typography>
-                    <Button href="/login" color="inherit">Login</Button>
-                    <Button href="/" color="inherit">HomePage</Button>
-                </Toolbar>
-            </AppBar>
-        </div>
-    );
+    render() {
+        return (
+            <div>
+                <AppBar position="static">
+                    <Toolbar>
+                        <Typography variant="h6" style={{flex: 1, flexGrow: 1}}>
+                            {this.props.message}
+                        </Typography>
+                        <Button href="/login" color="inherit" onClick={this.props.onClickLogin}>Login</Button>
+                        <Button href="/" color="inherit" onClick={this.props.onClickHome}>HomePage</Button>
+                    </Toolbar>
+                </AppBar>
+            </div>
+        );
+    }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onClickLogin: (e) => {
+            e.preventDefault();
+            dispatch(AppActions.onClickLoginNavBar());
+        },
+        onClickHome: (e) => {
+            e.preventDefault();
+            dispatch(AppActions.onClickHomeNavBar())
+        }
+    }
+};
+
+export default connect(null,mapDispatchToProps)(withRouter(ButtonAppBar));

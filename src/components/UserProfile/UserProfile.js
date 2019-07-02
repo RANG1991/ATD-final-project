@@ -5,6 +5,7 @@ import { withRouter } from 'react-router'
 import AppActions from "../App/actions";
 import {connect} from "react-redux";
 import Dropzone from "react-dropzone";
+import Image from 'react-image-resizer';
 
 const thumb = {
     display: 'inline-flex',
@@ -23,12 +24,6 @@ const thumbInner = {
     overflow: 'hidden'
 };
 
-const imgStyle = {
-    display: 'block',
-    width: 'auto',
-    height: '100%'
-};
-
 const thumbsContainer = {
     display: 'flex',
     flexDirection: 'row',
@@ -45,7 +40,11 @@ class UserProfile extends React.Component
         {
             img = <div style={thumb} key={this.props.imagePath}>
                 <div style={thumbInner}>
-                    <img src={this.props.imagePath} alt="userImage" style={imgStyle}/>
+                    <Image
+                        src={this.props.imagePath}
+                        height={500}
+                        width={500}
+                    />
                 </div>
             </div>
         }
