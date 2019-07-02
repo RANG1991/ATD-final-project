@@ -57,7 +57,7 @@ class UserProfile extends React.Component
                 justify="center"
                 style={{ minHeight: '100vh' }}>
                 <Grid item xs={3}>
-                    <Dropzone onDrop={this.props.addImage}>
+                    <Dropzone onDrop={this.props.addImageHandler}>
                     {({getRootProps, getInputProps}) => (
                         <section>
                             <div {...getRootProps()}>
@@ -85,7 +85,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addImage: (acceptedFiles) => {
+        addImageHandler: (acceptedFiles) => {
             dispatch(AppActions.addImage(acceptedFiles));
         },
     }

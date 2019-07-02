@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import {connect} from "react-redux";
 import AppActions from "../App/actions";
+import { withRouter } from 'react-router-dom';
 
 class LoginUser extends React.Component
 {
@@ -21,7 +22,7 @@ class LoginUser extends React.Component
                            onChange={this.props.onChangeLocation}
                            margin="normal"
                            variant="outlined"/>
-                <Button variant="contained" style={style} onClick={this.props.handleSubmit}>
+                <Button variant="contained" style={style} onClick={this.props.handleSubmit} href={"/welcome/" + this.props.currentUsername}>
                     Submit
                 </Button>
             </form>
@@ -35,7 +36,8 @@ const style = {
 
 const mapStateToProps = (state) => {
     return {
-        errorUsername : state['app'].get("errorUsername")
+        errorUsername: state['app'].get("errorUsername"),
+        currentUsername: state['app'].get('currentUsername')
     }
 };
 
@@ -54,4 +56,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginUser);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LoginUser));

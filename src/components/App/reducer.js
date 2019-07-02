@@ -1,22 +1,22 @@
 import {AppActionsConstants} from './Constants.js';
 import initialState from '../../initialState';
+import {history} from "../../index";
 
 const AppReducer = (state = initialState.app, action) => {
     console.log('AppReducerState=', state);
     console.log('RECEIVED ACTION:', action);
-    let users = undefined;
-    if (state.get('users').length > 0) {
-        users = Array.from([...state.get('users')], x => x);
-    }
+    let users = Array.from(state.get('users').toArray(), x => x.username);;
     switch (action.type){
         case AppActionsConstants.CHANGE_USER_NAME:
-            console.log(action.payload.username);
-            if (users !== undefined && users.includes(state.get('currentUsername'))) {
+            console.log(users);
+            console.log(state.get('currentUsername'));
+            if (users !== undefined && users.includes(action.payload.username)) {
                 state = state.set('errorUsername', 'user name already exist!');
             }
-            else{
+            else {
                 state = state.set('currentUsername', action.payload.username);
-           }
+                state = state.set('errorUsername', '');
+            }
             return state;
         case AppActionsConstants.CHANGE_LOCATION:
                 state = state.set('currentLocation', action.payload.location);
@@ -27,13 +27,14 @@ const AppReducer = (state = initialState.app, action) => {
                 }
             else {
                 if (state.get('currentImagePath') !== "") {
+                    console.log("pushing");
                     state = state.update('users', e => e.push(
                         {username: state.get('currentUsername'),
                         location: state.get('currentLocation'),
                         imagePath: state.get('currentImagePath')})
                     );
+                    history.push("/welcome/" + state.get('currentUsername'))
                     state = state.set('currentImagePath', '');
-                    state = state.set('errorImage', 'please pick an image!');
                 }
                 else {
                     state = state.set('errorImage', "you have to select an image!");
@@ -45,6 +46,7 @@ const AppReducer = (state = initialState.app, action) => {
             return state;
         case AppActionsConstants.ADD_IMAGE:
             if (action.payload.acceptedFiles.length === 1) {
+                console.log("hello");
                 state = state.set('currentImagePath', URL.createObjectURL(action.payload.acceptedFiles[0]));
                 state = state.set('errorImage', "")
             } else if (action.payload.acceptedFiles.length > 1) {
