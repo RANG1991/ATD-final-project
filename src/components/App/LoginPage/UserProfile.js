@@ -1,8 +1,8 @@
 import React from "react"
-import LoginUser from "../LoginUser/LoginUser";
+import LoginUser from "./LoginUser";
 import Grid from '@material-ui/core/Grid'
 import { withRouter } from 'react-router'
-import AppActions from "../App/actions";
+import AppActions from "./actions";
 import {connect} from "react-redux";
 import Dropzone from "react-dropzone";
 import Image from 'react-image-resizer';

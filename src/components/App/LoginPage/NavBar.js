@@ -3,17 +3,33 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import AppActions from "./App/actions";
+import AppActions from "./actions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router";
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 class ButtonAppBar extends React.Component {
 
     render() {
+        let menuButton = null;
+        if (this.props.successfullyLogin)
+        {
+            menuButton = <div>
+                <Button onClick={this.props.onClickMenu} aria-haspopup="true" color="inherit">
+                    My Account
+                </Button>
+                <Menu id="fade-menu" open={this.props.displayMenu} onClose={this.props.onCloseMenu}>
+                    <MenuItem >My Profile</MenuItem>
+                    <MenuItem >Logout</MenuItem>
+                </Menu>
+            </div>
+        }
         return (
             <div>
                 <AppBar position="static">
                     <Toolbar>
+                        {menuButton}
                         <Typography variant="h6" style={{flex: 1, flexGrow: 1}}>
                             {this.props.message}
                         </Typography>
@@ -26,6 +42,14 @@ class ButtonAppBar extends React.Component {
     }
 }
 
+
+const mapStateToProps = (state) => {
+    return {
+        successfullyLogin : state['app'].get("successfullyLogin"),
+        displayMenu : state['app'].get("displayMenu"),
+    }
+};
+
 const mapDispatchToProps = (dispatch) => {
     return {
         onClickLogin: (e) => {
@@ -35,8 +59,14 @@ const mapDispatchToProps = (dispatch) => {
         onClickHome: (e) => {
             e.preventDefault();
             dispatch(AppActions.onClickHomeNavBar())
+        },
+        onClickMenu: () => {
+            dispatch(AppActions.onClickMenuButton())
+        },
+        onCloseMenu: () => {
+            dispatch(AppActions.onCloseMenuClick())
         }
     }
 };
 
-export default connect(null,mapDispatchToProps)(withRouter(ButtonAppBar));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ButtonAppBar));

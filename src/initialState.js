@@ -10,5 +10,6 @@ export default {
         currentImagePath: "",
         errorUsername : "",
         errorImage: "please pick an image!",
+        displayMenu: false,
     })
 };

@@ -2,7 +2,7 @@ import React from "react"
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import {connect} from "react-redux";
-import AppActions from "../App/actions";
+import AppActions from "./actions";
 import { withRouter } from 'react-router-dom';
 
 class LoginUser extends React.Component

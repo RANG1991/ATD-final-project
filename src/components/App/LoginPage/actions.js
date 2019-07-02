@@ -50,6 +50,19 @@ function onClickHomeNavBar() {
     }
 }
 
+function onClickMenuButton() {
+    return {
+        type: AppActionsConstants.ON_CLICK_MENU_BUTTON
+    }
+}
+
+function onCloseMenuClick() {
+    return {
+        type: AppActionsConstants.ON_CLOSE_MENU
+    }
+}
+
+
     let AppActions  = {
         addRestaurant,
         changeUserName,
@@ -57,7 +70,9 @@ function onClickHomeNavBar() {
         handleSubmitLogin,
         addImage,
         onClickLoginNavBar,
-        onClickHomeNavBar
+        onClickHomeNavBar,
+        onClickMenuButton,
+        onCloseMenuClick,
     };
 
 export default AppActions

@@ -1,6 +1,6 @@
 import {AppActionsConstants} from './Constants.js';
-import initialState from '../../initialState';
-import {history} from "../../index";
+import initialState from '../../../initialState';
+import {history} from "../../../index";
 
 const resetCurrent = (state) => {
     state = state.set('currentUsername', '');
@@ -39,8 +39,9 @@ const AppReducer = (state = initialState.app, action) => {
                         location: state.get('currentLocation'),
                         imagePath: state.get('currentImagePath')})
                     );
-                    state = resetCurrent(state);
                     history.push("/welcome/" + state.get('currentUsername'));
+                    state = state.set('successfullyLogin', true);
+                    state = resetCurrent(state);
                 }
                 else {
                     state = state.set('errorImage', "you have to select an image!");
@@ -62,8 +63,15 @@ const AppReducer = (state = initialState.app, action) => {
             history.push("/");
             return state;
         case AppActionsConstants.ON_CLICK_LOGIN_NAV_BAR:
+            state = state.set('successfullyLogin', false);
             state = resetCurrent(state);
             history.push("/login");
+            return state;
+        case AppActionsConstants.ON_CLICK_MENU_BUTTON:
+            state = state.set('displayMenu', true);
+            return state;
+        case AppActionsConstants.ON_CLOSE_MENU:
+            state = state.set('displayMenu', false);
             return state;
         default:
             return state;
