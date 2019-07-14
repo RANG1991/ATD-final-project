@@ -33,8 +33,10 @@ let ReviewerSchema = new Schema({
 });
 
 
+module.exports = {
+     PhotoModel : mongoose.model('PhotoModel', PhotoSchema),
+     PlaceModel :mongoose.model('PlaceModel', PlaceSchema),
+     ReviewModel : mongoose.model('ReviewModel', ReviewSchema),
+     ReviewerModel : mongoose.model('ReviewerModel', ReviewerSchema)
 
-module.exports = mongoose.model('PhotoModel',PhotoSchema)
-module.exports = mongoose.model('PlaceModel',PlaceSchema)
-module.exports = mongoose.model('ReviewModel',ReviewSchema)
-module.exports = mongoose.model('ReviewerModel',ReviewerSchema)
+}
