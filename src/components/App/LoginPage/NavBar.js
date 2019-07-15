@@ -8,6 +8,7 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import HomeActions from '../ReviewPage/actions'
 
 class ButtonAppBar extends React.Component {
 
@@ -46,7 +47,7 @@ class ButtonAppBar extends React.Component {
 const mapStateToProps = (state) => {
     return {
         successfullyLogin : state['app'].get("successfullyLogin"),
-        displayMenu : state['app'].get("displayMenu"),
+        displayMenu : state['home'].get("displayMenu"),
     }
 };
 
@@ -61,10 +62,10 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(AppActions.onClickHomeNavBar())
         },
         onClickMenu: () => {
-            dispatch(AppActions.onClickMenuButton())
+            dispatch(HomeActions.onClickMenuButton())
         },
         onCloseMenu: () => {
-            dispatch(AppActions.onCloseMenuClick())
+            dispatch(HomeActions.onCloseMenuClick())
         }
     }
 };

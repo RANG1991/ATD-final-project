@@ -10,6 +10,8 @@ export default {
         currentImagePath: "",
         errorUsername : "",
         errorImage: "please pick an image!",
+    }),
+    home: Map({
         displayMenu: false,
     })
 };
