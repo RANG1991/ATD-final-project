@@ -3,13 +3,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import AppActions from "./actions";
+import NavigationActions from "../actions/NavigationActions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import HomeActions from '../UserEntrencePage/actions'
-import {Home} from "@material-ui/icons";
 
 class ButtonAppBar extends React.Component {
 
@@ -51,8 +49,8 @@ class ButtonAppBar extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        successfullyReg : state['app'].get("successfullyReg"),
-        displayMenu : state['home'].get("displayMenu"),
+        successfullyReg : state['currentUser'].get("successfullyReg"),
+        displayMenu : state['currentUser'].get("displayMenu"),
     }
 };
 
@@ -60,35 +58,35 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onClickReg: (e) => {
             e.preventDefault();
-            dispatch(AppActions.onClickRegisterNavBar());
+            dispatch(NavigationActions.onClickRegisterNavBar());
         },
         onClickLogin: (e) => {
             e.preventDefault();
-            dispatch(AppActions.onClickLoginNavBar())
+            dispatch(NavigationActions.onClickLoginNavBar())
         },
         onClickMenu: () => {
-            dispatch(HomeActions.onClickMenuButton())
+            dispatch(NavigationActions.onClickMenuButton())
         },
         onCloseMenu: () => {
-            dispatch(HomeActions.onCloseMenuClick())
+            dispatch(NavigationActions.onCloseMenuClick())
         },
         onClickMyProfile: () => {
-            dispatch(HomeActions.onClickMyProfileButton())
+            dispatch(NavigationActions.onClickMyProfileButton())
         },
         onClickOtherProfiles: () => {
-            dispatch(HomeActions.onClickOtherProfilesButton())
+            dispatch(NavigationActions.onClickOtherProfilesButton())
         },
         onClickReviews: () => {
-            dispatch(HomeActions.onClickReviewsButton())
+            dispatch(NavigationActions.onClickReviewsButton())
         },
         onClickNewReview: () => {
-            dispatch(HomeActions.onClickNewReviewButton())
+            dispatch(NavigationActions.onClickNewReviewButton())
         },
         onClickSearch: () => {
-            dispatch(HomeActions.onClickSearchButton())
+            dispatch(NavigationActions.onClickSearchButton())
         },
         onClickLogout: () => {
-            dispatch(HomeActions.onClickLogoutButton())
+            dispatch(NavigationActions.onClickLogoutButton())
         },
     }
 };

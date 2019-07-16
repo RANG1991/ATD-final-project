@@ -1,15 +1,22 @@
 const {List, Map} = require('immutable');
 
 export default {
-    app: Map({
+    app:
+        Map({
         users: List(),
-        restaurants: List(),
-        successfullyReg: false,
+        restaurants: List()
+        }),
+    navigation:
+        Map({
+        displayMenu: false,
+        successfullyReg: false
+        }),
+    currentUser:
+        Map({
         currentUsername: "",
         currentLocation: "",
-        currentImagePath: "",
         errorUsername : "",
+        currentImagePath: "",
         errorImage: "please pick an image!",
-        displayMenu: false,
     }),
 };

@@ -1,9 +1,9 @@
 import React from 'react';
 import {Router} from "react-router-dom";
 import {Route} from "react-router-dom";
-import ButtonAppBar from "./RegPage/NavBar";
-import UserProfile from "./RegPage/UserProfile"
-import ReviewForm from "./UserEntrencePage/ReviewForm"
+import ButtonAppBar from "./Components/NavBar";
+import UserProfile from "./Components/UserImageReg"
+import ReviewForm from "./Components/ReviewForm"
 import {history} from "../../index";
 
 

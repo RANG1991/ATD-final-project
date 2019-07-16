@@ -1,8 +1,8 @@
 import React from "react"
-import RegUser from "./RegUser";
+import RegUser from "./UserDetailsReg";
 import Grid from '@material-ui/core/Grid'
 import { withRouter } from 'react-router'
-import AppActions from "./actions";
+import AppActions from "../actions/CurrentUserActions";
 import {connect} from "react-redux";
 import Dropzone from "react-dropzone";
 import Image from 'react-image-resizer';
@@ -31,7 +31,7 @@ const thumbsContainer = {
     marginTop: 16
 };
 
-class UserProfile extends React.Component
+class UserImageReg extends React.Component
 {
     render()
     {
@@ -77,8 +77,8 @@ class UserProfile extends React.Component
 
 const mapStateToProps = (state) => {
     return {
-        imagePath : state['app'].get("currentImagePath"),
-        errorImage: state['app'].get("errorImage"),
+        imagePath : state['currentUser'].get("currentImagePath"),
+        errorImage: state['currentUser'].get("errorImage"),
     }
 };
 
@@ -90,4 +90,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UserProfile));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UserImageReg));

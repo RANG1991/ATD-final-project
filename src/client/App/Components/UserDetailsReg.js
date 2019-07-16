@@ -2,10 +2,10 @@ import React from "react"
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import {connect} from "react-redux";
-import AppActions from "./actions";
+import AppActions from "../actions/CurrentUserActions";
 import { withRouter } from 'react-router-dom';
 
-class RegUser extends React.Component
+class UserDetailsReg extends React.Component
 {
     render() {
         return (
@@ -14,7 +14,7 @@ class RegUser extends React.Component
                            error={this.props.errorUsername !== ''}
                            helperText={this.props.errorUsername}
                            label="User Name"
-                           onChange={this.props.onChangeUsername}
+                           onChange={(e) => this.props.onChangeUsername(e, this.props.users)}
                            margin="normal"
                            variant="outlined"/>
                 <TextField id="outlined-name"
@@ -22,7 +22,7 @@ class RegUser extends React.Component
                            onChange={this.props.onChangeLocation}
                            margin="normal"
                            variant="outlined"/>
-                <Button variant="contained" style={style} onClick={this.props.handleSubmit} href={"/welcome/" + this.props.currentUsername}>
+                <Button variant="contained" style={style} onClick={() => this.props.handleSubmit(this.props.users)} href={"/welcome/" + this.props.currentUsername}>
                     Submit
                 </Button>
             </form>
@@ -36,8 +36,10 @@ const style = {
 
 const mapStateToProps = (state) => {
     return {
-        errorUsername: state['app'].get("errorUsername"),
-        currentUsername: state['app'].get('currentUsername')
+        errorUsername: state['currentUser'].get("errorUsername"),
+        currentUsername: state['currentUser'].get('currentUsername'),
+        users: state['currentUser'].get("users"),
+        successfullyReg: state['currentUser'].get("successfullyReg")
     }
 };
 
@@ -46,14 +48,14 @@ const mapDispatchToProps = (dispatch) => {
         onChangeLocation: (e) => {
             dispatch(AppActions.changeLocation(e.target.value));
         },
-        onChangeUsername:  (e) => {
-            dispatch(AppActions.changeUserName(e.target.value))
+        onChangeUsername:  (e, users) => {
+            dispatch(AppActions.changeUserName(e.target.value, users))
         },
-        handleSubmit: (e) => {
+        handleSubmit: (e, users) => {
             e.preventDefault();
-            dispatch(AppActions.handleSubmitRegister())
+            dispatch(AppActions.handleSubmitRegister(users))
         }
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(RegUser));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UserDetailsReg));
