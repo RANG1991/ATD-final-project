@@ -4,14 +4,12 @@ export default {
     app: Map({
         users: List(),
         restaurants: List(),
-        successfullyLogin: false,
+        successfullyReg: false,
         currentUsername: "",
         currentLocation: "",
         currentImagePath: "",
         errorUsername : "",
         errorImage: "please pick an image!",
-    }),
-    home: Map({
         displayMenu: false,
-    })
+    }),
 };

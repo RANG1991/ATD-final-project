@@ -23,10 +23,10 @@ function changeLocation(location)
     }
 }
 
-function handleSubmitLogin()
+function handleSubmitRegister()
 {
     return {
-        type: AppActionsConstants.HANDLE_SUBMIT_LOGIN
+        type: AppActionsConstants.HANDLE_SUBMIT_REGIST
     }
 }
 
@@ -38,13 +38,13 @@ function addImage(acceptedFiles)
     }
 }
 
-function onClickLoginNavBar() {
+function onClickRegisterNavBar() {
     return {
-        type: AppActionsConstants.ON_CLICK_LOGIN_NAV_BAR
+        type: AppActionsConstants.ON_CLICK_REGISTER_NAV_BAR
     }
 }
 
-function onClickHomeNavBar() {
+function onClickLoginNavBar() {
     return {
         type: AppActionsConstants.ON_CLICK_HOME_NAV_BAR
     }
@@ -55,10 +55,10 @@ function onClickHomeNavBar() {
         addRestaurant,
         changeUserName,
         changeLocation,
-        handleSubmitLogin,
+        handleSubmitRegister,
         addImage,
-        onClickLoginNavBar,
-        onClickHomeNavBar,
+        onClickRegisterNavBar,
+        onClickLoginNavBar
     };
 
 export default AppActions

@@ -1,5 +1,5 @@
 import React from "react"
-import LoginUser from "./LoginUser";
+import RegUser from "./RegUser";
 import Grid from '@material-ui/core/Grid'
 import { withRouter } from 'react-router'
 import AppActions from "./actions";
@@ -69,7 +69,7 @@ class UserProfile extends React.Component
                         </section>
                     )}
                 </Dropzone>
-            <LoginUser/>
+            <RegUser/>
                 </Grid>
             </Grid>)
     }

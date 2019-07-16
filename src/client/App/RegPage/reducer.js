@@ -1,5 +1,5 @@
 import {AppActionsConstants} from './Constants.js';
-import initialState from '../../../initialState';
+import initialState from '../initialState';
 import {history} from "../../../index";
 
 const resetCurrent = (state) => {
@@ -28,7 +28,7 @@ const AppReducer = (state = initialState.app, action) => {
         case AppActionsConstants.CHANGE_LOCATION:
                 state = state.set('currentLocation', action.payload.location);
                 return state;
-        case AppActionsConstants.HANDLE_SUBMIT_LOGIN:
+        case AppActionsConstants.HANDLE_SUBMIT_REGIST:
                 if (users !== undefined && users.includes(state.get('currentUsername'))) {
                     state = state.set('errorUsername', 'user name already exist!');
                 }
@@ -39,8 +39,8 @@ const AppReducer = (state = initialState.app, action) => {
                         location: state.get('currentLocation'),
                         imagePath: state.get('currentImagePath')})
                     );
-                    history.push("/welcome/" + state.get('currentUsername'));
-                    state = state.set('successfullyLogin', true);
+                    history.push("/" + state.get('currentUsername'));
+                    state = state.set('successfullyReg', true);
                     state = resetCurrent(state);
                 }
                 else {
@@ -62,10 +62,10 @@ const AppReducer = (state = initialState.app, action) => {
         case AppActionsConstants.ON_CLICK_HOME_NAV_BAR:
             history.push("/");
             return state;
-        case AppActionsConstants.ON_CLICK_LOGIN_NAV_BAR:
-            state = state.set('successfullyLogin', false);
+        case AppActionsConstants.ON_CLICK_REGISTER_NAV_BAR:
+            state = state.set('successfullyReg', false);
             state = resetCurrent(state);
-            history.push("/login");
+            history.push("/register");
             return state;
         case AppActionsConstants.ON_CLICK_MENU_BUTTON:
             state = state.set('displayMenu', true);

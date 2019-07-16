@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import AppActions from "./actions";
 import { withRouter } from 'react-router-dom';
 
-class LoginUser extends React.Component
+class RegUser extends React.Component
 {
     render() {
         return (
@@ -51,9 +51,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         handleSubmit: (e) => {
             e.preventDefault();
-            dispatch(AppActions.handleSubmitLogin())
+            dispatch(AppActions.handleSubmitRegister())
         }
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LoginUser));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(RegUser));
