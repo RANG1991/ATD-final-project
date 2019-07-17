@@ -8,6 +8,9 @@ const NewReviewReducer = (state = initialState.newReview, action) => {
         case NewReviewConstants.CHANGE_PARAM_VALUE:
             state = state.set(action.payload.param_name, action.payload.param_value);
             return state;
+        case NewReviewConstants.CHANGE_NAME:
+            state = state.set('name', action.payload.name);
+            return state;
         default:
             return state;
     }

@@ -9,6 +9,10 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import NewReviewActions from '../actions/NewReviewActions'
 import {connect} from "react-redux";
+import Button from "@material-ui/core/Button";
+import AppActions from "../actions/AppActions";
+import Grid from "@material-ui/core/Grid";
+import Dropzone from "react-dropzone";
 
 const ranges = [
     {
@@ -53,6 +57,13 @@ const styles = theme => ({
     },
 });
 
+const thumbsContainer = {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 16
+};
+
 class ReviewForm extends React.Component {
     render() {
         const { classes } = this.props;
@@ -82,12 +93,40 @@ class ReviewForm extends React.Component {
                     <InputLabel htmlFor="adornment-amount">Restaurant Name</InputLabel>
                     <Input
                         id="adornment-amount"
-                        // value={}
-                        // onChange={}
+                        value={this.props.name}
+                        onChange={(e) => this.props.onNameChange(e.target.value)}
                         startAdornment={<InputAdornment position="start">Name</InputAdornment>}
                     />
                 </FormControl>
                 {elements}
+                <Grid
+                    container
+                    spacing={0}
+                    direction="column"
+                    alignItems="center"
+                    justify="center"
+                    style={{ minHeight: '100vh' }}>
+                    <Grid item xs={3}>
+                        <Dropzone onDrop={this.props.addImageHandler}>
+                            {({getRootProps, getInputProps}) => (
+                                <section>
+                                    <div {...getRootProps()}>
+                                        <input {...getInputProps()} />
+                                        <p>{this.props.errorImage}</p>
+                                    </div>
+                                    <aside style={thumbsContainer}>
+                                        {imgs}
+                                    </aside>
+                                </section>
+                            )}
+                        </Dropzone>
+                    </Grid>
+                </Grid>
+                <Button variant="contained"
+                        onClick={(e) => this.props.onSubmit(e, this.props.name, parameters)}
+                        href={"/new_review"}>
+                    Submit
+                </Button>
             </div>
         );
     }
@@ -100,6 +139,7 @@ const mapStateToProps = (state) => {
         cleanliness: state['newReview'].get('cleanliness'),
         drive: state['newReview'].get('drive'),
         delivery: state['newReview'].get('delivery'),
+        name: state['newReview'].get('name'),
     }
 };
 
@@ -107,6 +147,13 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onValueChange: (paramName, paramValue) => {
             dispatch(NewReviewActions.changeParamValue(paramName, paramValue))
+        },
+        onSubmit: (e, name, params) => {
+            e.preventDefault();
+           dispatch(AppActions.addRestaurant(...[name,...(params.map(x => x.value))]))
+        },
+        onNameChange: (name) => {
+            dispatch(NewReviewActions.changeName(name))
         }
     }
 };

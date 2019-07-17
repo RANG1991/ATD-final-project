@@ -7,8 +7,16 @@ function changeParamValue(param, value) {
     }
 }
 
+function changeName(name) {
+    return {
+        type: newReviewConstants.CHANGE_NAME,
+        payload: {name: name}
+    }
+}
+
 let NewReviewActions  = {
-    changeParamValue
+    changeParamValue,
+    changeName,
 };
 
 export default NewReviewActions

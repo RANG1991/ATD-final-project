@@ -21,6 +21,7 @@ export default {
     }),
     newReview:
     Map ({
+        name: "",
         bathroom: 0,
         staff: 0,
         cleanliness: 0,

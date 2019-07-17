@@ -7,8 +7,18 @@ function addUser(username, imagePath, location) {
     }
 }
 
+function addRestaurant(name, bathroom, staff, cleanliness, drive, delivery) {
+    return {
+        type: AppConstants.ADD_RESTAURANT,
+        payload: {name: name, bathroom: bathroom,
+            staff: staff, cleanliness: cleanliness,
+            drive: drive, delivery: delivery}
+    }
+}
+
 let AppActions  = {
-    addUser
+    addUser,
+    addRestaurant
 };
 
 export default AppActions

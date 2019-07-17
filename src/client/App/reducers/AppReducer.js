@@ -7,10 +7,16 @@ const AppReducer = (state = initialState.app, action) => {
     switch (action.type) {
         case AppConstants.ADD_USER:
             state = state.update('users', e => e.push(
-                {username: action.payload.username, location: action.payload.location, imagePath: action.payload.imagePath})
+                {username: action.payload.username, location: action.payload.location,
+                    imagePath: action.payload.imagePath})
             );
             return state;
         case AppConstants.ADD_RESTAURANT:
+            state = state.update('restaurants', e => e.push(
+                {name: action.payload.name, bathroom: action.payload.bathroom,
+                    staff: action.payload.staff, cleanliness: action.payload.cleanliness,
+                    drive: action.payload.drive, delivery: action.payload.delivery})
+            );
             return state;
         default:
             return state;
