@@ -18,7 +18,8 @@
     "react-scripts": "3.0.1",
     "reduce-reducers": "^1.0.4",
     "redux": "^4.0.1",
-    "redux-immutable": "^4.0.0"
+    "redux-immutable": "^4.0.0",
+    "clsx": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

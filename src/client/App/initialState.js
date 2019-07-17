@@ -19,4 +19,12 @@ export default {
         currentImagePath: "",
         errorImage: "please pick an image!",
     }),
+    newReview:
+    Map ({
+        bathroom: 0,
+        staff: 0,
+        cleanliness: 0,
+        drive: 0,
+        delivery: 0
+    })
 };

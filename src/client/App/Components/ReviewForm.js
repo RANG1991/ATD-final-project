@@ -1,8 +1,14 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
+import NewReviewActions from '../actions/NewReviewActions'
+import {connect} from "react-redux";
 
 const ranges = [
     {
@@ -31,7 +37,7 @@ const ranges = [
     },
 ];
 
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
     root: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -45,67 +51,64 @@ const useStyles = makeStyles(theme => ({
     textField: {
         flexBasis: 200,
     },
-}));
+});
 
-export default function InputAdornments() {
-    const classes = useStyles();
-    return (
-        <div className={classes.root}>
-            <TextField
-                select
-                label="Bathroom Quality"
-                className={clsx(classes.margin, classes.textField)}
-            >
-                {ranges.map(option => (
-                    <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                    </MenuItem>
-                ))}
-            </TextField>
-            <TextField
-                select
-                label="Staff Kindness"
-                className={clsx(classes.margin, classes.textField)}
-            >
-                {ranges.map(option => (
-                    <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                    </MenuItem>
-                ))}
-            </TextField>
-            <TextField
-                select
-                label="Cleanliness"
-                className={clsx(classes.margin, classes.textField)}
-            >
-                {ranges.map(option => (
-                    <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                    </MenuItem>
-                ))}
-            </TextField>
-            <TextField
-                select
-                label="Drive-thru quality"
-                className={clsx(classes.margin, classes.textField)}
-            >
-                {ranges.map(option => (
-                    <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                    </MenuItem>
-                ))}
-            </TextField>
-            <TextField
-                select
-                label="Delivery Speed"
-                className={clsx(classes.margin, classes.textField)}
-            >
-                {ranges.map(option => (
-                    <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                    </MenuItem>
-                ))}
-            </TextField>
-        </div>
-    );
+class ReviewForm extends React.Component {
+    render() {
+        const { classes } = this.props;
+        const parameters = [
+            {name: "Bathroom Quality", value: this.props.bathroom, id: "bathroom"},
+            {name: "Staff Kindness", value: this.props.staff, id: "staff"},
+            {name: "Cleanliness", value: this.props.cleanliness, id: "cleanliness"},
+            {name: "Drive-thru quality", value: this.props.drive, id: "drive"},
+            {name: "Delivery Speed", value: this.props.delivery, id: "delivery"},
+        ];
+        const elements = parameters.map((x) => <TextField
+            select
+            key={x.id}
+            label={x.name}
+            value={x.value}
+            onChange={(e) => this.props.onValueChange(x.id, e.target.value)}
+            className={clsx(classes.margin, classes.textField)}>
+            {ranges.map(option => (
+                <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                </MenuItem>
+            ))}
+        </TextField>);
+        return (
+            <div className={classes.root}>
+                <FormControl fullWidth className={classes.margin}>
+                    <InputLabel htmlFor="adornment-amount">Restaurant Name</InputLabel>
+                    <Input
+                        id="adornment-amount"
+                        // value={}
+                        // onChange={}
+                        startAdornment={<InputAdornment position="start">Name</InputAdornment>}
+                    />
+                </FormControl>
+                {elements}
+            </div>
+        );
+    }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        bathroom: state['newReview'].get('bathroom'),
+        staff: state['newReview'].get('staff'),
+        cleanliness: state['newReview'].get('cleanliness'),
+        drive: state['newReview'].get('drive'),
+        delivery: state['newReview'].get('delivery'),
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onValueChange: (paramName, paramValue) => {
+            dispatch(NewReviewActions.changeParamValue(paramName, paramValue))
+        }
+    }
+};
+
+export default (withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(ReviewForm)));
