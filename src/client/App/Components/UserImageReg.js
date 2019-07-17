@@ -5,24 +5,7 @@ import { withRouter } from 'react-router'
 import CurrentUserActions from "../actions/CurrentUserActions";
 import {connect} from "react-redux";
 import Dropzone from "react-dropzone";
-import Image from 'react-image-resizer';
-
-const thumb = {
-    display: 'inline-flex',
-    borderRadius: 2,
-    marginBottom: 8,
-    marginRight: 8,
-    width: 500,
-    height: 500,
-    padding: 4,
-    boxSizing: 'border-box'
-};
-
-const thumbInner = {
-    display: 'flex',
-    minWidth: 0,
-    overflow: 'hidden'
-};
+import ImageGrid from "./ImageGrid";
 
 const thumbsContainer = {
     display: 'flex',
@@ -38,15 +21,7 @@ class UserImageReg extends React.Component
         let img = null;
         if (this.props.imagePath !== '')
         {
-            img = <div style={thumb} key={this.props.imagePath}>
-                <div style={thumbInner}>
-                    <Image
-                        src={this.props.imagePath}
-                        height={500}
-                        width={500}
-                    />
-                </div>
-            </div>
+            img = <ImageGrid img={this.props.imagePath}/>
         }
         return (<Grid
                 container

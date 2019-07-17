@@ -11,6 +11,9 @@ const NewReviewReducer = (state = initialState.newReview, action) => {
         case NewReviewConstants.CHANGE_NAME:
             state = state.set('name', action.payload.name);
             return state;
+        case NewReviewConstants.ADD_IMAGES:
+            state = state.update('imgs', e => e.push(...action.payload.files.map(x => URL.createObjectURL(x))));
+            return state;
         default:
             return state;
     }

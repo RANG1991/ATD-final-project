@@ -26,6 +26,8 @@ export default {
         staff: 0,
         cleanliness: 0,
         drive: 0,
-        delivery: 0
+        delivery: 0,
+        imgs: List(),
+        imagesMessage: "please drop here your images!",
     })
 };

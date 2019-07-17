@@ -13,6 +13,9 @@ import Button from "@material-ui/core/Button";
 import AppActions from "../actions/AppActions";
 import Grid from "@material-ui/core/Grid";
 import Dropzone from "react-dropzone";
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import Paper from '@material-ui/core/Paper';
 
 const ranges = [
     {
@@ -55,14 +58,12 @@ const styles = theme => ({
     textField: {
         flexBasis: 200,
     },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    },
 });
-
-const thumbsContainer = {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginTop: 16
-};
 
 class ReviewForm extends React.Component {
     render() {
@@ -74,6 +75,17 @@ class ReviewForm extends React.Component {
             {name: "Drive-thru quality", value: this.props.drive, id: "drive"},
             {name: "Delivery Speed", value: this.props.delivery, id: "delivery"},
         ];
+        let imgs = null;
+        if (this.props.imgs.size > 0)
+        {
+            imgs = <GridList  fullWidth cellHeight={160} className={classes.margin} cols={9}>
+            {this.props.imgs.map(x => (
+                    <GridListTile key={x} cols={3}>
+                        <img src={x} alt={x} />
+                    </GridListTile>
+                ))}
+        </GridList>
+        }
         const elements = parameters.map((x) => <TextField
             select
             key={x.id}
@@ -99,34 +111,26 @@ class ReviewForm extends React.Component {
                     />
                 </FormControl>
                 {elements}
-                <Grid
-                    container
-                    spacing={0}
-                    direction="column"
-                    alignItems="center"
-                    justify="center"
-                    style={{ minHeight: '100vh' }}>
-                    <Grid item xs={3}>
-                        <Dropzone onDrop={this.props.addImageHandler}>
-                            {({getRootProps, getInputProps}) => (
-                                <section>
-                                    <div {...getRootProps()}>
-                                        <input {...getInputProps()} />
-                                        <p>{this.props.errorImage}</p>
-                                    </div>
-                                    <aside style={thumbsContainer}>
-                                        {imgs}
-                                    </aside>
-                                </section>
-                            )}
-                        </Dropzone>
-                    </Grid>
-                </Grid>
                 <Button variant="contained"
                         onClick={(e) => this.props.onSubmit(e, this.props.name, parameters)}
                         href={"/new_review"}>
                     Submit
                 </Button>
+                <Grid item xs={12}>
+                    <Paper className={classes.paper}>
+                        <Dropzone onDrop={this.props.addImagesHandler}>
+                            {({getRootProps, getInputProps}) => (
+                                <section className="container">
+                                    <div {...getRootProps()}>
+                                        <input {...getInputProps()} />
+                                        <p>{this.props.imagesMessage}</p>
+                                    </div>
+                                </section>
+                            )}
+                        </Dropzone>
+                    </Paper>
+                </Grid>
+                {imgs}
             </div>
         );
     }
@@ -140,6 +144,8 @@ const mapStateToProps = (state) => {
         drive: state['newReview'].get('drive'),
         delivery: state['newReview'].get('delivery'),
         name: state['newReview'].get('name'),
+        imgs: state['newReview'].get('imgs'),
+        imagesMessage: state['newReview'].get('imagesMessage'),
     }
 };
 
@@ -148,12 +154,15 @@ const mapDispatchToProps = (dispatch) => {
         onValueChange: (paramName, paramValue) => {
             dispatch(NewReviewActions.changeParamValue(paramName, paramValue))
         },
-        onSubmit: (e, name, params) => {
+        onSubmit: (e, name, images, params) => {
             e.preventDefault();
-           dispatch(AppActions.addRestaurant(...[name,...(params.map(x => x.value))]))
+           dispatch(AppActions.addRestaurant(...[name, images,...(params.map(x => x.value))]))
         },
         onNameChange: (name) => {
             dispatch(NewReviewActions.changeName(name))
+        },
+        addImagesHandler: (acceptedFiles) => {
+            dispatch(NewReviewActions.addImages(acceptedFiles))
         }
     }
 };

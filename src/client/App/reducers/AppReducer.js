@@ -13,7 +13,7 @@ const AppReducer = (state = initialState.app, action) => {
             return state;
         case AppConstants.ADD_RESTAURANT:
             state = state.update('restaurants', e => e.push(
-                {name: action.payload.name, bathroom: action.payload.bathroom,
+                {name: action.payload.name, images: action.payload.images, bathroom: action.payload.bathroom,
                     staff: action.payload.staff, cleanliness: action.payload.cleanliness,
                     drive: action.payload.drive, delivery: action.payload.delivery})
             );

@@ -14,9 +14,17 @@ function changeName(name) {
     }
 }
 
+function addImages(acceptedFiles) {
+    return {
+        type: newReviewConstants.ADD_IMAGES,
+        payload: {files: acceptedFiles}
+    }
+}
+
 let NewReviewActions  = {
     changeParamValue,
     changeName,
+    addImages,
 };
 
 export default NewReviewActions
