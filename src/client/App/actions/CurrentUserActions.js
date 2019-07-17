@@ -1,43 +1,47 @@
-import {UserActionsConstants} from '../Constants/CurrentUserConstants.js';
+import {CurrentUserConstants} from '../Constants/CurrentUserConstants.js';
 
-function changeUserName(username, usersList)
+function changeUserName(username)
 {
     return {
-        type: UserActionsConstants.CHANGE_USER_NAME,
-        payload: {username: username, users: usersList}
+        type: CurrentUserConstants.CHANGE_USERNAME,
+        payload: {username: username}
     }
 }
 
 function changeLocation(location)
 {
     return {
-        type: UserActionsConstants.CHANGE_LOCATION,
+        type: CurrentUserConstants.CHANGE_LOCATION,
         payload: {location: location}
     }
 }
 
-function handleSubmitRegister(usersList)
+function resetCurrentState()
 {
     return {
-        type: UserActionsConstants.HANDLE_SUBMIT_REGISTER,
-        payload : {users: usersList}
+        type: CurrentUserConstants.RESET_CURRENT_STATE,
     }
+}
+
+function usernameError() {
+   return {
+       type: CurrentUserConstants.USER_NAME_ERROR
+   }
 }
 
 function addImage(acceptedFiles)
 {
     return {
-        type: UserActionsConstants.ADD_IMAGE,
+        type: CurrentUserConstants.ADD_IMAGE,
         payload: {acceptedFiles: acceptedFiles}
     }
 }
-
-
-    let AppActions  = {
+    let CurrentUserActions  = {
         changeUserName,
         changeLocation,
-        handleSubmitRegister,
+        usernameError,
+        resetCurrentState,
         addImage
     };
 
-export default AppActions
+export default CurrentUserActions

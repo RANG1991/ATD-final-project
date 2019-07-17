@@ -2,7 +2,7 @@ import React from "react"
 import RegUser from "./UserDetailsReg";
 import Grid from '@material-ui/core/Grid'
 import { withRouter } from 'react-router'
-import AppActions from "../actions/CurrentUserActions";
+import CurrentUserActions from "../actions/CurrentUserActions";
 import {connect} from "react-redux";
 import Dropzone from "react-dropzone";
 import Image from 'react-image-resizer';
@@ -85,7 +85,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addImageHandler: (acceptedFiles) => {
-            dispatch(AppActions.addImage(acceptedFiles));
+            dispatch(CurrentUserActions.addImage(acceptedFiles));
         },
     }
 };

@@ -1,10 +1,9 @@
-const UserActionsConstants = {
+const CurrentUserConstants = {
     USER_NAME_ERROR: 'USER_NAME_ERROR',
-    CHANGE_USER_NAME: 'CHANGE_USER_NAME',
+    CHANGE_USERNAME: 'CHANGE_USERNAME',
     CHANGE_LOCATION: 'CHANGE_LOCATION',
     RESET_CURRENT_STATE: 'RESET_CURRENT_STATE',
-    HANDLE_SUBMIT_REGISTER: 'HANDLE_SUBMIT_REGISTER',
     ADD_IMAGE: 'ADD_IMAGE',
 };
 
-export {UserActionsConstants}
+export {CurrentUserConstants}

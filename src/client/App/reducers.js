@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import UserProfileReducer from './reducers/CurrentUserReducer';
+import CurrentUserReducer from './reducers/CurrentUserReducer';
 import NavigationReducer from "./reducers/NavigationReducer";
 import AppReducer from "./reducers/AppReducer";
 
 
 export default combineReducers({
-    currentUser: UserProfileReducer,
+    currentUser: CurrentUserReducer,
     navigation: NavigationReducer,
     app: AppReducer,
 });

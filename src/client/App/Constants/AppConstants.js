@@ -3,4 +3,4 @@ const AppConstants = {
     ADD_RESTAURANT: 'ADD_RESTAURANT'
 };
 
-export {AppConstants}
+export default AppConstants

@@ -7,7 +7,7 @@ const NavigationReducer  = (state = initialState.navigation, action) => {
     console.log('RECEIVED ACTION:', action);
     switch (action.type) {
         case NavigationConstants.CHANGE_REGISTRATION_SUCCESS:
-            state.set('successfullyReg', !state.get('successfullyReg'));
+            state = state.set('successfullyReg', action.payload.success);
             return state;
         case NavigationConstants.ON_CLICK_MENU_BUTTON:
             state = state.set('displayMenu', true);
@@ -16,7 +16,7 @@ const NavigationReducer  = (state = initialState.navigation, action) => {
             state = state.set('displayMenu', false);
             return state;
         case NavigationConstants.ON_CHANGE_ROUTING:
-            history.push(action.payload);
+            history.push(action.payload.newPath);
             return state;
         default:
             return state;

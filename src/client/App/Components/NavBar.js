@@ -8,6 +8,7 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import CurrentUserActions from "../actions/CurrentUserActions";
 
 class ButtonAppBar extends React.Component {
 
@@ -20,12 +21,12 @@ class ButtonAppBar extends React.Component {
                     Menu
                 </Button>
                 <Menu id="fade-menu" open={this.props.displayMenu} onClose={this.props.onCloseMenu}>
-                    <MenuItem onClick={this.props.onClickMyProfile}>My Profile</MenuItem>
-                    <MenuItem onClick={this.props.onClickOtherProfiles}>Other Profiles</MenuItem>
-                    <MenuItem onClick={this.props.onClickReviews}>Reviews</MenuItem>
-                    <MenuItem onClick={this.props.onClickNewReview}>Write New Review</MenuItem>
-                    <MenuItem onClick={this.props.onClickSearch}>Search</MenuItem>
-                    <MenuItem onClick={this.props.onClickLogout}>Logout</MenuItem>
+                    <MenuItem onClick={() => this.props.onClickMyProfile("/my_profile")}>My Profile</MenuItem>
+                    <MenuItem onClick={() => this.props.onClickOtherProfiles("/other_profiles")}>Other Profiles</MenuItem>
+                    <MenuItem onClick={() => this.props.onClickReviews("/all_reviews")}>Reviews</MenuItem>
+                    <MenuItem onClick={() => this.props.onClickNewReview("/new_review")}>Write New Review</MenuItem>
+                    <MenuItem onClick={() => this.props.onClickSearch("/search")}>Search</MenuItem>
+                    <MenuItem onClick={() => this.props.onClickLogout("/logout")}>Logout</MenuItem>
                 </Menu>
             </div>
         }
@@ -49,8 +50,8 @@ class ButtonAppBar extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        successfullyReg : state['currentUser'].get("successfullyReg"),
-        displayMenu : state['currentUser'].get("displayMenu"),
+        successfullyReg : state['navigation'].get("successfullyReg"),
+        displayMenu : state['navigation'].get("displayMenu"),
     }
 };
 
@@ -59,6 +60,9 @@ const mapDispatchToProps = (dispatch) => {
         onClickReg: (e) => {
             e.preventDefault();
             dispatch(NavigationActions.onClickRegisterNavBar());
+            dispatch(NavigationActions.onChangeRoute("/register"));
+            dispatch(NavigationActions.onRegistrationSuccessChange(false));
+            dispatch(CurrentUserActions.resetCurrentState());
         },
         onClickLogin: (e) => {
             e.preventDefault();
@@ -70,23 +74,23 @@ const mapDispatchToProps = (dispatch) => {
         onCloseMenu: () => {
             dispatch(NavigationActions.onCloseMenuClick())
         },
-        onClickMyProfile: () => {
-            dispatch(NavigationActions.onClickMyProfileButton())
+        onClickMyProfile: (newPath) => {
+            dispatch(NavigationActions.onChangeRoute(newPath))
         },
-        onClickOtherProfiles: () => {
-            dispatch(NavigationActions.onClickOtherProfilesButton())
+        onClickOtherProfiles: (newPath) => {
+            dispatch(NavigationActions.onChangeRoute(newPath))
         },
-        onClickReviews: () => {
-            dispatch(NavigationActions.onClickReviewsButton())
+        onClickReviews: (newPath) => {
+            dispatch(NavigationActions.onChangeRoute(newPath))
         },
-        onClickNewReview: () => {
-            dispatch(NavigationActions.onClickNewReviewButton())
+        onClickNewReview: (newPath) => {
+            dispatch(NavigationActions.onChangeRoute(newPath))
         },
-        onClickSearch: () => {
-            dispatch(NavigationActions.onClickSearchButton())
+        onClickSearch: (newPath) => {
+            dispatch(NavigationActions.onChangeRoute(newPath))
         },
-        onClickLogout: () => {
-            dispatch(NavigationActions.onClickLogoutButton())
+        onClickLogout: (newPath) => {
+            dispatch(NavigationActions.onChangeRoute(newPath))
         },
     }
 };

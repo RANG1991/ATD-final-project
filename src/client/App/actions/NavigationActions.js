@@ -24,39 +24,21 @@ function onCloseMenuClick() {
     }
 }
 
-function onClickMyProfileButton() {
+function onChangeRoute(newPath) {
     return {
-        type: NavigationConstants.ON_CLICK_MY_PROFILE
+        type: NavigationConstants.ON_CHANGE_ROUTING,
+        payload: {
+            newPath: newPath
+        }
     }
 }
 
-function onClickOtherProfilesButton() {
+function onRegistrationSuccessChange(success) {
     return {
-        type: NavigationConstants.ON_CLICK_OTHER_PROFILES
-    }
-}
-
-function onClickReviewsButton() {
-    return {
-        type: NavigationConstants.ON_CLICK_REVIEWS
-    }
-}
-
-function onClickNewReviewButton() {
-    return {
-        type: NavigationConstants.ON_CLICK_NEW_REVIEW
-    }
-}
-
-function onClickSearchButton() {
-    return {
-        type: NavigationConstants.ON_CLICK_SEARCH
-    }
-}
-
-function onClickLogoutButton() {
-    return {
-        type: NavigationConstants.ON_CLICK_LOGOUT
+        type: NavigationConstants.CHANGE_REGISTRATION_SUCCESS,
+        payload: {
+            success: success
+        }
     }
 }
 
@@ -65,12 +47,8 @@ let NavigationActions  = {
     onClickLoginNavBar,
     onClickMenuButton,
     onCloseMenuClick,
-    onClickMyProfileButton,
-    onClickOtherProfilesButton,
-    onClickNewReviewButton,
-    onClickReviewsButton,
-    onClickSearchButton,
-    onClickLogoutButton,
+    onChangeRoute,
+    onRegistrationSuccessChange,
 };
 
 export default NavigationActions

@@ -1,5 +1,5 @@
 import initialState from "../initialState";
-import {AppConstants} from "../Constants/AppConstants";
+import AppConstants from "../Constants/AppConstants";
 
 const AppReducer = (state = initialState.app, action) => {
     console.log('AppReducerState=', state);
@@ -7,7 +7,7 @@ const AppReducer = (state = initialState.app, action) => {
     switch (action.type) {
         case AppConstants.ADD_USER:
             state = state.update('users', e => e.push(
-                {username: state.get('currentUsername'), location: state.get('currentLocation'), imagePath: state.get('currentImagePath')})
+                {username: action.payload.username, location: action.payload.location, imagePath: action.payload.imagePath})
             );
             return state;
         case AppConstants.ADD_RESTAURANT:
