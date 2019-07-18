@@ -6,10 +6,12 @@ export const loadState = () => {
         if (serializedState === null) {
             return undefined;
         }
-        return {app: fromJS(JSON.parse(serializedState).app),
-            currentUser: fromJS(JSON.parse(serializedState).currentUser),
-            navigation: fromJS(JSON.parse(serializedState).navigation),
-            newReview:fromJS(JSON.parse(serializedState).newReview)};
+        let newState = {};
+        let oldState = JSON.parse(serializedState);
+        for (let key in oldState){
+            newState[key] = fromJS(oldState[key]);
+        }
+        return newState;
     } catch (err) {
         return undefined;
     }

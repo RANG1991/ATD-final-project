@@ -8,6 +8,8 @@ import {createBrowserHistory} from "history";
 import throttle from 'lodash/throttle';
 import {loadState, saveState} from "./client/App/localStorage";
 
+//localStorage.clear();
+
 const persistedState = loadState();
 
 export const history = createBrowserHistory();
@@ -15,12 +17,12 @@ export const history = createBrowserHistory();
 const store = createStore(reducers, persistedState);
 
 store.subscribe(throttle(() => {
-    saveState({
-        app: store.getState().app,
-        currentUser: store.getState().currentUser,
-        navigation: store.getState().navigation,
-        newReview: store.getState().newReview,
-    });
+    let newState = {};
+    let oldState = store.getState();
+    for (let key in oldState){
+        newState[key] = oldState[key].toJS();
+    }
+    saveState(newState);
 }, 1000));
 
 ReactDOM.render(

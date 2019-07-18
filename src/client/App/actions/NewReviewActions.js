@@ -21,10 +21,17 @@ function addImages(acceptedFiles) {
     }
 }
 
+function resetForm() {
+    return {
+        type: newReviewConstants.RESET_FORM
+    }
+}
+
 let NewReviewActions  = {
     changeParamValue,
     changeName,
     addImages,
+    resetForm,
 };
 
 export default NewReviewActions

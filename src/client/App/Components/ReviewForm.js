@@ -78,10 +78,10 @@ class ReviewForm extends React.Component {
         let imgs = null;
         if (this.props.imgs.size > 0)
         {
-            imgs = <GridList  fullWidth cellHeight={160} className={classes.margin} cols={9}>
+            imgs = <GridList cellHeight={160} className={classes.margin} cols={9}>
             {this.props.imgs.map(x => (
                     <GridListTile key={x} cols={3}>
-                        <img src={x} alt={x} />
+                        <img src={URL.createObjectURL(x)} alt={x} />
                     </GridListTile>
                 ))}
         </GridList>
@@ -156,7 +156,8 @@ const mapDispatchToProps = (dispatch) => {
         },
         onSubmit: (e, name, images, params) => {
             e.preventDefault();
-           dispatch(AppActions.addRestaurant(...[name, images,...(params.map(x => x.value))]))
+           dispatch(AppActions.addRestaurant(...[name, images,...(params.map(x => x.value))]));
+           dispatch(NewReviewActions.resetForm());
         },
         onNameChange: (name) => {
             dispatch(NewReviewActions.changeName(name))

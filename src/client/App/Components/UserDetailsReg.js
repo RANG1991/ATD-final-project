@@ -8,7 +8,7 @@ import AppActions from "../actions/AppActions";
 import NavigationActions from "../actions/NavigationActions";
 
 const checkIfUserNameExists = (username, users) => {
-   return users !== undefined && users.map(x => x.username).contains(username);
+   return users !== undefined && users.map(x => x.get('username')).contains(username);
 };
 
 class UserDetailsReg extends React.Component

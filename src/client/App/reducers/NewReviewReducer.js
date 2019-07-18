@@ -1,5 +1,6 @@
 import initialState from "../initialState";
 import NewReviewConstants from "../Constants/NewReviewConstants"
+const {List} = require('immutable');
 
 const NewReviewReducer = (state = initialState.newReview, action) => {
     console.log('AppReducerState=', state);
@@ -12,7 +13,16 @@ const NewReviewReducer = (state = initialState.newReview, action) => {
             state = state.set('name', action.payload.name);
             return state;
         case NewReviewConstants.ADD_IMAGES:
-            state = state.update('imgs', e => e.push(...action.payload.files.map(x => URL.createObjectURL(x))));
+            state = state.set('imgs', state.get('imgs').concat(...action.payload.files));
+            return state;
+        case NewReviewConstants.RESET_FORM:
+            state = state.set('name', "");
+            state = state.set('bathroom', 0);
+            state = state.set('staff', 0);
+            state = state.set('cleanliness', 0);
+            state = state.set('drive', 0);
+            state = state.set('delivery', 0);
+            state = state.set('imgs', List());
             return state;
         default:
             return state;
