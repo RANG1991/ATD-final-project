@@ -1,6 +1,6 @@
 import AppConstants from "../Constants/AppConstants"
 
-function addUser(username, imagePath, location) {
+function addUser(username, location, imagePath) {
     return {
         type: AppConstants.ADD_USER,
         payload: {username: username, imagePath: imagePath, location: location}

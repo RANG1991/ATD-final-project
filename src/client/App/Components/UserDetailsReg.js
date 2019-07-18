@@ -25,7 +25,7 @@ class UserDetailsReg extends React.Component
                            variant="outlined"/>
                 <TextField id="outlined-name"
                            label="Location"
-                           onChange={this.props.onChangeLocation}
+                           onChange={(e) => this.props.onChangeLocation(e.target.value)}
                            margin="normal"
                            variant="outlined"/>
                 <Button variant="contained" style={style}

@@ -112,7 +112,7 @@ class ReviewForm extends React.Component {
                 </FormControl>
                 {elements}
                 <Button variant="contained"
-                        onClick={(e) => this.props.onSubmit(e, this.props.name, parameters)}
+                        onClick={(e) => this.props.onSubmit(e, this.props.name, this.props.imgs, parameters)}
                         href={"/new_review"}>
                     Submit
                 </Button>
