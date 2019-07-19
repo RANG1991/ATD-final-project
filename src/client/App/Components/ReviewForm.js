@@ -74,6 +74,7 @@ class ReviewForm extends React.Component {
             {name: "Cleanliness", value: this.props.cleanliness, id: "cleanliness"},
             {name: "Drive-thru quality", value: this.props.drive, id: "drive"},
             {name: "Delivery Speed", value: this.props.delivery, id: "delivery"},
+            {name: "food quality", value: this.props.food, id: "food"},
         ];
         let imgs = null;
         if (this.props.imgs.size > 0)
@@ -112,7 +113,8 @@ class ReviewForm extends React.Component {
                 </FormControl>
                 {elements}
                 <Button variant="contained"
-                        onClick={(e) => this.props.onSubmit(e, this.props.name, this.props.imgs, parameters)}
+                        onClick={(e) => this.props.onSubmit(e, this.props.name, this.props.imgs, parameters,
+                            this.props.currentUser)}
                         href={"/new_review"}>
                     Submit
                 </Button>
@@ -143,9 +145,11 @@ const mapStateToProps = (state) => {
         cleanliness: state['newReview'].get('cleanliness'),
         drive: state['newReview'].get('drive'),
         delivery: state['newReview'].get('delivery'),
+        food: state['newReview'].get('food'),
         name: state['newReview'].get('name'),
         imgs: state['newReview'].get('imgs'),
         imagesMessage: state['newReview'].get('imagesMessage'),
+        currentUser: state['currentUser'].get('currentUsername'),
     }
 };
 
@@ -154,9 +158,9 @@ const mapDispatchToProps = (dispatch) => {
         onValueChange: (paramName, paramValue) => {
             dispatch(NewReviewActions.changeParamValue(paramName, paramValue))
         },
-        onSubmit: (e, name, images, params) => {
+        onSubmit: (e, name, images, params, currentUser) => {
             e.preventDefault();
-           dispatch(AppActions.addRestaurant(...[name, images,...(params.map(x => x.value))]));
+           dispatch(AppActions.addRestaurant(...[name, images,...(params.map(x => x.value)), currentUser]));
            dispatch(NewReviewActions.resetForm());
         },
         onNameChange: (name) => {

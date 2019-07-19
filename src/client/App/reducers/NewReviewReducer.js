@@ -22,6 +22,7 @@ const NewReviewReducer = (state = initialState.newReview, action) => {
             state = state.set('cleanliness', 0);
             state = state.set('drive', 0);
             state = state.set('delivery', 0);
+            state = state.set('food', 0);
             state = state.set('imgs', List());
             return state;
         default:

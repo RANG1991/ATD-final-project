@@ -8,7 +8,7 @@ import AppActions from "../actions/AppActions";
 import NavigationActions from "../actions/NavigationActions";
 
 const checkIfUserNameExists = (username, users) => {
-   return users !== undefined && users.map(x => x.get('username')).contains(username);
+   return users.get(username) !== undefined;
 };
 
 class UserDetailsReg extends React.Component
@@ -37,7 +37,6 @@ class UserDetailsReg extends React.Component
             </form>
         );
     }
-
 }
 const style = {
     margin: 15,
@@ -74,7 +73,6 @@ const mapDispatchToProps = (dispatch) => {
                 dispatch(AppActions.addUser(currentUsername, currentLocation, currentImagePath));
                 dispatch(NavigationActions.onRegistrationSuccessChange(true));
                 dispatch(NavigationActions.onChangeRoute("/welcome_" + currentUsername));
-                dispatch(CurrentUserActions.resetCurrentState());
             }
         }
     }

@@ -3,8 +3,7 @@ const {List, Map} = require('immutable');
 export default {
     app:
         Map({
-        users: List(),
-        restaurants: List()
+        users: Map({}),
         }),
     navigation:
         Map({
@@ -27,6 +26,7 @@ export default {
         cleanliness: 0,
         drive: 0,
         delivery: 0,
+        food: 0,
         imgs: List(),
         imagesMessage: "please drop here your images!",
     })

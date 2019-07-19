@@ -6,6 +6,7 @@ import UserProfile from "./Components/UserImageReg"
 import ReviewForm from "./Components/ReviewForm";
 import ReviewsView from "./Components/ReviewsView";
 import {history} from "../../index";
+import UsersProfileView from "./Components/UsersProfileView";
 
 
 class App extends React.Component{
@@ -24,6 +25,7 @@ class App extends React.Component{
               <Route path='/register' component={UserProfile}/>
               <Route path='/new_review' component={ReviewForm}/>
               <Route path='/all_reviews' component={ReviewsView}/>
+              <Route path='/my_profile' component={UsersProfileView}/>
           </Router>
       );
     }

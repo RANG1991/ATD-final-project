@@ -21,7 +21,7 @@ class UserImageReg extends React.Component
         let img = null;
         if (this.props.imagePath !== '')
         {
-            img = <ImageGrid img={this.props.imagePath}/>
+            img = <ImageGrid img={URL.createObjectURL(this.props.imagePath)}/>
         }
         return (<Grid
                 container

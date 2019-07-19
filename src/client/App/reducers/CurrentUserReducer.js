@@ -24,7 +24,7 @@ const CurrentUserReducer = (state = initialState.currentUser, action) => {
                 return state;
         case CurrentUserConstants.ADD_IMAGE:
             if (action.payload.acceptedFiles.length === 1) {
-                state = state.set('currentImagePath', URL.createObjectURL(action.payload.acceptedFiles[0]));
+                state = state.set('currentImagePath', action.payload.acceptedFiles[0]);
                 state = state.set('errorImage', "")
             } else if (action.payload.acceptedFiles.length > 1) {
                 state = state.set('errorImage', "you have to choose only one image!")

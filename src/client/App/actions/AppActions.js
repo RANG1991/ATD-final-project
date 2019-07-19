@@ -7,12 +7,12 @@ function addUser(username, location, imagePath) {
     }
 }
 
-function addRestaurant(name, images, bathroom, staff, cleanliness, drive, delivery) {
+function addRestaurant(name, images, bathroom, staff, cleanliness, drive, delivery, food, currentUser) {
     return {
         type: AppConstants.ADD_RESTAURANT,
         payload: {name: name, images: images, bathroom: bathroom,
             staff: staff, cleanliness: cleanliness,
-            drive: drive, delivery: delivery}
+            drive: drive, delivery: delivery, food: food, currentUser: currentUser}
     }
 }
 

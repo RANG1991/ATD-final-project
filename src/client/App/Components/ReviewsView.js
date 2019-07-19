@@ -4,10 +4,14 @@ import {connect} from "react-redux";
 
 class ReviewsView extends React.Component {
     render(){
-        let restaurants = this.props.restaurants.map(x => (
-            <ReviewGrid name={x.get('name')} bathroom={x.get('bathroom')} staff={x.get('staff')}
-                        cleanliness={x.get('cleanliness')} drive={x.get('drive')}
-                        delivery={x.get('delivery')} img={URL.createObjectURL(x.get('images').get(0))}/>
+        let allReviews = [];
+        this.props.users.valueSeq().forEach((userEntry) => {
+            allReviews = allReviews.concat(userEntry.get('reviews').toJS())
+        });
+        let restaurants = allReviews.map(x => (
+            <ReviewGrid name={x.name} bathroom={x.bathroom} staff={x.staff}
+                        cleanliness={x.cleanliness} drive={x.drive}
+                        delivery={x.delivery} food={x.food} img={URL.createObjectURL(x.images[0])}/>
         ));
         return <div>
             {restaurants}
@@ -17,7 +21,7 @@ class ReviewsView extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        restaurants: state['app'].get('restaurants'),
+        users: state['app'].get('users'),
     }
 };
 
