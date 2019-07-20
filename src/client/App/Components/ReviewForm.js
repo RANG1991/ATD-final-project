@@ -113,7 +113,7 @@ class ReviewForm extends React.Component {
                 </FormControl>
                 {elements}
                 <Button variant="contained"
-                        onClick={(e) => this.props.onSubmit(e, this.props.name, this.props.imgs, parameters,
+                        onClick={(e) => this.props.onHandleSubmit(e, this.props.name, this.props.imgs, parameters,
                             this.props.currentUser)}
                         href={"/new_review"}>
                     Submit
@@ -158,7 +158,7 @@ const mapDispatchToProps = (dispatch) => {
         onValueChange: (paramName, paramValue) => {
             dispatch(NewReviewActions.changeParamValue(paramName, paramValue))
         },
-        onSubmit: (e, name, images, params, currentUser) => {
+        onHandleSubmit: (e, name, images, params, currentUser) => {
             e.preventDefault();
            dispatch(AppActions.addRestaurant(...[name, images,...(params.map(x => x.value)), currentUser]));
            dispatch(NewReviewActions.resetForm());

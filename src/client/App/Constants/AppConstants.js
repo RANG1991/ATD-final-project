@@ -1,6 +1,8 @@
 const AppConstants = {
     ADD_USER: 'ADD_USER',
     ADD_RESTAURANT: 'ADD_RESTAURANT',
+    CHANGE_LOCATION_APP: 'CHANGE_LOCATION_APP',
+    CHANGE_USERNAME_APP: 'CHANGE_USERNAME_APP',
 };
 
 export default AppConstants

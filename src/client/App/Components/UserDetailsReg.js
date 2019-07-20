@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 import AppActions from "../actions/AppActions";
 import NavigationActions from "../actions/NavigationActions";
 
-const checkIfUserNameExists = (username, users) => {
+export const checkIfUserNameExists = (username, users) => {
    return users.get(username) !== undefined;
 };
 
@@ -28,7 +28,7 @@ class UserDetailsReg extends React.Component
                            onChange={(e) => this.props.onChangeLocation(e.target.value)}
                            margin="normal"
                            variant="outlined"/>
-                <Button variant="contained" style={style}
+                <Button variant="contained" style={{margin: 15}}
                         onClick={(e) => this.props.onSubmit(e, this.props.currentUsername, this.props.currentLocation,
                             this.props.currentImagePath, this.props.users)}
                         href={"/welcome_" + this.props.currentUsername}>
@@ -38,9 +38,6 @@ class UserDetailsReg extends React.Component
         );
     }
 }
-const style = {
-    margin: 15,
-};
 
 const mapStateToProps = (state) => {
     return {

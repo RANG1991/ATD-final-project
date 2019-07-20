@@ -1,21 +1,22 @@
 import React from 'react';
-import UserProfileGrid from "./UserProfileGrid";
-import ReviewGrid from './ReviewGrid'
+import UserProfileCard from "./UserProfileCard";
+import ReviewCard from './ReviewCard'
 import {connect} from "react-redux";
 
 class UserProfileView extends React.Component {
     render(){
         let allUserReviews = this.props.users.getIn([this.props.currentUsername, 'reviews']);
-        let restaurants = allUserReviews.map(x => (
-            <ReviewGrid name={x.name} bathroom={x.bathroom} staff={x.staff}
+        let restaurants = allUserReviews.map((x) =>{
+            x = x.toJS();
+            return <ReviewCard name={x.name} bathroom={x.bathroom} staff={x.staff}
                         cleanliness={x.cleanliness} drive={x.drive}
                         delivery={x.delivery} food={x.food} img={URL.createObjectURL(x.images[0])}/>
-        ));
-        return <div>
-            <UserProfileGrid img={URL.createObjectURL(this.props.currentImagePath)} username={this.props.currentUsername}
-                             location={this.props.currentLocation}/>
+        });
+        return (<div className={{flexGrow: 1}}>
+            <UserProfileCard img={URL.createObjectURL(this.props.currentImagePath)} username={this.props.currentUsername}
+                             location={this.props.currentLocation} showButtons={true}/>
             {restaurants}
-        </div>
+        </div>)
     }
 }
 

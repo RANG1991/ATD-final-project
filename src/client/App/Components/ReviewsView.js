@@ -1,15 +1,15 @@
 import React from 'react';
-import ReviewGrid from "./ReviewGrid";
+import ReviewCard from "./ReviewCard";
 import {connect} from "react-redux";
 
 class ReviewsView extends React.Component {
     render(){
         let allReviews = [];
-        this.props.users.valueSeq().forEach((userEntry) => {
+        this.props.users.forEach((userEntry) => {
             allReviews = allReviews.concat(userEntry.get('reviews').toJS())
         });
         let restaurants = allReviews.map(x => (
-            <ReviewGrid name={x.name} bathroom={x.bathroom} staff={x.staff}
+            <ReviewCard name={x.name} bathroom={x.bathroom} staff={x.staff}
                         cleanliness={x.cleanliness} drive={x.drive}
                         delivery={x.delivery} food={x.food} img={URL.createObjectURL(x.images[0])}/>
         ));

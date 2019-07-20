@@ -16,9 +16,29 @@ function addRestaurant(name, images, bathroom, staff, cleanliness, drive, delive
     }
 }
 
+function changeUsernameApp(oldName, newName) {
+    return {
+        type: AppConstants.CHANGE_USERNAME_APP,
+        payload: {
+            oldName, newName
+        }
+    }
+}
+
+function changeLocationApp(username, newLocation) {
+    return {
+        type: AppConstants.CHANGE_LOCATION_APP,
+        payload: {
+            username, newLocation
+        }
+    }
+}
+
 let AppActions  = {
     addUser,
-    addRestaurant
+    addRestaurant,
+    changeUsernameApp,
+    changeLocationApp,
 };
 
 export default AppActions

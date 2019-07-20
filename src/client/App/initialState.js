@@ -17,6 +17,10 @@ export default {
         errorUsername : "",
         currentImagePath: "",
         errorImage: "please pick an image!",
+        openEditName: false,
+        openEditLocation: false,
+        editedName: "",
+        editedLocation: ""
     }),
     newReview:
     Map ({
@@ -29,5 +33,5 @@ export default {
         food: 0,
         imgs: List(),
         imagesMessage: "please drop here your images!",
-    })
+    }),
 };

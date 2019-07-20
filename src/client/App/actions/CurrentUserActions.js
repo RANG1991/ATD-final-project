@@ -36,12 +36,45 @@ function addImage(acceptedFiles)
         payload: {acceptedFiles: acceptedFiles}
     }
 }
+
+function openDialogName(open) {
+    return {
+        type: CurrentUserConstants.OPEN_DIALOG_NAME,
+        payload :{open}
+    }
+}
+
+function openDialogLocation(open) {
+    return {
+        type: CurrentUserConstants.OPEN_DIALOG_LOCATION,
+        payload :{open}
+    }
+}
+
+function editingName(newName) {
+    return {
+        type: CurrentUserConstants.EDITING_NAME,
+        payload: {newName}
+    }
+}
+
+function editingLocation(newLocation) {
+    return {
+        type: CurrentUserActions.EDITING_LOCATION,
+        payload: {newLocation}
+    }
+}
+
     let CurrentUserActions  = {
         changeUserName,
         changeLocation,
         usernameError,
         resetCurrentState,
-        addImage
+        addImage,
+        openDialogLocation,
+        openDialogName,
+        editingName,
+        editingLocation,
     };
 
 export default CurrentUserActions

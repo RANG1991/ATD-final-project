@@ -6,7 +6,7 @@ import UserProfile from "./Components/UserImageReg"
 import ReviewForm from "./Components/ReviewForm";
 import ReviewsView from "./Components/ReviewsView";
 import {history} from "../../index";
-import UsersProfileView from "./Components/UsersProfileView";
+import UsersProfileView from "./Components/UserProfileView";
 
 
 class App extends React.Component{

@@ -18,6 +18,18 @@ const AppReducer = (state = initialState.app, action) => {
                 currentUser: action.payload.currentUser};
             state = state.updateIn(['users', action.payload.currentUser, 'reviews'], e => e.push(fromJS(review)));
             return state;
+        case AppConstants.CHANGE_USERNAME_APP:
+                state = state.update('users', e => e.mapKeys(k => {
+                    if (k === action.payload.oldName) {
+                        return action.payload.newName;
+                    } else {
+                        return k;
+                    }
+                }));
+            return state;
+        case AppConstants.CHANGE_LOCATION_APP:
+            state = state.setIn(['users', action.payload.username, 'location'],  action.payload.newLocation);
+            return state;
         default:
             return state;
     }

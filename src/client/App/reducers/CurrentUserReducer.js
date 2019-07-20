@@ -30,6 +30,18 @@ const CurrentUserReducer = (state = initialState.currentUser, action) => {
                 state = state.set('errorImage', "you have to choose only one image!")
             }
             return state;
+        case CurrentUserConstants.OPEN_DIALOG_NAME:
+            state = state.set('openEditName', action.payload.open);
+            return state;
+        case CurrentUserConstants.OPEN_DIALOG_LOCATION:
+            state = state.set('openEditLocation', action.payload.open);
+            return state;
+        case CurrentUserConstants.EDITING_NAME:
+            state = state.set('editedName', action.payload.newName);
+            return state;
+        case CurrentUserConstants.EDITING_LOCATION:
+            state = state.set('editedLocation', action.payload.newLocation);
+            return state;
         default:
             return state;
     }
