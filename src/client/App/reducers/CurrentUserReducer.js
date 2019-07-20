@@ -42,6 +42,9 @@ const CurrentUserReducer = (state = initialState.currentUser, action) => {
         case CurrentUserConstants.EDITING_LOCATION:
             state = state.set('editedLocation', action.payload.newLocation);
             return state;
+        case CurrentUserConstants.OPEN_DIALOG_DELETE_REVIEW:
+            state = state.set('openDeleteReview', action.payload.open);
+            return state;
         default:
             return state;
     }

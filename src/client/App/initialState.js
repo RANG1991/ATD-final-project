@@ -3,6 +3,8 @@ const {List, Map} = require('immutable');
 export default {
     app:
         Map({
+        usersId: 1,
+        reviewsId: 1,
         users: Map({}),
         }),
     navigation:
@@ -19,8 +21,9 @@ export default {
         errorImage: "please pick an image!",
         openEditName: false,
         openEditLocation: false,
+        openDeleteReview: false,
         editedName: "",
-        editedLocation: ""
+        editedLocation: "",
     }),
     newReview:
     Map ({
@@ -32,6 +35,6 @@ export default {
         delivery: 0,
         food: 0,
         imgs: List(),
-        imagesMessage: "please drop here your images!",
+        imagesMessage: "please drop here your images!"
     }),
 };

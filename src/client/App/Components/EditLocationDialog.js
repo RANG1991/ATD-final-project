@@ -12,9 +12,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppActions from "../actions/AppActions";
 import {connect} from "react-redux";
 import CurrentUserActions from "../actions/CurrentUserActions";
-import {checkIfUserNameExists} from "./UserDetailsReg"
 
-function EditDialogName(props) {
+function EditLocationDialog(props) {
 
     const useStyles = makeStyles(theme => ({
         fab: {
@@ -28,23 +27,23 @@ function EditDialogName(props) {
             <Fab color="secondary" aria-label="Edit" className={classes.fab} onClick={() => props.openDialog(true)}>
                 <EditIcon/>
             </Fab>
-            <Dialog open={props.openEditName} onClose={() => props.openDialog(false)} aria-labelledby="form-dialog-title">
+            <Dialog open={props.openEditLocation} onClose={() => props.openDialog(false)} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Editing</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         {props.editText}
                     </DialogContentText>
-                    <TextField onChange={(e) => props.editName(e.target.value)}
-                        autoFocus
-                        margin="dense"
-                        id="name"
-                        label="New Name"
-                        type="text"
-                        fullWidth
+                    <TextField onChange={(e) => props.editLocation(e.target.value)}
+                               autoFocus
+                               margin="dense"
+                               id="name"
+                               label="New Location"
+                               type="text"
+                               fullWidth
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => props.onChangeUsername(props.users, props.currentUsername, props.editedName)} color="primary">
+                    <Button onClick={() => props.onChangeLocation(props.currentUsername, props.editedLocation)} color="primary">
                         Confirm
                     </Button>
                 </DialogActions>
@@ -56,29 +55,26 @@ function EditDialogName(props) {
 const mapStateToProps = (state) => {
     return {
         currentUsername: state['currentUser'].get('currentUsername'),
-        openEditName: state['currentUser'].get('openEditName'),
         openEditLocation: state['currentUser'].get('openEditLocation'),
-        editedName: state['currentUser'].get('editedName'),
         users: state['app'].get('users'),
+        editedLocation: state['currentUser'].get('editedLocation'),
     }
 };
 
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onChangeUsername: (users, oldUsername, newUsername) => {
-            if (!checkIfUserNameExists(newUsername, users)) {
-                dispatch(AppActions.changeUsernameApp(oldUsername, newUsername));
-                dispatch(CurrentUserActions.changeUserName(newUsername))
-            }
+        onChangeLocation: (username, newLocation) => {
+                dispatch(AppActions.changeLocationApp(username, newLocation));
+                dispatch(CurrentUserActions.changeLocation(newLocation))
         },
         openDialog: (open) => {
-            dispatch(CurrentUserActions.openDialogName(open))
+            dispatch(CurrentUserActions.openDialogLocation(open))
         },
-        editName: (newName) => {
-            dispatch(CurrentUserActions.editingName(newName))
+        editLocation: (newLocation) => {
+            dispatch(CurrentUserActions.editingLocation(newLocation))
         },
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditDialogName);
+export default connect(mapStateToProps, mapDispatchToProps)(EditLocationDialog);

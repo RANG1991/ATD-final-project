@@ -34,11 +34,21 @@ function changeLocationApp(username, newLocation) {
     }
 }
 
+function deleteReview(username, id) {
+    return {
+        type: AppConstants.DELETE_REVIEW,
+        payload: {
+            username, id
+        }
+    }
+}
+
 let AppActions  = {
     addUser,
     addRestaurant,
     changeUsernameApp,
     changeLocationApp,
+    deleteReview,
 };
 
 export default AppActions

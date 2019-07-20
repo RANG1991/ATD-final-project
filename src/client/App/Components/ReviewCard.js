@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import {Grid, Paper} from "@material-ui/core";
+import DeleteReviewDialog from "./DeleteReviewDialog"
 
 const useStyles = makeStyles({
     card: {
@@ -21,8 +22,11 @@ const useStyles = makeStyles({
 export default function ReviewCard(props) {
     const classes = useStyles();
     let img = null;
-    if (props.img)
-    {
+    let deleteDialog = null;
+    if (props.showDeleteDialog) {
+        deleteDialog = <DeleteReviewDialog id={props.id} textDelete={"Are you sure you want to delete this review?"}/>
+    }
+    if (props.img) {
         img = props.img
     }
     const parameters =
@@ -41,7 +45,7 @@ export default function ReviewCard(props) {
 
     return (<Paper>
             <Grid container justify="center" spacing={0}>
-                <Grid item xs={8}>
+                <Grid item xs={7}>
                     <img alt="complex" className={classes.img} src={img}/>
                 </Grid>
                 <Grid item xs={4}>
@@ -50,6 +54,9 @@ export default function ReviewCard(props) {
                     </Typography>
                     {parameters_elements}
                 </Grid>
+            <Grid item xs={1}>
+                {deleteDialog}
+            </Grid>
             </Grid>
         </Paper>);
 }

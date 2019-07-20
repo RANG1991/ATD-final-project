@@ -9,14 +9,18 @@ const AppReducer = (state = initialState.app, action) => {
         case AppConstants.ADD_USER:
             state = state.setIn(['users', action.payload.username],
                 fromJS({location: action.payload.location,
-                imagePath: action.payload.imagePath, reviews: []}));
+                imagePath: action.payload.imagePath, id: state.get('usersId'), reviews: []}));
+            state = state.set('usersId', state.get('usersId') + 1);
+            alert(state);
             return state;
         case AppConstants.ADD_RESTAURANT:
             let review = {name: action.payload.name, images: action.payload.images, bathroom: action.payload.bathroom,
                 staff: action.payload.staff, cleanliness: action.payload.cleanliness,
                 drive: action.payload.drive, delivery: action.payload.delivery, food: action.payload.food,
-                currentUser: action.payload.currentUser};
+                currentUser: action.payload.currentUser, id: state.get('reviewsId'), date: String(new Date().getDate())};
+            state = state.set('reviewsId', state.get('reviewsId') + 1);
             state = state.updateIn(['users', action.payload.currentUser, 'reviews'], e => e.push(fromJS(review)));
+            alert(state);
             return state;
         case AppConstants.CHANGE_USERNAME_APP:
                 state = state.update('users', e => e.mapKeys(k => {
@@ -29,6 +33,11 @@ const AppReducer = (state = initialState.app, action) => {
             return state;
         case AppConstants.CHANGE_LOCATION_APP:
             state = state.setIn(['users', action.payload.username, 'location'],  action.payload.newLocation);
+            return state;
+        case AppConstants.DELETE_REVIEW:
+            state = state.updateIn(['users', action.payload.username, 'reviews'],
+                    e => e.filter((x) => x.id === action.payload.id));
+            alert(state);
             return state;
         default:
             return state;

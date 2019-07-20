@@ -3,24 +3,10 @@ import {makeStyles} from '@material-ui/core/styles';
 import {withRouter} from "react-router";
 import {Grid, Paper} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import EditDialogName from "./EditDialogName"
+import EditDialogName from "./EditNameDialog"
+import EditDialogLocation from "./EditLocationDialog"
 
 const useStyles = makeStyles(theme => ({
-    container: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(12, 1fr)',
-        gridGap: theme.spacing(3),
-    },
-    paper: {
-        padding: theme.spacing(1),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-        whiteSpace: 'nowrap',
-        marginBottom: theme.spacing(1),
-    },
-    divider: {
-        margin: theme.spacing(2, 0),
-    },
     img: {
         width: 250,
         height: 200,
@@ -49,7 +35,7 @@ export default function UserProfileCard(props) {
             </Typography>
         </Grid>
             <Grid item xs={1}>
-
+                <EditDialogLocation editText={"please enter your new location here"}/>
             </Grid>
     </Grid>
     </Paper>);

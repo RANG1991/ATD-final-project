@@ -60,8 +60,15 @@ function editingName(newName) {
 
 function editingLocation(newLocation) {
     return {
-        type: CurrentUserActions.EDITING_LOCATION,
+        type: CurrentUserConstants.EDITING_LOCATION,
         payload: {newLocation}
+    }
+}
+
+function openDeleteReview(open) {
+    return {
+        type: CurrentUserConstants.OPEN_DIALOG_DELETE_REVIEW,
+        payload: {open}
     }
 }
 
@@ -75,6 +82,7 @@ function editingLocation(newLocation) {
         openDialogName,
         editingName,
         editingLocation,
+        openDeleteReview,
     };
 
 export default CurrentUserActions
