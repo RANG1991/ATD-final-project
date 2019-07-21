@@ -7,6 +7,8 @@ import ReviewForm from "./Components/ReviewForm";
 import ReviewsView from "./Components/ReviewsView";
 import {history} from "../../index";
 import UsersProfileView from "./Components/UserProfileView";
+import ProfilesView from "./Components/ProfilesView";
+import AdvancedSearchForm from "./Components/AdvancedSearchForm";
 
 
 class App extends React.Component{
@@ -26,6 +28,8 @@ class App extends React.Component{
               <Route path='/new_review' component={ReviewForm}/>
               <Route path='/all_reviews' component={ReviewsView}/>
               <Route path='/my_profile' component={UsersProfileView}/>
+              <Route path='/other_profiles' component={ProfilesView}/>
+              <Route path='/search' component={AdvancedSearchForm}/>
           </Router>
       );
     }

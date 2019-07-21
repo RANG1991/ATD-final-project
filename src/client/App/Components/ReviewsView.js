@@ -12,7 +12,7 @@ class ReviewsView extends React.Component {
         let restaurants = allReviews.map(x => (
             <ReviewCard name={x.name} bathroom={x.bathroom} staff={x.staff}
                         cleanliness={x.cleanliness} drive={x.drive} showDeleteDialog={false}
-                        delivery={x.delivery} food={x.food} img={x.images.length > 0 ? URL.createObjectURL(x.images[0]) : undefined}/>
+                        delivery={x.delivery} food={x.food} img={x.images.size > 0 ? x.images[0] : undefined}/>
         ));
         return <div>
             {restaurants}

@@ -26,7 +26,7 @@ export default function ReviewCard(props) {
     if (props.showDeleteDialog) {
         deleteDialog = <DeleteReviewDialog id={props.id} textDelete={"Are you sure you want to delete this review?"}/>
     }
-    if (props.img) {
+    if (props.img !== undefined) {
         img = props.img
     }
     const parameters =
@@ -46,7 +46,7 @@ export default function ReviewCard(props) {
     return (<Paper>
             <Grid container justify="center" spacing={0}>
                 <Grid item xs={7}>
-                    <img alt="complex" className={classes.img} src={img}/>
+                    {img !== null && <img alt="complex" className={classes.img} src={URL.createObjectURL(img)}/>}
                 </Grid>
                 <Grid item xs={4}>
                     <Typography gutterBottom variant="subtitle1">

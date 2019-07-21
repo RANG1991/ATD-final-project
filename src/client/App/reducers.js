@@ -4,6 +4,7 @@ import NavigationReducer from "./reducers/NavigationReducer";
 import AppReducer from "./reducers/AppReducer";
 import NewReviewReducer from "./reducers/NewReviewReducer";
 import AllReviewsReducer from "./reducers/AllReviewsReducer";
+import AdvancedSearchReducer from "./reducers/AdvancedSearchReducer";
 
 
 export default combineReducers({
@@ -12,4 +13,5 @@ export default combineReducers({
     app: AppReducer,
     newReview: NewReviewReducer,
     allReviews: AllReviewsReducer,
+    advancedSearch: AdvancedSearchReducer,
 });

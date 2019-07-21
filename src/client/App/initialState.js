@@ -42,5 +42,13 @@ export default {
     allReviews:
         Map({
             sortBy: ''
-        })
+        }),
+    advancedSearch:
+    Map({
+        location: "",
+        name: "",
+        reviews: List(),
+        valueRadioButtonName: 0,
+        valueRadioButtonLocation: 0,
+    })
 };

@@ -27,7 +27,9 @@ export default function UserProfileCard(props) {
             </Typography>
         </Grid>
             <Grid item xs={1}>
-                <EditDialogName editText={"please enter your new name here"}/>
+                {props.showButtons &&
+                    <EditDialogName editText={"please enter your new name here"}/>
+                }
             </Grid>
         <Grid item xs={3}>
             <Typography gutterBottom variant="h6">
@@ -35,7 +37,9 @@ export default function UserProfileCard(props) {
             </Typography>
         </Grid>
             <Grid item xs={1}>
-                <EditDialogLocation editText={"please enter your new location here"}/>
+                {props.showButtons &&
+                    <EditDialogLocation editText={"please enter your new location here"}/>
+                }
             </Grid>
     </Grid>
     </Paper>);
