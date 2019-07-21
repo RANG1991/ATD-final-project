@@ -10,7 +10,9 @@ export default {
     navigation:
         Map({
         displayMenu: false,
-        successfullyReg: false
+        successfullyReg: false,
+        displaySortMenu: false,
+        openSortMenu: false,
         }),
     currentUser:
         Map({
@@ -37,4 +39,8 @@ export default {
         imgs: List(),
         imagesMessage: "please drop here your images!"
     }),
+    allReviews:
+        Map({
+            sortBy: ''
+        })
 };

@@ -8,10 +8,11 @@ class ReviewsView extends React.Component {
         this.props.users.forEach((userEntry) => {
             allReviews = allReviews.concat(userEntry.get('reviews').toJS())
         });
+        allReviews = allReviews.sort((x, y) => (x[this.props.sortBy] - y[this.props.sortBy]));
         let restaurants = allReviews.map(x => (
             <ReviewCard name={x.name} bathroom={x.bathroom} staff={x.staff}
-                        cleanliness={x.cleanliness} drive={x.drive}
-                        delivery={x.delivery} food={x.food} img={URL.createObjectURL(x.images[0])}/>
+                        cleanliness={x.cleanliness} drive={x.drive} showDeleteDialog={false}
+                        delivery={x.delivery} food={x.food} img={x.images.length > 0 ? URL.createObjectURL(x.images[0]) : undefined}/>
         ));
         return <div>
             {restaurants}
@@ -22,6 +23,7 @@ class ReviewsView extends React.Component {
 const mapStateToProps = (state) => {
     return {
         users: state['app'].get('users'),
+        sortBy: state['allReviews'].get('sortBy'),
     }
 };
 

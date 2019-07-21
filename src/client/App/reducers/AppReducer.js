@@ -11,7 +11,6 @@ const AppReducer = (state = initialState.app, action) => {
                 fromJS({location: action.payload.location,
                 imagePath: action.payload.imagePath, id: state.get('usersId'), reviews: []}));
             state = state.set('usersId', state.get('usersId') + 1);
-            alert(state);
             return state;
         case AppConstants.ADD_RESTAURANT:
             let review = {name: action.payload.name, images: action.payload.images, bathroom: action.payload.bathroom,
@@ -20,7 +19,6 @@ const AppReducer = (state = initialState.app, action) => {
                 currentUser: action.payload.currentUser, id: state.get('reviewsId'), date: String(new Date().getDate())};
             state = state.set('reviewsId', state.get('reviewsId') + 1);
             state = state.updateIn(['users', action.payload.currentUser, 'reviews'], e => e.push(fromJS(review)));
-            alert(state);
             return state;
         case AppConstants.CHANGE_USERNAME_APP:
                 state = state.update('users', e => e.mapKeys(k => {
@@ -36,8 +34,11 @@ const AppReducer = (state = initialState.app, action) => {
             return state;
         case AppConstants.DELETE_REVIEW:
             state = state.updateIn(['users', action.payload.username, 'reviews'],
-                    e => e.filter((x) => x.id === action.payload.id));
-            alert(state);
+                function(reviews) {
+                    return reviews.filter(function(reviewToDelete) {
+                        return reviewToDelete.get("id") !== action.payload.id;
+                    });
+                });
             return state;
         default:
             return state;

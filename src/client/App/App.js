@@ -10,13 +10,13 @@ import UsersProfileView from "./Components/UserProfileView";
 
 
 class App extends React.Component{
-    // componentDidMount() {
-    //     window.addEventListener("beforeunload", () => localStorage.clear());
-    // }
-    //
-    // componentWillUnmount() {
-    //     window.removeEventListener('onbeforeunload', () => localStorage.clear());
-    // }
+    componentDidMount() {
+        window.addEventListener("beforeunload", () => localStorage.clear());
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('onbeforeunload', () => localStorage.clear());
+    }
 
   render() {
       return (

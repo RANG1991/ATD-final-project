@@ -56,6 +56,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onDeleteReview: (username, id) => {
             dispatch(AppActions.deleteReview(username, id));
+            dispatch(CurrentUserActions.openDeleteReview(false));
         },
         openDialog: (open) => {
             dispatch(CurrentUserActions.openDeleteReview(open))

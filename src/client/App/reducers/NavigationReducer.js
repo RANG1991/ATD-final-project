@@ -18,6 +18,12 @@ const NavigationReducer  = (state = initialState.navigation, action) => {
         case NavigationConstants.ON_CHANGE_ROUTING:
             history.push(action.payload.newPath);
             return state;
+        case NavigationConstants.SHOW_SORT_MENU:
+            state = state.set('displaySortMenu', action.payload.show);
+            return state;
+        case NavigationConstants.OPEN_SORT_MENU:
+            state = state.set('openSortMenu', action.payload.open);
+            return state;
         default:
             return state;
     }

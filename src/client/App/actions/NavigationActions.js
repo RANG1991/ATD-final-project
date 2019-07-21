@@ -42,6 +42,24 @@ function onRegistrationSuccessChange(success) {
     }
 }
 
+function showSortMenu(show) {
+    return {
+        type: NavigationConstants.SHOW_SORT_MENU,
+        payload : {
+            show
+        }
+    }
+}
+
+function onOpenSortMenu(open) {
+    return {
+        type: NavigationConstants.OPEN_SORT_MENU,
+        payload : {
+            open
+        }
+    }
+}
+
 let NavigationActions  = {
     onClickRegisterNavBar,
     onClickLoginNavBar,
@@ -49,6 +67,8 @@ let NavigationActions  = {
     onCloseMenuClick,
     onChangeRoute,
     onRegistrationSuccessChange,
+    onOpenSortMenu,
+    showSortMenu,
 };
 
 export default NavigationActions
