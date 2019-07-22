@@ -29,7 +29,8 @@ class ButtonAppBar extends React.Component {
                     <MenuItem onClick={() => this.props.onClickOtherProfiles("/other_profiles")}>Other Profiles</MenuItem>
                     <MenuItem onClick={() => this.props.onClickReviews("/all_reviews")}>Reviews</MenuItem>
                     <MenuItem onClick={() => this.props.onClickNewReview("/new_review")}>Write New Review</MenuItem>
-                    <MenuItem onClick={() => this.props.onClickSearch("/search")}>Search</MenuItem>
+                    <MenuItem onClick={() => this.props.onClickSearch("/searchReviews")}>Search Review</MenuItem>
+                    <MenuItem onClick={() => this.props.onClickSearch("/searchUsers")}>Search User</MenuItem>
                     <MenuItem onClick={() => this.props.onClickLogout("/logout")}>Logout</MenuItem>
                 </Menu>
             </div>

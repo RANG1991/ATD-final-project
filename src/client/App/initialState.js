@@ -50,5 +50,11 @@ export default {
         name: "",
         reviews: List(),
         valueRadioButton: 0,
+    }),
+    userSearch:
+    Map({
+        location: "",
+        name: "",
+        users: List(),
     })
 };

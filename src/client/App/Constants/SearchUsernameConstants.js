@@ -1,0 +1,7 @@
+const SearchUsernameConstants = {
+    CHANGE_LOCATION_SEARCH_USER: 'CHANGE_LOCATION_SEARCH_USER',
+    CHANGE_NAME_SEARCH_USER: 'CHANE_NAME_SEARCH_USER',
+    ON_CLICK_SEARCH_USER: 'ON_CLICK_SEARCH_USER',
+};
+
+export default SearchUsernameConstants;

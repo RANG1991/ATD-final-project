@@ -5,6 +5,7 @@ import AppReducer from "./reducers/AppReducer";
 import NewReviewReducer from "./reducers/NewReviewReducer";
 import AllReviewsReducer from "./reducers/AllReviewsReducer";
 import AdvancedSearchReducer from "./reducers/AdvancedSearchReducer";
+import SearchUsernameReducer from "./reducers/SearchUsernameReducer";
 
 
 export default combineReducers({
@@ -14,4 +15,5 @@ export default combineReducers({
     newReview: NewReviewReducer,
     allReviews: AllReviewsReducer,
     advancedSearch: AdvancedSearchReducer,
+    userSearch: SearchUsernameReducer,
 });

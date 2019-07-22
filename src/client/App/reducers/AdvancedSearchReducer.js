@@ -1,7 +1,8 @@
 import initialState from "../initialState";
 import AdvancedSearchConstants from "../Constants/AdvancedSearchConstants";
+import {fromJS} from "immutable";
 
-const AppReducer = (state = initialState.advancedSearch, action) => {
+const AdvancedSearchReducer = (state = initialState.advancedSearch, action) => {
     console.log('AppReducerState=', state);
     console.log('RECEIVED ACTION:', action);
     switch (action.type) {
@@ -23,7 +24,7 @@ const AppReducer = (state = initialState.advancedSearch, action) => {
                 allReviews = allReviews.filter(review => calculateAverage(review) >= state.get('valueRadioButton'));
             }
             allReviews.sort((x, y) => (calculateAverage(x) - calculateAverage(y)));
-            state = state.set('reviews', allReviews);
+            state = state.set('reviews', fromJS(allReviews));
             return state;
         case AdvancedSearchConstants.ON_CHANGE_RADIO_BUTTON:
             state = state.set('valueRadioButton', action.payload.value);
@@ -38,4 +39,4 @@ const calculateAverage = (review) => {
     + review.drive + review.delivery + review.food) / 6);
 };
 
-export default AppReducer;
+export default AdvancedSearchReducer;
