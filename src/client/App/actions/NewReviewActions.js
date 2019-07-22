@@ -14,6 +14,13 @@ function changeName(name) {
     }
 }
 
+function changeLocation(location) {
+    return {
+        type: newReviewConstants.CHANGE_LOCATION,
+        payload: {location: location}
+    }
+}
+
 function addImages(acceptedFiles) {
     return {
         type: newReviewConstants.ADD_IMAGES,
@@ -32,6 +39,7 @@ let NewReviewActions  = {
     changeName,
     addImages,
     resetForm,
+    changeLocation,
 };
 
 export default NewReviewActions

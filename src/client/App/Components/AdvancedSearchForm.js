@@ -11,11 +11,11 @@ import ReviewCard from "./ReviewCard";
 
 class AdvancedSearchForm extends React.Component {
     render() {
-        let restaurants = this.props.reviews.map(x => (
-            <ReviewCard name={x.name} bathroom={x.bathroom} staff={x.staff}
-                        cleanliness={x.cleanliness} drive={x.drive} showDeleteDialog={false}
-                        delivery={x.delivery} food={x.food} img={x.images.size > 0 ? x.images[0] : undefined}/>
-        ));
+        let restaurants = this.props.reviews.map((x) => {
+        return (<ReviewCard name={x.name} location={x.location} bathroom={x.bathroom} staff={x.staff}
+                            cleanliness={x.cleanliness} drive={x.drive} showDeleteDialog={false}
+                            delivery={x.delivery} food={x.food} img={x.images.length > 0 ? x.images[0] : undefined}/>);
+    });
 
         return (
             <Grid container justify="center" spacing={0}>
@@ -27,7 +27,7 @@ class AdvancedSearchForm extends React.Component {
                                    onChange={(e) => this.props.onChangeNameSearch(e.target.value)}
                                    margin="normal"
                                    variant="outlined"/>
-                        <RadioGroup aria-label="position" name="position" row onChange={(e) => this.props.onChangeRadioButtonName(e.target.value)}>
+                        <RadioGroup aria-label="position" name="position" row onChange={(e) => this.props.onChangeRadioButton(e.target.value)}>
                             <FormControlLabel
                                 value='0'
                                 control={<Radio color="primary" />}
@@ -64,38 +64,6 @@ class AdvancedSearchForm extends React.Component {
                                    onChange={(e) => this.props.onChangeLocationSearch(e.target.value)}
                                    margin="normal"
                                    variant="outlined"/>
-                        <RadioGroup aria-label="position" name="position" row onChange={(e) => this.props.onChangeRadioButtonLocation(e.target.value)}>
-                            <FormControlLabel
-                                value='0'
-                                control={<Radio color="primary" />}
-                                label="without"
-                                labelPlacement="top"
-                            />
-                            <FormControlLabel
-                                value='1'
-                                control={<Radio color="primary" />}
-                                label="1"
-                                labelPlacement="top"
-                            />
-                            <FormControlLabel
-                            value='2'
-                            control={<Radio color="primary" />}
-                            label="2"
-                            labelPlacement="top"
-                            />
-                            <FormControlLabel
-                                value='3'
-                                control={<Radio color="primary" />}
-                                label="3"
-                                labelPlacement="top"
-                            />
-                            <FormControlLabel
-                                value='4'
-                                control={<Radio color="primary" />}
-                                label="4"
-                                labelPlacement="top"
-                            />
-                        </RadioGroup>
                         <Button variant="contained" style={{margin: 15}}
                                 onClick={() => {
                                     let allReviews = [];
@@ -138,12 +106,9 @@ const mapDispatchToProps = (dispatch) => {
         onClickSearch: (allReviews) => {
             dispatch(AdvancedSearchActions.onClickSearch(allReviews));
         },
-        onChangeRadioButtonName: (value) => {
-            dispatch(AdvancedSearchActions.onChangeRadioButtonName(parseInt(value)));
+        onChangeRadioButton: (value) => {
+            dispatch(AdvancedSearchActions.changeRadioButton(parseInt(value)));
         },
-        onChangeRadioButtonLocation: (value) => {
-            dispatch(AdvancedSearchActions.onChangeRadioButtonLocation(parseInt(value)));
-        }
     }
 };
 

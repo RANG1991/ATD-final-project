@@ -27,18 +27,9 @@ function onClickSearch(allReviews) {
     }
 }
 
-function onChangeRadioButtonName(value) {
+function changeRadioButton(value) {
     return {
-        type: AdvancedSearchConstants.ON_CHANGE_RADIO_BUTTON_NAME,
-        payload: {
-            value
-        }
-    }
-}
-
-function onChangeRadioButtonLocation(value) {
-    return {
-        type: AdvancedSearchConstants.ON_CHANGE_RADIO_BUTTON_LOCATION,
+        type: AdvancedSearchConstants.ON_CHANGE_RADIO_BUTTON,
         payload: {
             value
         }
@@ -49,8 +40,7 @@ let AdvancedSearchActions = {
     changeNameSearch,
     changeLocationSearch,
     onClickSearch,
-    onChangeRadioButtonName,
-    onChangeRadioButtonLocation,
+    changeRadioButton,
 };
 
 export default AdvancedSearchActions;

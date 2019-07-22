@@ -30,6 +30,7 @@ export default {
     newReview:
     Map ({
         name: "",
+        location: "",
         bathroom: 0,
         staff: 0,
         cleanliness: 0,
@@ -48,7 +49,6 @@ export default {
         location: "",
         name: "",
         reviews: List(),
-        valueRadioButtonName: 0,
-        valueRadioButtonLocation: 0,
+        valueRadioButton: 0,
     })
 };

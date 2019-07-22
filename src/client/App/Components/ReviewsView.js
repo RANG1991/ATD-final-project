@@ -9,11 +9,11 @@ class ReviewsView extends React.Component {
             allReviews = allReviews.concat(userEntry.get('reviews').toJS())
         });
         allReviews = allReviews.sort((x, y) => (x[this.props.sortBy] - y[this.props.sortBy]));
-        let restaurants = allReviews.map(x => (
-            <ReviewCard name={x.name} bathroom={x.bathroom} staff={x.staff}
+        let restaurants = allReviews.map(x => {
+            return <ReviewCard name={x.name} location={x.location} bathroom={x.bathroom} staff={x.staff}
                         cleanliness={x.cleanliness} drive={x.drive} showDeleteDialog={false}
-                        delivery={x.delivery} food={x.food} img={x.images.size > 0 ? x.images[0] : undefined}/>
-        ));
+                        delivery={x.delivery} food={x.food} img={x.images.length > 0 ? x.images[0] : undefined}/>
+        });
         return <div>
             {restaurants}
         </div>

@@ -11,7 +11,7 @@ function changeUserName(username)
 function changeLocation(location)
 {
     return {
-        type: CurrentUserConstants.CHANGE_LOCATION,
+        type: CurrentUserConstants.CHANGE_LOCATION_CURRENT,
         payload: {location: location}
     }
 }

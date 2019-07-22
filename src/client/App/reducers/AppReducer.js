@@ -13,7 +13,7 @@ const AppReducer = (state = initialState.app, action) => {
             state = state.set('usersId', state.get('usersId') + 1);
             return state;
         case AppConstants.ADD_RESTAURANT:
-            let review = {name: action.payload.name, images: action.payload.images, bathroom: action.payload.bathroom,
+            let review = {name: action.payload.name, location: action.payload.location, images: action.payload.images, bathroom: action.payload.bathroom,
                 staff: action.payload.staff, cleanliness: action.payload.cleanliness,
                 drive: action.payload.drive, delivery: action.payload.delivery, food: action.payload.food,
                 currentUser: action.payload.currentUser, id: state.get('reviewsId'), date: String(new Date().getDate())};

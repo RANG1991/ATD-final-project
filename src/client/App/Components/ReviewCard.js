@@ -52,6 +52,9 @@ export default function ReviewCard(props) {
                     <Typography gutterBottom variant="subtitle1">
                         Name: {props.name}
                     </Typography>
+                    <Typography gutterBottom variant="subtitle1">
+                        Location: {props.location}
+                    </Typography>
                     {parameters_elements}
                 </Grid>
             <Grid item xs={1}>

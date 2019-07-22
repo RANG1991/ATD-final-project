@@ -8,9 +8,9 @@ class UserProfileView extends React.Component {
         let allUserReviews = this.props.users.getIn([this.props.currentUsername, 'reviews']);
         let restaurants = allUserReviews.map((x) =>{
             x = x.toJS();
-            return <ReviewCard name={x.name} bathroom={x.bathroom} staff={x.staff}
+            return <ReviewCard name={x.name} location={x.location} bathroom={x.bathroom} staff={x.staff}
                         cleanliness={x.cleanliness} drive={x.drive}
-                        delivery={x.delivery} food={x.food} img={x.images.size > 0 ? x.images[0] : undefined}
+                        delivery={x.delivery} food={x.food} img={x.images.length > 0 ? x.images[0] : undefined}
                                id={x.id}
             showDeleteDialog={true}/>
         });

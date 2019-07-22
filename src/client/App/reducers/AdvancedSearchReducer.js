@@ -16,20 +16,26 @@ const AppReducer = (state = initialState.advancedSearch, action) => {
             if (state.get('name') !== '') {
                 allReviews = action.payload.allReviews.filter(review => review.name === state.get('name'));
             }
-            if (state.get('location') !== '') {
-                allReviews = allReviews.filter(review => review.location === state.get('location'));
+            if (state.get('location') !== ''){
+                allReviews = action.payload.allReviews.filter(review => review.location === state.get('location'));
             }
+            if (state.get('valueRadioButton') !== 0){
+                allReviews = allReviews.filter(review => calculateAverage(review) >= state.get('valueRadioButton'));
+            }
+            allReviews.sort((x, y) => (calculateAverage(x) - calculateAverage(y)));
             state = state.set('reviews', allReviews);
             return state;
-        case AdvancedSearchConstants.ON_CHANGE_RADIO_BUTTON_NAME:
-            state = state.set('valueRadioButtonName', action.payload.value);
-            return state;
-        case AdvancedSearchConstants.ON_CHANGE_RADIO_BUTTON_LOCATION:
-            state = state.set('valueRadioButtonLocation', action.payload.value);
+        case AdvancedSearchConstants.ON_CHANGE_RADIO_BUTTON:
+            state = state.set('valueRadioButton', action.payload.value);
             return state;
         default:
             return state;
     }
+};
+
+const calculateAverage = (review) => {
+    return ((review.bathroom + review.staff + review.cleanliness
+    + review.drive + review.delivery + review.food) / 6);
 };
 
 export default AppReducer;

@@ -12,11 +12,15 @@ const NewReviewReducer = (state = initialState.newReview, action) => {
         case NewReviewConstants.CHANGE_NAME:
             state = state.set('name', action.payload.name);
             return state;
+        case NewReviewConstants.CHANGE_LOCATION:
+            state = state.set('location', action.payload.location);
+            return state;
         case NewReviewConstants.ADD_IMAGES:
             state = state.set('imgs', state.get('imgs').concat(fromJS(action.payload.files)));
             return state;
         case NewReviewConstants.RESET_FORM:
             state = state.set('name', "");
+            state = state.set('location', "");
             state = state.set('bathroom', 0);
             state = state.set('staff', 0);
             state = state.set('cleanliness', 0);

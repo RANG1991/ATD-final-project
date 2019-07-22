@@ -19,7 +19,7 @@ const CurrentUserReducer = (state = initialState.currentUser, action) => {
                 state = state.set('currentUsername', action.payload.username);
                 state = state.set('errorUsername', '');
             return state;
-        case CurrentUserConstants.CHANGE_LOCATION:
+        case CurrentUserConstants.CHANGE_LOCATION_CURRENT:
                 state = state.set('currentLocation', action.payload.location);
                 return state;
         case CurrentUserConstants.ADD_IMAGE:
