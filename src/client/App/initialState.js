@@ -48,6 +48,10 @@ export default {
     Map({
         location: "",
         name: "",
+        searchBy: "",
+        enableName: true,
+        enableLocation: true,
+        enableButtons: true,
         reviews: List(),
         valueRadioButton: 0,
     }),

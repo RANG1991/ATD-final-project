@@ -22,48 +22,75 @@ class AdvancedSearchForm extends React.Component {
             <Grid item xs={4}>
                 <Paper>
                     <form autoComplete="on">
+                    <RadioGroup aria-label="position" name="position" row onChange={(e) => this.props.onChangeRadioButtonSearchBy(e.target.value)}>
+                        <FormControlLabel
+                            value='1'
+                            control={<Radio color="primary" />}
+                            label="name only"
+                            labelPlacement="top"
+                        />
+                        <FormControlLabel
+                            value='2'
+                            control={<Radio color="primary" />}
+                            label="location only"
+                            labelPlacement="top"
+                        />
+                        <FormControlLabel
+                            value='3'
+                            control={<Radio color="primary" />}
+                            label="location and name"
+                            labelPlacement="top"
+                        />
+                    </RadioGroup>
+                        <RadioGroup aria-label="position" name="position" row onChange={(e) => this.props.onChangeRadioButton(e.target.value)}>
+                            <FormControlLabel
+                                value="0"
+                                control={<Radio color="primary" />}
+                                label="without"
+                                labelPlacement="top"
+                                disabled={!this.props.enableButtons}
+                            />
+                            <FormControlLabel
+                                value="1"
+                                control={<Radio color="primary" />}
+                                label="1"
+                                labelPlacement="top"
+                                disabled={!this.props.enableButtons}
+                            />
+                            <FormControlLabel
+                                value="2"
+                                control={<Radio color="primary" />}
+                                label="2"
+                                labelPlacement="top"
+                                disabled={!this.props.enableButtons}
+                            />
+                            <FormControlLabel
+                                value="3"
+                                control={<Radio color="primary" />}
+                                label="3"
+                                labelPlacement="top"
+                                disabled={!this.props.enableButtons}
+                            />
+                            <FormControlLabel
+                                value="4"
+                                control={<Radio color="primary" />}
+                                label="4"
+                                labelPlacement="top"
+                                disabled={!this.props.enableButtons}
+                            />
+                        </RadioGroup>
                         <TextField id="outlined-name"
                                    label="Restaurant Name"
                                    onChange={(e) => this.props.onChangeNameSearch(e.target.value)}
                                    margin="normal"
-                                   variant="outlined"/>
-                        <RadioGroup aria-label="position" name="position" row onChange={(e) => this.props.onChangeRadioButton(e.target.value)}>
-                            <FormControlLabel
-                                value='0'
-                                control={<Radio color="primary" />}
-                                label="without"
-                                labelPlacement="top"
-                            />
-                            <FormControlLabel
-                                value='1'
-                                control={<Radio color="primary" />}
-                                label="1"
-                                labelPlacement="top"
-                            />
-                            <FormControlLabel
-                                value='2'
-                                control={<Radio color="primary" />}
-                                label="2"
-                                labelPlacement="top"
-                            />
-                            <FormControlLabel
-                                value='3'
-                                control={<Radio color="primary" />}
-                                label="3"
-                                labelPlacement="top"
-                            />
-                            <FormControlLabel
-                                value='4'
-                                control={<Radio color="primary" />}
-                                label="4"
-                                labelPlacement="top"
-                            />
-                        </RadioGroup>
+                                   variant="outlined"
+                                   disabled={!this.props.enableName}/>
                         <TextField id="outlined-name"
                                    label="Restaurant Location"
                                    onChange={(e) => this.props.onChangeLocationSearch(e.target.value)}
                                    margin="normal"
-                                   variant="outlined"/>
+                                   variant="outlined"
+                                    disabled={!this.props.enableLocation}/>
                         <Button variant="contained" style={{margin: 15}}
                                 onClick={() => {
                                     let allReviews = [];
@@ -92,6 +119,9 @@ const mapStateToProps = (state) => {
     return {
         users: state['app'].get('users'),
         reviews: state['advancedSearch'].get('reviews'),
+        enableName: state['advancedSearch'].get('enableName'),
+        enableLocation: state['advancedSearch'].get('enableLocation'),
+        enableButtons: state['advancedSearch'].get('enableButtons'),
     }
 };
 
@@ -108,6 +138,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         onChangeRadioButton: (value) => {
             dispatch(AdvancedSearchActions.changeRadioButton(parseInt(value)));
+        },
+        onChangeRadioButtonSearchBy: (value) => {
+            dispatch(AdvancedSearchActions.changeRadioButtonSearchBy(parseInt(value)));
         },
     }
 };

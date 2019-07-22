@@ -36,11 +36,21 @@ function changeRadioButton(value) {
     }
 }
 
+function changeRadioButtonSearchBy(value) {
+    return {
+        type: AdvancedSearchConstants.ON_CHANGE_RADIO_BUTTON_SEARCH_BY,
+        payload: {
+            value
+        }
+    }
+}
+
 let AdvancedSearchActions = {
     changeNameSearch,
     changeLocationSearch,
     onClickSearch,
     changeRadioButton,
+    changeRadioButtonSearchBy,
 };
 
 export default AdvancedSearchActions;

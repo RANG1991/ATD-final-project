@@ -29,6 +29,27 @@ const AdvancedSearchReducer = (state = initialState.advancedSearch, action) => {
         case AdvancedSearchConstants.ON_CHANGE_RADIO_BUTTON:
             state = state.set('valueRadioButton', action.payload.value);
             return state;
+        case AdvancedSearchConstants.ON_CHANGE_RADIO_BUTTON_SEARCH_BY:
+            switch(action.payload.value) {
+                case 1:
+                    state = state.set('enableLocation', false);
+                    state = state.set('enableName', true);
+                    state = state.set('enableButtons', true);
+                    break;
+                case 2:
+                    state = state.set('enableName', false);
+                    state = state.set('enableLocation', true);
+                    state = state.set('enableButtons', true);
+                    break;
+                case 3:
+                    state = state.set('enableButtons', false);
+                    state = state.set('enableName', true);
+                    state = state.set('enableLocation', true);
+                    break;
+                default:
+                    break;
+            }
+            return state;
         default:
             return state;
     }

@@ -7,8 +7,8 @@ const CurrentUserReducer = (state = initialState.currentUser, action) => {
     switch (action.type)
     {
         case CurrentUserConstants.RESET_CURRENT_STATE:
-            state = state.set('currentUsername', '');
-            state = state.set('currentLocation', '');
+            // state = state.set('currentUsername', '');
+            // state = state.set('currentLocation', '');
             state = state.set('currentImagePath', '');
             state = state.set('errorImage', 'please pick an image!');
             return state;
