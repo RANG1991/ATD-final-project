@@ -10,6 +10,7 @@ import MyProfileView from "./Components/MyProfileView";
 import ProfilesView from "./Components/ProfilesView";
 import AdvancedSearchForm from "./Components/AdvancedSearchForm";
 import SearchUsernameForm from "./Components/SearchUsernameForm";
+import LoginForm from "./Components/LoginForm";
 
 
 class App extends React.Component{
@@ -32,6 +33,7 @@ class App extends React.Component{
               <Route path='/other_profiles' component={ProfilesView}/>
               <Route path='/searchReviews' component={AdvancedSearchForm}/>
               <Route path='/searchUsers' component={SearchUsernameForm}/>
+              <Route path='/login' component={LoginForm}/>
           </Router>
       );
     }

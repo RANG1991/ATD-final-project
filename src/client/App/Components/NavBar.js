@@ -93,7 +93,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         onClickLogin: (e) => {
             e.preventDefault();
-            dispatch(NavigationActions.onClickLoginNavBar())
+            dispatch(NavigationActions.onChangeRoute("/login"));
         },
         onClickMenu: () => {
             dispatch(NavigationActions.onClickMenuButton())

@@ -8,7 +8,7 @@ function onClickRegisterNavBar() {
 
 function onClickLoginNavBar() {
     return {
-        type: NavigationConstants.ON_CLICK_HOME_NAV_BAR
+        type: NavigationConstants.ON_CLICK_LOGIN_NAV_BAR
     }
 }
 

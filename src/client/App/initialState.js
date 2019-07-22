@@ -26,6 +26,7 @@ export default {
         openDeleteReview: false,
         editedName: "",
         editedLocation: "",
+        usernameLogin: "",
     }),
     newReview:
     Map ({

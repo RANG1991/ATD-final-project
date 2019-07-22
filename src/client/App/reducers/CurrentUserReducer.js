@@ -7,8 +7,8 @@ const CurrentUserReducer = (state = initialState.currentUser, action) => {
     switch (action.type)
     {
         case CurrentUserConstants.RESET_CURRENT_STATE:
-            // state = state.set('currentUsername', '');
-            // state = state.set('currentLocation', '');
+            state = state.set('currentUsername', '');
+            state = state.set('currentLocation', '');
             state = state.set('currentImagePath', '');
             state = state.set('errorImage', 'please pick an image!');
             return state;
@@ -44,6 +44,12 @@ const CurrentUserReducer = (state = initialState.currentUser, action) => {
             return state;
         case CurrentUserConstants.OPEN_DIALOG_DELETE_REVIEW:
             state = state.set('openDeleteReview', action.payload.open);
+            return state;
+        case CurrentUserConstants.CHANGE_USERNAME_LOGIN:
+            state = state.set('usernameLogin', action.payload.name);
+            return state;
+        case CurrentUserConstants.CHANGE_IMAGE:
+            state = state.set('currentImagePath', action.payload.image);
             return state;
         default:
             return state;

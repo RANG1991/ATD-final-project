@@ -6,7 +6,6 @@ import CurrentUserActions from "../actions/CurrentUserActions";
 import { withRouter } from 'react-router-dom';
 import AppActions from "../actions/AppActions";
 import NavigationActions from "../actions/NavigationActions";
-import Select from 'react-select';
 
 export const checkIfUserNameExists = (username, users) => {
    return users.get(username) !== undefined;

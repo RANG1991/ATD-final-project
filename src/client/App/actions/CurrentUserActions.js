@@ -72,6 +72,26 @@ function openDeleteReview(open) {
     }
 }
 
+function changeUsernameLogin(name)
+{
+    return {
+        type: CurrentUserConstants.CHANGE_USERNAME_LOGIN,
+        payload: {
+            name
+        }
+    }
+}
+
+function changeImage(image)
+{
+    return {
+        type: CurrentUserConstants.CHANGE_IMAGE,
+        payload: {
+            image
+        }
+    }
+}
+
     let CurrentUserActions  = {
         changeUserName,
         changeLocation,
@@ -83,6 +103,8 @@ function openDeleteReview(open) {
         editingName,
         editingLocation,
         openDeleteReview,
+        changeUsernameLogin,
+        changeImage,
     };
 
 export default CurrentUserActions
