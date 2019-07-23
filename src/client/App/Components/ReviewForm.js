@@ -111,15 +111,15 @@ class ReviewForm extends React.Component {
                         startAdornment={<InputAdornment position="start">Name</InputAdornment>}
                     />
                 </FormControl>
-                <FormControl fullWidth className={classes.margin}>
-                    <InputLabel htmlFor="adornment-amount">Restaurant Location</InputLabel>
-                    <Input
-                        id="adornment-amount"
-                        value={this.props.location}
-                        onChange={(e) => this.props.onLocationChange(e.target.value)}
-                        startAdornment={<InputAdornment position="start">Location</InputAdornment>}
-                    />
-                </FormControl>
+                {/*<FormControl fullWidth className={classes.margin}>*/}
+                {/*    <InputLabel htmlFor="adornment-amount">Restaurant Location</InputLabel>*/}
+                {/*    <Input*/}
+                {/*        id="adornment-amount"*/}
+                {/*        value={this.props.location}*/}
+                {/*        onChange={(e) => this.props.onLocationChange(e.target.value)}*/}
+                {/*        startAdornment={<InputAdornment position="start">Location</InputAdornment>}*/}
+                {/*    />*/}
+                {/*</FormControl>*/}
                 {elements}
                 <Button variant="contained"
                         onClick={(e) => this.props.onHandleSubmit(e, this.props.name, this.props.location, this.props.imgs, parameters,
@@ -156,7 +156,7 @@ const mapStateToProps = (state) => {
         delivery: state['newReview'].get('delivery'),
         food: state['newReview'].get('food'),
         name: state['newReview'].get('name'),
-        location: state['newReview'].get('location'),
+        location: state['currentUser'].get('currentLocation'),
         imgs: state['newReview'].get('imgs'),
         imagesMessage: state['newReview'].get('imagesMessage'),
         currentUser: state['currentUser'].get('currentUsername'),

@@ -6,6 +6,8 @@ import CurrentUserActions from "../actions/CurrentUserActions";
 import { withRouter } from 'react-router-dom';
 import AppActions from "../actions/AppActions";
 import NavigationActions from "../actions/NavigationActions";
+import PlacesAutocomplete from 'react-places-autocomplete';
+
 
 export const checkIfUserNameExists = (username, users) => {
    return users.get(username) !== undefined;
@@ -13,21 +15,41 @@ export const checkIfUserNameExists = (username, users) => {
 
 class UserDetailsReg extends React.Component
 {
+        renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
+        <div className="autocomplete-root">
+            <TextField id="outlined-name" {...getInputProps()}
+                       label="Location"
+                       margin="normal"
+                       variant="outlined"
+                />
+            <div className="autocomplete-dropdown-container">
+                {suggestions.map(suggestion => (
+                    <div {...getSuggestionItemProps(suggestion)}>
+                        <span>{suggestion.description}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+
     render() {
         return (
             <form autoComplete="on">
-                <TextField id="outlined-name"
+                <TextField
+                           id="outlined-name"
                            error={this.props.errorUsername !== ''}
                            helperText={this.props.errorUsername}
                            label="User Name"
                            onChange={(e) => this.props.onChangeUsername(e.target.value, this.props.users)}
                            margin="normal"
                            variant="outlined"/>
-                <TextField id="outlined-name"
-                           label="Location"
-                           onChange={(e) => this.props.onChangeLocation(e.target.value)}
-                           margin="normal"
-                           variant="outlined"/>
+                <PlacesAutocomplete
+                    value={this.props.currentLocation}
+                    onChange={this.props.onChangeLocation}
+                    onSelect={this.props.handleSelectAddress}
+                >
+                    {this.renderFunc}
+                </PlacesAutocomplete>
                 <Button variant="contained" style={{margin: 15}}
                         onClick={(e) => this.props.onSubmit(e, this.props.currentUsername, this.props.currentLocation,
                             this.props.currentImagePath, this.props.users)}
@@ -71,6 +93,9 @@ const mapDispatchToProps = (dispatch) => {
                 dispatch(NavigationActions.onRegistrationSuccessChange(true));
                 dispatch(NavigationActions.onChangeRoute("/welcome_" + currentUsername));
             }
+        },
+        handleSelectAddress: (address) => {
+            dispatch(CurrentUserActions.changeLocation(address));
         }
     }
 };
