@@ -43,7 +43,16 @@ export default {
     }),
     allReviews:
         Map({
-            sortBy: ''
+            sortBy: '',
+            name: "",
+            location: "",
+            bathroom: 0,
+            staff: 0,
+            cleanliness: 0,
+            drive: 0,
+            delivery: 0,
+            food: 0,
+            openEditReview: false,
         }),
     advancedSearch:
     Map({
@@ -61,5 +70,5 @@ export default {
         location: "",
         name: "",
         users: List(),
-    })
+    }),
 };

@@ -4,6 +4,7 @@ const AppConstants = {
     CHANGE_LOCATION_APP: 'CHANGE_LOCATION_APP',
     CHANGE_USERNAME_APP: 'CHANGE_USERNAME_APP',
     DELETE_REVIEW: 'DELETE_REVIEW',
+    EDIT_REVIEW: 'EDIT_REVIEW',
 };
 
 export default AppConstants

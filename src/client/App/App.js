@@ -3,7 +3,7 @@ import {Router} from "react-router-dom";
 import {Route} from "react-router-dom";
 import ButtonAppBar from "./Components/NavBar";
 import UserProfile from "./Components/UserImageReg"
-import ReviewForm from "./Components/ReviewForm";
+import ReviewForm from "./Components/NewReviewForm";
 import ReviewsView from "./Components/ReviewsView";
 import {history} from "../../index";
 import MyProfileView from "./Components/MyProfileView";

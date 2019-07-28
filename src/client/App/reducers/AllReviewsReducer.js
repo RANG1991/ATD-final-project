@@ -8,6 +8,12 @@ const AllReviewsReducer = (state = initialState.allReviews, action) => {
         case AllReviewsConstants.SORT_BY:
             state = state.set('sortBy', action.payload.sortMethod);
             return state;
+        case AllReviewsConstants.CHANGE_VALUE_EDIT:
+            state = state.set(action.payload.name, action.payload.value);
+            return state;
+        case AllReviewsConstants.OPEN_DIALOG_EDIT_REVIEW:
+            state = state.set('openEditReview', action.payload.open);
+            return state;
         default:
             return state;
     }

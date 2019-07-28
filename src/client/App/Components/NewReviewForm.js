@@ -65,7 +65,7 @@ const styles = theme => ({
     },
 });
 
-class ReviewForm extends React.Component {
+class NewReviewForm extends React.Component {
     render() {
         const { classes } = this.props;
         const parameters = [
@@ -185,4 +185,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default (withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(ReviewForm)));
+export default (withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(NewReviewForm)));

@@ -43,12 +43,22 @@ function deleteReview(username, id) {
     }
 }
 
+function editRestaurant(id, bathroom, staff, cleanliness, drive, delivery, food, currentUser) {
+   return {
+       type: AppConstants.EDIT_REVIEW,
+       payload: {
+           id, bathroom, staff, cleanliness, drive, delivery, food, currentUser
+       }
+   }
+}
+
 let AppActions  = {
     addUser,
     addRestaurant,
     changeUsernameApp,
     changeLocationApp,
     deleteReview,
+    editRestaurant,
 };
 
 export default AppActions
