@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import {Grid, Paper} from "@material-ui/core";
 import DeleteReviewDialog from "./DeleteReviewDialog";
 import EditReviewDialog from "./EditReviewDialog";
+import {connect} from "react-redux";
 
 const useStyles = makeStyles({
     card: {
@@ -20,14 +21,14 @@ const useStyles = makeStyles({
     }
 });
 
-export default function ReviewCard(props) {
+function ReviewCard(props) {
     const classes = useStyles();
     let img = null;
     let deleteDialog = null;
     let editDialog = null;
     if (props.showDeleteDialog) {
-        deleteDialog = <DeleteReviewDialog id={props.id} textDelete={"Are you sure you want to delete this review?"}/>
-        editDialog = <EditReviewDialog id={props.id} textEdit={"Edit the Review please"}/>
+        deleteDialog = <DeleteReviewDialog id={props.id} textDelete={"Are you sure you want to delete this review?"}/>;
+        editDialog = <EditReviewDialog id={props.id} editText={"Edit the Review please"}/>
     }
     if (props.img !== undefined) {
         img = props.img
@@ -69,3 +70,19 @@ export default function ReviewCard(props) {
             </Grid>
         </Paper>);
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        showDeleteDialog: ownProps.showDeleteDialog,
+        id: ownProps.id,
+        name: ownProps.name,
+        location: ownProps.location,
+        bathroom: ownProps.bathroom,
+        staff: ownProps.staff,
+        cleanliness: ownProps.cleanliness,
+        drive: ownProps.drive,
+        delivery: ownProps.delivery,
+        food: ownProps.food,
+    }
+};
+export default (connect(mapStateToProps)(ReviewCard));

@@ -6,6 +6,11 @@ const AppReducer = (state = initialState.app, action) => {
     console.log('AppReducerState=', state);
     console.log('RECEIVED ACTION:', action);
     switch (action.type) {
+        case AppConstants.GET_ALL_USERS:
+            let allUsers = action.payload.map(x => ({username: x.name, imagePath: x.profilePhoto.data,
+                                                    reviews: x.reviews, id: x._id}));
+            state = state.set('users', fromJS(allUsers));
+            return state;
         case AppConstants.ADD_USER:
             state = state.setIn(['users', action.payload.username],
                 fromJS({location: action.payload.location,

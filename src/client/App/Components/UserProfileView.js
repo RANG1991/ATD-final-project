@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {Typography} from "@material-ui/core";
 
 class UserProfileView extends React.Component {
-    render(){
+    render() {
         let allUserReviews = this.props.users.getIn([this.props.user, 'reviews']);
         let restaurants = allUserReviews.map((x) =>{
             x = x.toJS();
@@ -26,9 +26,13 @@ class UserProfileView extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
         users: state['app'].get('users'),
+        showDelete: ownProps.showDelete,
+        showButtons: ownProps.showButtons,
+        location: ownProps.location,
+        user: ownProps.user,
     }
 };
 

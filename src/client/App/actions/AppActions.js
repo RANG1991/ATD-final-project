@@ -7,6 +7,13 @@ function addUser(username, location, imagePath) {
     }
 }
 
+function addUserSaga(username, location, imagePath) {
+    return {
+        type: AppConstants.ADD_USER_SAGA,
+        payload: {username: username, imagePath: imagePath, location: location}
+    }
+}
+
 function addRestaurant(name, location, images, bathroom, staff, cleanliness, drive, delivery, food, currentUser) {
     return {
         type: AppConstants.ADD_RESTAURANT,
@@ -52,13 +59,29 @@ function editRestaurant(id, bathroom, staff, cleanliness, drive, delivery, food,
    }
 }
 
+function getAllUsers() {
+    return {
+        type: AppConstants.GET_ALL_USERS,
+        payload:{}
+    }
+}
+
+function getAllUsersSaga() {
+    return {
+        type: AppConstants.GET_ALL_USERS_SAGA,
+    }
+}
+
 let AppActions  = {
     addUser,
+    addUserSaga,
     addRestaurant,
     changeUsernameApp,
     changeLocationApp,
     deleteReview,
     editRestaurant,
+    getAllUsers,
+    getAllUsersSaga,
 };
 
 export default AppActions

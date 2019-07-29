@@ -45,6 +45,8 @@ const ranges = [
 
 function EditReviewDialog(props) {
 
+    
+
     const useStyles = makeStyles(theme => ({
         fab: {
             margin: theme.spacing(1),
@@ -96,9 +98,9 @@ function EditReviewDialog(props) {
                 <DialogTitle id="form-dialog-title">Editing</DialogTitle>
                 <DialogContent fullWidth={true}>
                     <DialogContentText>
-                        {props.editText}
+                        {props.id}
                     </DialogContentText>
-                        <InputLabel htmlFor="adornment-amount">Edit Restaurant Details</InputLabel>
+                        <InputLabel htmlFor="adornment-amount">Edit</InputLabel>
                         {elements}
                 </DialogContent>
                 <DialogActions>
@@ -111,7 +113,7 @@ function EditReviewDialog(props) {
     );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
         bathroom: state['allReviews'].get('bathroom'),
         staff: state['allReviews'].get('staff'),
@@ -121,6 +123,7 @@ const mapStateToProps = (state) => {
         food: state['allReviews'].get('food'),
         openEditReview: state['allReviews'].get('openEditReview'),
         currentUser: state['currentUser'].get('currentUsername'),
+        id: ownProps.id,
     }
 };
 

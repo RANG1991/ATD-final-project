@@ -3,7 +3,7 @@ import React from "react";
 import UserProfileView from "./UserProfileView";
 
 class ProfilesView extends React.Component {
-    render(){
+    render() {
         let allUsersProfiles = this.props.users.keySeq().map((x) => {
             let entry = this.props.users.get(x).toJS();
             return <UserProfileView image={entry.imagePath} user={x}

@@ -1,10 +1,10 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import {withRouter} from "react-router";
 import {Grid, Paper} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import EditDialogName from "./EditNameDialog"
 import EditDialogLocation from "./EditLocationDialog"
+import {connect} from "react-redux";
 
 const useStyles = makeStyles(theme => ({
     img: {
@@ -13,9 +13,8 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function UserProfileCard(props) {
+function UserProfileCard(props) {
     const classes = useStyles();
-
     return (<Paper>
         <Grid container justify="center" spacing={0}>
         <Grid item xs={4}>
@@ -45,4 +44,12 @@ export default function UserProfileCard(props) {
     </Paper>);
 }
 
-(withRouter(UserProfileCard));
+const mapStateToProps = (state, ownProps) => {
+    return {
+        showButtons: ownProps.showButtons,
+        location: ownProps.location,
+        username: ownProps.username,
+    }
+};
+
+export default (connect(mapStateToProps)(UserProfileCard));
