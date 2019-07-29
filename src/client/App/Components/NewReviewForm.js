@@ -105,6 +105,8 @@ class NewReviewForm extends React.Component {
                 <FormControl fullWidth className={classes.margin}>
                     <InputLabel htmlFor="adornment-amount">Restaurant Name</InputLabel>
                     <Input
+                        error={this.props.errorName !== ''}
+                        helperText={this.props.errorName}
                         id="adornment-amount"
                         value={this.props.name}
                         onChange={(e) => this.props.onNameChange(e.target.value)}
@@ -156,6 +158,7 @@ const mapStateToProps = (state) => {
         delivery: state['newReview'].get('delivery'),
         food: state['newReview'].get('food'),
         name: state['newReview'].get('name'),
+        errorName: state['newReview'].get('errorName'),
         location: state['currentUser'].get('currentLocation'),
         imgs: state['newReview'].get('imgs'),
         imagesMessage: state['newReview'].get('imagesMessage'),
@@ -170,11 +173,16 @@ const mapDispatchToProps = (dispatch) => {
         },
         onHandleSubmit: (e, name, location, images, params, currentUser) => {
             e.preventDefault();
-           dispatch(AppActions.addRestaurant(...[name, location, images,...(params.map(x => x.value)), currentUser]));
-           dispatch(NewReviewActions.resetForm());
+            if (name !== "") {
+                dispatch(AppActions.addRestaurant(...[name, location, images, ...(params.map(x => x.value)), currentUser]));
+                dispatch(NewReviewActions.resetForm());
+            }
+            else {
+                dispatch(NewReviewActions.nameError());
+            }
         },
         onNameChange: (name) => {
-            dispatch(NewReviewActions.changeName(name))
+                dispatch(NewReviewActions.changeName(name));
         },
         addImagesHandler: (acceptedFiles) => {
             dispatch(NewReviewActions.addImages(acceptedFiles))

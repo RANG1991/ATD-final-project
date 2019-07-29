@@ -10,6 +10,12 @@ const NewReviewReducer = (state = initialState.newReview, action) => {
             state = state.set(action.payload.param_name, action.payload.param_value);
             return state;
         case NewReviewConstants.CHANGE_NAME:
+            if (action.payload.name === "") {
+                state = state.set('errorName', 'the name cannot be empty');
+            }
+            else {
+                state = state.set('errorName', '')
+            }
             state = state.set('name', action.payload.name);
             return state;
         case NewReviewConstants.CHANGE_LOCATION:
@@ -28,6 +34,9 @@ const NewReviewReducer = (state = initialState.newReview, action) => {
             state = state.set('delivery', 0);
             state = state.set('food', 0);
             state = state.set('imgs', List());
+            return state;
+        case NewReviewConstants.NAME_ERROR:
+            state = state.set('errorName', 'the name cannot be empty');
             return state;
         default:
             return state;

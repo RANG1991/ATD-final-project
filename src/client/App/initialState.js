@@ -31,6 +31,7 @@ export default {
     newReview:
     Map ({
         name: "",
+        errorName: "",
         location: "",
         bathroom: 0,
         staff: 0,

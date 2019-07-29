@@ -4,6 +4,7 @@ const NewReviewConstants = {
     ADD_IMAGES: 'ADD_IMAGES',
     RESET_FORM: 'RESET_FORM',
     CHANGE_LOCATION: 'CHANGE_LOCATION',
+    NAME_ERROR: 'NAME_ERROR',
 };
 
 export default NewReviewConstants

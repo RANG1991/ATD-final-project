@@ -34,12 +34,19 @@ function resetForm() {
     }
 }
 
+function nameError() {
+    return {
+        type: newReviewConstants.NAME_ERROR
+    }
+}
+
 let NewReviewActions  = {
     changeParamValue,
     changeName,
     addImages,
     resetForm,
     changeLocation,
+    nameError,
 };
 
 export default NewReviewActions

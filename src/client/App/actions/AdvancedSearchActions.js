@@ -18,11 +18,11 @@ function changeNameSearch(name) {
     }
 }
 
-function onClickSearch(allReviews) {
+function onClickSearch(name, location ,allReviews) {
     return {
         type: AdvancedSearchConstants.ON_CLICK_SEARCH,
         payload: {
-            allReviews,
+            name, location, allReviews,
         }
     }
 }

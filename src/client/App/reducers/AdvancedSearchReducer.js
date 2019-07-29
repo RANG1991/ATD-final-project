@@ -14,10 +14,10 @@ const AdvancedSearchReducer = (state = initialState.advancedSearch, action) => {
             return state;
         case AdvancedSearchConstants.ON_CLICK_SEARCH:
             let allReviews = [];
-            if (state.get('name') !== '' && (state.get('enableName'))) {
+            if (action.payload.name !== '' && (state.get('enableName'))) {
                 allReviews = action.payload.allReviews.filter(review => review.name === state.get('name'));
             }
-            if (state.get('location') !== '' && (state.get('enableLocation'))) {
+            if (action.payload.location !== '' && (state.get('enableLocation'))) {
                 allReviews = action.payload.allReviews.filter(review => review.location === state.get('location'));
             }
             if (state.get('valueRadioButton') !== 0){

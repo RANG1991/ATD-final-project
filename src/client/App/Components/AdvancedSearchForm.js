@@ -98,7 +98,7 @@ class AdvancedSearchForm extends React.Component {
                                     this.props.users.forEach((userEntry) => {
                                         allReviews = allReviews.concat(userEntry.get('reviews').toJS())
                                     });
-                                    this.props.onClickSearch(allReviews)
+                                    this.props.onClickSearch(this.props.name, this.props.location, allReviews)
                                 }}
                             >
                             Search
@@ -123,6 +123,8 @@ const mapStateToProps = (state) => {
         enableName: state['advancedSearch'].get('enableName'),
         enableLocation: state['advancedSearch'].get('enableLocation'),
         enableButtons: state['advancedSearch'].get('enableButtons'),
+        name: state['advancedSearch'].get('name'),
+        location: state['advancedSearch'].get('location'),
     }
 };
 
@@ -134,8 +136,8 @@ const mapDispatchToProps = (dispatch) => {
         onChangeLocationSearch: (location) => {
             dispatch(AdvancedSearchActions.changeLocationSearch(location));
         },
-        onClickSearch: (allReviews) => {
-            dispatch(AdvancedSearchActions.onClickSearch(allReviews));
+        onClickSearch: (name, location, allReviews) => {
+            dispatch(AdvancedSearchActions.onClickSearch(name, location, allReviews));
         },
         onChangeRadioButton: (value) => {
             dispatch(AdvancedSearchActions.changeRadioButton(parseInt(value)));
