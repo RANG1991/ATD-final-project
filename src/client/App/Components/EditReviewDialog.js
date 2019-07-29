@@ -49,6 +49,18 @@ function EditReviewDialog(props) {
         fab: {
             margin: theme.spacing(1),
         },
+        textField: {
+            flexBasis: 200,
+        },
+        menu: {
+            margin: theme.spacing(2),
+        },
+        dialogPaper: {
+            minHeight: '80vh',
+            maxHeight: '80vh',
+            minWidth: '80vh',
+            maxWidth: '80vh',
+        },
     }));
     const classes = useStyles();
 
@@ -66,7 +78,7 @@ function EditReviewDialog(props) {
         label={x.name}
         value={x.value}
         onChange={(e) => props.onChangeValueEdit(x.id, e.target.value)}
-        className={clsx(classes.margin, classes.textField)}>
+        className={clsx(classes.menu, classes.textField)}>
         {ranges.map(option => (
             <MenuItem key={option.value} value={option.value}>
                 {option.label}
@@ -79,9 +91,10 @@ function EditReviewDialog(props) {
             <Fab color="secondary" aria-label="Edit" className={classes.fab} onClick={() => props.openDialog(true)}>
                 <EditIcon/>
             </Fab>
-            <Dialog open={props.openEditReview} onClose={() => props.openDialog(false)} aria-labelledby="form-dialog-title">
+            <Dialog open={props.openEditReview} classes={{ paper: classes.dialogPaper }}
+                    onClose={() => props.openDialog(false)} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Editing</DialogTitle>
-                <DialogContent>
+                <DialogContent fullWidth={true}>
                     <DialogContentText>
                         {props.editText}
                     </DialogContentText>

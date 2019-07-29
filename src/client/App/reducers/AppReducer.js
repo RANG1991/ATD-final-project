@@ -45,21 +45,18 @@ const AppReducer = (state = initialState.app, action) => {
             allReviews = allReviews.map(function(reviewToUpdate) {
                         if (reviewToUpdate.get('id') === action.payload.id)
                         {
-                            alert(reviewToUpdate);
                             reviewToUpdate = reviewToUpdate.set('bathroom', action.payload.bathroom);
                             reviewToUpdate = reviewToUpdate.set('staff', action.payload.staff);
                             reviewToUpdate = reviewToUpdate.set('cleanliness', action.payload.cleanliness);
                             reviewToUpdate = reviewToUpdate.set('drive', action.payload.drive);
                             reviewToUpdate = reviewToUpdate.set('delivery', action.payload.delivery);
                             reviewToUpdate = reviewToUpdate.set('food', action.payload.food);
-                            alert(reviewToUpdate);
                             return reviewToUpdate;
                         }
                         else {
                             return reviewToUpdate;
                         }
                     });
-            alert(allReviews);
             state = state.setIn(['users', action.payload.currentUser, 'reviews'], allReviews);
             return state;
         default:
