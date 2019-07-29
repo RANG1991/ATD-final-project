@@ -26,9 +26,10 @@ function ReviewCard(props) {
     let img = null;
     let deleteDialog = null;
     let editDialog = null;
+    console.log("hello " + props.id);
     if (props.showDeleteDialog) {
         deleteDialog = <DeleteReviewDialog id={props.id} textDelete={"Are you sure you want to delete this review?"}/>;
-        editDialog = <EditReviewDialog id={props.id} editText={"Edit the Review please"}/>
+        editDialog = <EditReviewDialog id={props.id} editText={props.id}/>
     }
     if (props.img !== undefined) {
         img = props.img
