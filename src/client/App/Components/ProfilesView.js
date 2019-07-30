@@ -6,7 +6,7 @@ class ProfilesView extends React.Component {
     render() {
         let allUsersProfiles = this.props.users.keySeq().map((x) => {
             let entry = this.props.users.get(x).toJS();
-            return <UserProfileView image={entry.imagePath} user={x}
+            return <UserProfileView image={entry.imagePath} user={x} key={x}
                                     location={entry.location} showButtons={false} showDelete={false}/>
         });
         return (<div className={{flexGrow: 1}}>

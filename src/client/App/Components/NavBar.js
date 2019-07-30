@@ -22,7 +22,7 @@ class ButtonAppBar extends React.Component {
                 <Button onClick={this.props.onClickMenu} aria-haspopup="true" color="inherit">
                     Menu
                 </Button>
-                <Menu id="fade-menu" anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                <Menu id="fade-menu"
                       transformOrigin={{ vertical: "top", horizontal: "left" }}
                       open={this.props.displayMenu} onClose={this.props.onCloseMenu}>
                     <MenuItem onClick={() => this.props.onClickMyProfile("/my_profile")}>My Profile</MenuItem>
@@ -40,7 +40,7 @@ class ButtonAppBar extends React.Component {
                 <Button onClick={this.props.onClickSortMenu} aria-haspopup="true" color="inherit">
                     Menu
                 </Button>
-                <Menu id="fade-menu" anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                <Menu id="fade-menu"
                       transformOrigin={{ vertical: "top", horizontal: "right" }}
                       open={this.props.openSortMenu} onClose={this.props.onCloseSortMenu}>
                     <MenuItem onClick={() => this.props.onClickOptionSortMenu('date')}>Sort By Date</MenuItem>
