@@ -14,17 +14,9 @@ function changeValueEdit(name, value) {
     }
 }
 
-function openDialogEditReview(open) {
-    return {
-        type: AllReviewsConstants.OPEN_DIALOG_EDIT_REVIEW,
-        payload: {open}
-    }
-}
-
 let AllReviewsActions  = {
     sortBy,
     changeValueEdit,
-    openDialogEditReview,
 };
 
 export default AllReviewsActions

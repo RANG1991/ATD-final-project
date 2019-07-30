@@ -12,8 +12,9 @@ class UserProfileView extends React.Component {
             return <ReviewCard name={x.name} location={x.location} bathroom={x.bathroom} staff={x.staff}
                         cleanliness={x.cleanliness} drive={x.drive}
                         delivery={x.delivery} food={x.food} img={x.images.length > 0 ? x.images[0] : undefined}
-                               id={x.id} key={x.id}
-            showDeleteDialog={this.props.showDelete}/>
+                               id={x.id} key={x.id} showDeleteDialog={this.props.showDelete}
+                               openDeleteReview={x.openDeleteReview}
+                               openEditReview={x.openEditReview}/>
         });
         return (<div className={{flexGrow: 1}}>
             <UserProfileCard img={URL.createObjectURL(this.props.image)} username={this.props.user}

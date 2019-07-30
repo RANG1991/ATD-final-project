@@ -90,21 +90,21 @@ function EditReviewDialog(props) {
 
     return (
         <div>
-            <Fab color="secondary" aria-label="Edit" className={classes.fab} onClick={() => props.openDialog(true)}>
+            <Fab color="secondary" aria-label="Edit" className={classes.fab} onClick={() => props.openDialog(props.id, props.currentUser, true)}>
                 <EditIcon/>
             </Fab>
             <Dialog open={props.openEditReview} classes={{ paper: classes.dialogPaper }}
-                    onClose={() => props.openDialog(false)} aria-labelledby="form-dialog-title">
+                    onClose={() => props.openDialog(props.id, props.currentUser, false)} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Editing</DialogTitle>
-                <DialogContent fullWidth={true}>
+                <DialogContent>
                     <DialogContentText>
-                        {props.idx}
+                        {props.editText}
                     </DialogContentText>
                         <InputLabel htmlFor="adornment-amount">Edit</InputLabel>
                         {elements}
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={(e) => props.onHandleSubmit(e, props.idx, parameters, props.currentUser)} color="primary">
+                    <Button onClick={(e) => props.onHandleSubmit(e, props.id, parameters, props.currentUser)} color="primary">
                         Confirm
                     </Button>
                 </DialogActions>
@@ -114,8 +114,6 @@ function EditReviewDialog(props) {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(ownProps);
-    console.log(ownProps.id);
     return {
         bathroom: state['allReviews'].get('bathroom'),
         staff: state['allReviews'].get('staff'),
@@ -123,9 +121,11 @@ const mapStateToProps = (state, ownProps) => {
         drive: state['allReviews'].get('drive'),
         delivery: state['allReviews'].get('delivery'),
         food: state['allReviews'].get('food'),
-        openEditReview: state['allReviews'].get('openEditReview'),
+        users: state['app'].get('users'),
         currentUser: state['currentUser'].get('currentUsername'),
-        idx: ownProps.id,
+        id: ownProps.id,
+        openEditReview: ownProps.openEditReview,
+        editText: ownProps.editText,
     }
 };
 
@@ -135,12 +135,12 @@ const mapDispatchToProps = (dispatch) => {
         onChangeValueEdit: (paramName, paramValue) => {
             dispatch(AllReviewsActions.changeValueEdit(paramName, paramValue))
         },
-        openDialog: (open) => {
-            dispatch(AllReviewsActions.openDialogEditReview(open))
+        openDialog: (id, username, open) => {
+            dispatch(AppActions.openDialogEditReview(id, username, open))
         },
         onHandleSubmit: (e, id, params, currentUser) => {
             dispatch(AppActions.editRestaurant(...[id, ...(params.map(x => x.value)), currentUser]));
-            dispatch(AllReviewsActions.openDialogEditReview(false));
+            dispatch(AppActions.openDialogEditReview(id, currentUser,false));
         }
     }
 };

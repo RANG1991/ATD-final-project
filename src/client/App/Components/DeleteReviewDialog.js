@@ -10,7 +10,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { makeStyles } from '@material-ui/core/styles';
 import AppActions from "../actions/AppActions";
 import {connect} from "react-redux";
-import CurrentUserActions from "../actions/CurrentUserActions";
 
 function DeleteReviewDialog(props) {
 
@@ -23,10 +22,10 @@ function DeleteReviewDialog(props) {
 
     return (
         <div>
-            <Fab color="secondary" aria-label="Edit" className={classes.fab} onClick={() => props.openDialog(true)}>
+            <Fab color="secondary" aria-label="Edit" className={classes.fab} onClick={() => props.openDialog(props.id, props.currentUsername, true)}>
                 <DeleteIcon/>
             </Fab>
-            <Dialog open={props.openDeleteReview} onClose={() => props.openDialog(false)} aria-labelledby="form-dialog-title">
+            <Dialog open={props.openDeleteReview} onClose={() => props.openDialog(props.id, props.currentUsername, false)} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Deleting</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
@@ -43,11 +42,13 @@ function DeleteReviewDialog(props) {
     );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
         currentUsername: state['currentUser'].get('currentUsername'),
-        openDeleteReview: state['currentUser'].get('openDeleteReview'),
+        openDeleteReview: ownProps.openDeleteReview,
         users: state['app'].get('users'),
+        id: ownProps.id,
+        textDelete: ownProps.textDelete,
     }
 };
 
@@ -56,10 +57,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onDeleteReview: (username, id) => {
             dispatch(AppActions.deleteReview(username, id));
-            dispatch(CurrentUserActions.openDeleteReview(false));
+            dispatch(AppActions.openDeleteReview(id, username, false));
         },
-        openDialog: (open) => {
-            dispatch(CurrentUserActions.openDeleteReview(open))
+        openDialog: (id, username, open) => {
+            dispatch(AppActions.openDeleteReview(id, username, open))
         },
     }
 };

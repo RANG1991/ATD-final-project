@@ -26,10 +26,9 @@ function ReviewCard(props) {
     let img = null;
     let deleteDialog = null;
     let editDialog = null;
-    console.log("hello " + props.id);
     if (props.showDeleteDialog) {
-        deleteDialog = <DeleteReviewDialog id={props.id} textDelete={"Are you sure you want to delete this review?"}/>;
-        editDialog = <EditReviewDialog id={props.id} editText={props.id}/>
+        deleteDialog = <DeleteReviewDialog id={props.id} textDelete={"Are you sure you want to delete this review?"} openDeleteReview={props.openDeleteReview}/>;
+        editDialog = <EditReviewDialog id={props.id} editText={"Please edit the review"} openEditReview={props.openEditReview}/>
     }
     if (props.img !== undefined) {
         img = props.img
@@ -84,6 +83,7 @@ const mapStateToProps = (state, ownProps) => {
         drive: ownProps.drive,
         delivery: ownProps.delivery,
         food: ownProps.food,
+        openEditReview: ownProps.openEditReview,
     }
 };
 export default (connect(mapStateToProps)(ReviewCard));

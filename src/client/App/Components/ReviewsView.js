@@ -11,7 +11,7 @@ class ReviewsView extends React.Component {
         allReviews = allReviews.sort((x, y) => (x[this.props.sortBy] - y[this.props.sortBy]));
         let restaurants = allReviews.map(x => {
             return <ReviewCard name={x.name} location={x.location} bathroom={x.bathroom} staff={x.staff}
-                        cleanliness={x.cleanliness} drive={x.drive} showDeleteDialog={false}
+                        cleanliness={x.cleanliness} drive={x.drive} showDeleteDialog={false} openEditReview={x.openEditReview}
                         delivery={x.delivery} food={x.food} img={x.images.length > 0 ? x.images[0] : undefined}/>
         });
         return <div>

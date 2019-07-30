@@ -23,7 +23,6 @@ export default {
         errorImage: "please pick an image!",
         openEditName: false,
         openEditLocation: false,
-        openDeleteReview: false,
         editedName: "",
         editedLocation: "",
         usernameLogin: "",
@@ -53,7 +52,6 @@ export default {
             drive: 0,
             delivery: 0,
             food: 0,
-            openEditReview: false,
         }),
     advancedSearch:
     Map({

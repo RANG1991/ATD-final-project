@@ -106,7 +106,6 @@ class NewReviewForm extends React.Component {
                     <InputLabel htmlFor="adornment-amount">Restaurant Name</InputLabel>
                     <Input
                         error={this.props.errorName !== ''}
-                        helperText={this.props.errorName}
                         id="adornment-amount"
                         value={this.props.name}
                         onChange={(e) => this.props.onNameChange(e.target.value)}

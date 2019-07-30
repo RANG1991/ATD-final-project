@@ -66,6 +66,20 @@ function getAllUsers() {
     }
 }
 
+function openDialogEditReview(id, currentUser, open) {
+    return {
+        type: AppConstants.OPEN_DIALOG_EDIT_REVIEW,
+        payload: {id, currentUser, open}
+    }
+}
+
+function openDeleteReview(id, currentUser, open) {
+    return {
+        type: AppConstants.OPEN_DIALOG_DELETE_REVIEW,
+        payload: {id, currentUser, open}
+    }
+}
+
 function getAllUsersSaga() {
     return {
         type: AppConstants.GET_ALL_USERS_SAGA,
@@ -82,6 +96,8 @@ let AppActions  = {
     editRestaurant,
     getAllUsers,
     getAllUsersSaga,
+    openDialogEditReview,
+    openDeleteReview,
 };
 
 export default AppActions

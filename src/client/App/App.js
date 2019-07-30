@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, withRouter} from "react-router-dom";
+import {Router} from "react-router-dom";
 import {Route} from "react-router-dom";
 import ButtonAppBar from "./Components/NavBar";
 import UserProfile from "./Components/UserImageReg"

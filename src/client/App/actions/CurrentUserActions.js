@@ -65,13 +65,6 @@ function editingLocation(newLocation) {
     }
 }
 
-function openDeleteReview(open) {
-    return {
-        type: CurrentUserConstants.OPEN_DIALOG_DELETE_REVIEW,
-        payload: {open}
-    }
-}
-
 function changeUsernameLogin(name)
 {
     return {
@@ -102,7 +95,6 @@ function changeImage(image)
         openDialogName,
         editingName,
         editingLocation,
-        openDeleteReview,
         changeUsernameLogin,
         changeImage,
     };
