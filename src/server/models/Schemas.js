@@ -16,7 +16,7 @@ let PlaceSchema = new Schema({
 
 let ReviewSchema = new Schema({
     restaurant:String,
-    location: String, images: [PhotoSchema], bathroom: Number,
+    location: String, images: [String], bathroom: Number,
     staff: Number, cleanliness: Number,
     drive: Number, delivery: Number, food: Number
 });
@@ -25,7 +25,7 @@ let ReviewerSchema = new Schema({
     name:String,
     location:String,
     profilePhoto:PhotoSchema,
-    reviews:[ReviewSchema],
+    reviews:[String],
     photos:[PhotoSchema]
 });
 

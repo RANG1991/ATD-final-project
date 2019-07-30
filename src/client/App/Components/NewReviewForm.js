@@ -173,7 +173,7 @@ const mapDispatchToProps = (dispatch) => {
         onHandleSubmit: (e, name, location, images, params, currentUser) => {
             e.preventDefault();
             if (name !== "") {
-                dispatch(AppActions.addRestaurant(...[name, location, images, ...(params.map(x => x.value)), currentUser]));
+                dispatch(AppActions.addRestaurantSaga(...[name, location, images, ...(params.map(x => x.value)), currentUser]));
                 dispatch(NewReviewActions.resetForm());
             }
             else {
@@ -184,9 +184,6 @@ const mapDispatchToProps = (dispatch) => {
                 dispatch(NewReviewActions.changeName(name));
         },
         addImagesHandler: (acceptedFiles) => {
-            console.log(acceptedFiles);
-            let reader = new FileReader();
-            acceptedFiles = acceptedFiles.map(x => reader.readAsDataURL(x));
             dispatch(NewReviewActions.addImages(acceptedFiles))
         },
         onLocationChange: (location) => {

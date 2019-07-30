@@ -52,7 +52,7 @@ class UserDetailsReg extends React.Component
                 </PlacesAutocomplete>
                 <Button variant="contained" style={{margin: 15}}
                         onClick={(e) => this.props.onSubmit(e, this.props.currentUsername, this.props.currentLocation,
-                            this.props.currentImagePath, this.props.users)}
+                            this.props.currentImagePath,this.props.relativeImagePath, this.props.users)}
                         href={"/welcome_" + this.props.currentUsername}>
                     Submit
                 </Button>
@@ -67,6 +67,7 @@ const mapStateToProps = (state) => {
         currentUsername: state['currentUser'].get('currentUsername'),
         users: state['app'].get("users"),
         currentImagePath: state['currentUser'].get('currentImagePath'),
+        relativeImagePath: state['currentUser'].get('relativeImagePath'),
         errorImage: state['currentUser'].get('errorImage'),
         currentLocation: state['currentUser'].get("currentLocation"),
     }
@@ -75,6 +76,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onChangeLocation: (location) => {
+
             dispatch(CurrentUserActions.changeLocation(location));
         },
         onChangeUsername:  (username, users) => {
@@ -83,13 +85,13 @@ const mapDispatchToProps = (dispatch) => {
                 dispatch(CurrentUserActions.usernameError());
             }
         },
-        onSubmit: (e, currentUsername, currentLocation, currentImagePath, users) => {
+        onSubmit: (e, currentUsername, currentLocation, currentImagePath,relativeImagePath, users) => {
             e.preventDefault();
             if (checkIfUserNameExists(currentUsername, users)) {
                 dispatch(CurrentUserActions.usernameError());
             }
             else if (currentImagePath !== "" && currentLocation !== "" && currentUsername !== "") {
-                dispatch(AppActions.addUserSaga(currentUsername, currentLocation, currentImagePath));
+                dispatch(AppActions.addUserSaga(currentUsername, currentLocation, currentImagePath,relativeImagePath));
                 dispatch(NavigationActions.onRegistrationSuccessChange(true));
                 dispatch(NavigationActions.onChangeRoute("/welcome_" + currentUsername));
             }

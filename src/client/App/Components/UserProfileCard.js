@@ -14,6 +14,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function UserProfileCard(props) {
+
+    console.log(props.img);
+
     const classes = useStyles();
     return (<Paper>
         <Grid container justify="center" spacing={0}>

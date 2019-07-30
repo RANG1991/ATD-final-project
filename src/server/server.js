@@ -67,15 +67,14 @@ app.listen(config.port || 8000,
 app.post('/add_user', function (req, res) {
 
     res.setHeader('Content-Type', 'application/json');
-    console.log(req.body.user.image);
     var photoSchema = new schemas.PhotoModel({
         name: 'profile',
         reviewerName: req.body.user.name,
-        data: req.body.user.image
+        data: req.body.user.imagePath
     });
     var newReviewerSchema = new schemas.ReviewerModel({
         name: req.body.user.name,
-        location:req.body.location,
+        location:req.body.user.location,
         profilePhoto: photoSchema,
         reviews: [],
         photos: []
@@ -89,12 +88,11 @@ app.post('/add_user', function (req, res) {
 
 app.post('/add_rev', function (req, res) {
     res.setHeader('Content-Type', 'application/json');
+    console.log('current userrrrrrrrrrrrrrrrr ',req.body);
     let collection = database.collection('reviewermodels');
-    collection.findOne({'name':req.body.payload.currentUser}, function (err, user) {
-        user.review.push()
-    })
-
-
+    console.log('current user ////////////// ',req.body.currentUser);
+    console.log('current userrrrrrrrrrrrrrrrr ',req.body);
+    collection.updateOne({'name':req.body.currentUser},{ $push: { reviews: req.body }})
 });
 
 
@@ -115,25 +113,3 @@ app.post('/get_all_users', function (req, res) {
        // console.log(JSON.stringify(userObj));
     //res.end(JSON.stringify({'hello':'hi'}))
     });
-
-
-
-
-
-
-/*
-    var imageBuffer = res.body.bin;
-    var imageName = '/home/ameer/Desktop/image.jpg';
-
-    fs.createWriteStream(imageName).write(imageBuffer);
- */
-
-
-/*
-var place = new schemas.PlaceModel({name:"restaurantTwo",address:"London",rating:5})
-console.log(("hello"))
-place.save(function (err, place) {
-    if (err) return console.error(err);
-    console.log(place.name + " saved to bookstore collection.");
-});
-*/

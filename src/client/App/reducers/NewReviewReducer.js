@@ -22,7 +22,8 @@ const NewReviewReducer = (state = initialState.newReview, action) => {
             state = state.set('location', action.payload.location);
             return state;
         case NewReviewConstants.ADD_IMAGES:
-            state = state.set('imgs', state.get('imgs').concat(fromJS(action.payload.files)));
+            let allImages = action.payload.files.map(x => URL.createObjectURL(x));
+            state = state.set('imgs', state.get('imgs').concat(fromJS(allImages)));
             return state;
         case NewReviewConstants.RESET_FORM:
             state = state.set('name', "");

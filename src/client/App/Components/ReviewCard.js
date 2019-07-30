@@ -84,6 +84,7 @@ const mapStateToProps = (state, ownProps) => {
         delivery: ownProps.delivery,
         food: ownProps.food,
         openEditReview: ownProps.openEditReview,
+        img: ownProps.img,
     }
 };
 export default (connect(mapStateToProps)(ReviewCard));

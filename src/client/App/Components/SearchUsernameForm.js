@@ -10,7 +10,7 @@ class SearchUsernameForm extends React.Component {
     render() {
         let userProfiles = this.props.selectedUsers.map((x) => {
             let entry = x.toJS();
-            return <UserProfileCard img={entry.imagePath} username={x.username}
+            return <UserProfileCard img={entry.imagePath} username={entry.username}
                                     location={entry.location} showButtons={false}/>
         });
         return (

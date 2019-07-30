@@ -19,6 +19,7 @@ export default {
         currentUsername: "",
         currentLocation: "",
         errorUsername : "",
+        relativeImagePath:"",
         currentImagePath: "",
         errorImage: "please pick an image!",
         openEditName: false,

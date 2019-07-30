@@ -53,6 +53,7 @@ class UserImageReg extends React.Component
 const mapStateToProps = (state) => {
     return {
         imagePath : state['currentUser'].get("currentImagePath"),
+        relativeImagePath: state['currentUser'].get("relativeImagePath"),
         errorImage: state['currentUser'].get("errorImage"),
     }
 };
@@ -60,9 +61,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addImageHandler: (acceptedFiles) => {
-            let reader = new FileReader();
-            acceptedFiles = acceptedFiles.map(x => reader.readAsDataURL(x));
-            console.log(acceptedFiles);
+            console.log('file type ////////////', acceptedFiles[0])
             dispatch(CurrentUserActions.addImage(acceptedFiles));
         },
     }

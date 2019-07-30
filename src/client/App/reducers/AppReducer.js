@@ -2,6 +2,7 @@ import initialState from "../initialState";
 import AppConstants from "../Constants/AppConstants";
 const {fromJS} = require('immutable');
 
+
 const AppReducer = (state = initialState.app, action) => {
     console.log('AppReducerState=', state);
     console.log('RECEIVED ACTION:', action);
@@ -14,9 +15,8 @@ const AppReducer = (state = initialState.app, action) => {
             state = state.set('users', fromJS(allUsers));
             return state;
         case AppConstants.ADD_USER:
-            let reader = new FileReader();
             state = state.set('users', state.get('users').push(fromJS(
-                {username: action.payload.username, imagePath: reader.readAsDataURL(action.payload.imagePath),
+                {username: action.payload.username, imagePath: action.payload.imagePath,
                     location: action.payload.location,
                 reviews: [], id: state.get('usersId')})));
             state = state.set('usersId', state.get('usersId') + 1);

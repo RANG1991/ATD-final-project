@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.1.3",
     "@material-ui/icons": "latest",
+    "base64-to-image": "^1.0.2",
     "clsx": "latest",
     "history": "latest",
     "image-to-base64": "^2.0.1",

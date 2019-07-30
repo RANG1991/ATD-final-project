@@ -10,6 +10,7 @@ const CurrentUserReducer = (state = initialState.currentUser, action) => {
             state = state.set('currentUsername', '');
             state = state.set('currentLocation', '');
             state = state.set('currentImagePath', '');
+            state = state.set('relativeImagePath', '');
             state = state.set('errorImage', 'please pick an image!');
             return state;
         case CurrentUserConstants.USER_NAME_ERROR:
@@ -24,7 +25,8 @@ const CurrentUserReducer = (state = initialState.currentUser, action) => {
                 return state;
         case CurrentUserConstants.ADD_IMAGE:
             if (action.payload.acceptedFiles.length === 1) {
-                state = state.set('currentImagePath', action.payload.acceptedFiles[0]);
+                state = state.set('currentImagePath', URL.createObjectURL(action.payload.acceptedFiles[0]));
+                state = state.set('relativeImagePath',action.payload.acceptedFiles[0]);
                 state = state.set('errorImage', "")
             } else if (action.payload.acceptedFiles.length > 1) {
                 state = state.set('errorImage', "you have to choose only one image!")
@@ -49,7 +51,8 @@ const CurrentUserReducer = (state = initialState.currentUser, action) => {
             state = state.set('usernameLogin', action.payload.name);
             return state;
         case CurrentUserConstants.CHANGE_IMAGE:
-            state = state.set('currentImagePath', action.payload.image);
+            state = state.set('currentImagePath',URL.createObjectURL(action.payload.image));
+            state = state.set('relativeImagePath', action.payload.image);
             return state;
         default:
             return state;

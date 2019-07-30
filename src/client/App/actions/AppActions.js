@@ -1,25 +1,9 @@
 import AppConstants from "../Constants/AppConstants"
 
-function addUser(username, location, imagePath) {
-    return {
-        type: AppConstants.ADD_USER,
-        payload: {username: username, imagePath: imagePath, location: location}
-    }
-}
-
-function addUserSaga(username, location, imagePath) {
+function addUserSaga(username, location, imagePath,relativeImagePath) {
     return {
         type: AppConstants.ADD_USER_SAGA,
-        payload: {username: username, imagePath: imagePath, location: location}
-    }
-}
-
-function addRestaurant(name, location, images, bathroom, staff, cleanliness, drive, delivery, food, currentUser) {
-    return {
-        type: AppConstants.ADD_RESTAURANT,
-        payload: {name: name, location: location, images: images, bathroom: bathroom,
-            staff: staff, cleanliness: cleanliness,
-            drive: drive, delivery: delivery, food: food, currentUser: currentUser}
+        payload: {username: username, imagePath: imagePath,relativeImagePath:relativeImagePath, location: location}
     }
 }
 
@@ -68,13 +52,6 @@ function editRestaurant(id, bathroom, staff, cleanliness, drive, delivery, food,
    }
 }
 
-function getAllUsers() {
-    return {
-        type: AppConstants.GET_ALL_USERS,
-        payload:{}
-    }
-}
-
 function openDialogEditReview(id, currentUser, open) {
     return {
         type: AppConstants.OPEN_DIALOG_EDIT_REVIEW,
@@ -96,15 +73,12 @@ function getAllUsersSaga() {
 }
 
 let AppActions  = {
-    addUser,
     addUserSaga,
-    addRestaurant,
     addRestaurantSaga,
     changeUsernameApp,
     changeLocationApp,
     deleteReview,
     editRestaurant,
-    getAllUsers,
     getAllUsersSaga,
     openDialogEditReview,
     openDeleteReview,
