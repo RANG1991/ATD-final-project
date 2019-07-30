@@ -1,70 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56aca0d3-7b44-443c-b2a9-680487b8e959" name="Default Changelist" comment="add user profile components">
-      <change afterPath="$PROJECT_DIR$/src/client/App/Constants/AllReviewsConstants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/App/actions/AllReviewsActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/App/reducers/AllReviewsReducer.js" afterDir="false" />
+    <list default="true" id="56aca0d3-7b44-443c-b2a9-680487b8e959" name="Default Changelist" comment="fixing advanced search ability">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Components/DeleteReviewDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/DeleteReviewDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Components/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/NavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Components/ReviewsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/ReviewsView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Constants/NavigationConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Constants/NavigationConstants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/actions/NavigationActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/actions/NavigationActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/initialState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/initialState.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/reducers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/reducers/AppReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/reducers/AppReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/reducers/NavigationReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/reducers/NavigationReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/Components/UserDetailsReg.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/UserDetailsReg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/Sagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Sagas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/reducers/SearchUsernameReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/reducers/SearchUsernameReducer.js" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/.tmp/" />
-    <ignored path="$PROJECT_DIR$/temp/" />
-    <ignored path="$PROJECT_DIR$/tmp/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/App/reducers/AppReducer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/App/Components/ReviewsView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="10" column="94" selection-start-line="10" selection-start-column="94" selection-end-line="10" selection-end-column="94" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/client/App/Components/NavBar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136">
-              <caret line="40" column="25" lean-forward="true" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -73,104 +20,16 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>src/index.js</find>
-      <find>handleSubmit</find>
-      <find>'app'</find>
-      <find>home</find>
-      <find>displayMenu</find>
-      <find>ButtonApp</find>
-      <find>add_image</find>
-      <find>add</find>
-      <find>on</find>
-      <find>changeLo</find>
-      <find>CHANGE_REGISTRATION_SUCCESS</find>
-      <find>register</find>
-      <find>fullwi</find>
-      <find>src</find>
-      <find>imageGrid</find>
-      <find>update</find>
-      <find>imgs</find>
-      <find>URL.</find>
-      <find>files</find>
-      <find>RESET</find>
-      <find>RESET_CU</find>
-      <find>reset</find>
-      <find>users</find>
-      <find>restaurants</find>
-      <find>URL.crea</find>
-      <find>currentImagePath</find>
-      <find>currentImagePAth</find>
-      <find>ImageGrid</find>
-      <find>changeUsernameApp</find>
-      <find>alert</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Ran" />
       </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/client/App/Components/NavBar/NavBar.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/UserDetailsReg/UserDetailsReg.js" />
-        <option value="$PROJECT_DIR$/src/client/App/reducers/navBarReducer.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Constants.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Constants/userConstants.js" />
-        <option value="$PROJECT_DIR$/src/client/App/reducers/UserReducer.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Constants/newReviewConstants.js" />
-        <option value="$PROJECT_DIR$/src/client/App/actions/newReviewActions.js" />
-        <option value="$PROJECT_DIR$/src/client/App/reducers/newReviewReducer.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/ImagesGrid.js" />
-        <option value="$PROJECT_DIR$/src/client/App/actions/NewReviewActions.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Constants/NewReviewConstants.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/ImageGrid.js" />
-        <option value="$PROJECT_DIR$/src/client/App/localStorage.js" />
-        <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/UserProfile.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/UsersProfilesView.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/UserImageReg.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/UsersProfileView.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/UserProfileGrid.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/ReviewGrid.js" />
-        <option value="$PROJECT_DIR$/src/client/App/reducers/NewReviewReducer.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/ReviewForm.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/EditButton.js" />
-        <option value="$PROJECT_DIR$/src/client/App/reducers/UserProfileReducer.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/EditDialog.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/UserDetailsReg.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/EditDialogName.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/EditDialogLocation.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/UserProfileCard.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Constants/AppConstants.js" />
-        <option value="$PROJECT_DIR$/src/client/App/actions/AppActions.js" />
-        <option value="$PROJECT_DIR$/src/client/App/reducers/CurrentUserReducer.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Constants/CurrentUserConstants.js" />
-        <option value="$PROJECT_DIR$/src/client/App/actions/CurrentUserActions.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/ReviewCard.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/UserProfileView.js" />
-        <option value="$PROJECT_DIR$/src/client/App/App.js" />
-        <option value="$PROJECT_DIR$/src/client/App/reducers/AppReducer.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/DeleteReviewDialog.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Constants/AllReviewsActions.js" />
-        <option value="$PROJECT_DIR$/src/client/App/actions/AllReviewsActions.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Constants/AllReviewsConstants.js" />
-        <option value="$PROJECT_DIR$/src/client/App/reducers/AllReviewsReducer.js" />
-        <option value="$PROJECT_DIR$/src/client/App/reducers.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Constants/NavigationConstants.js" />
-        <option value="$PROJECT_DIR$/src/client/App/initialState.js" />
-        <option value="$PROJECT_DIR$/src/client/App/actions/NavigationActions.js" />
-        <option value="$PROJECT_DIR$/src/client/App/reducers/NavigationReducer.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/ReviewsView.js" />
-        <option value="$PROJECT_DIR$/src/client/App/Components/NavBar.js" />
-      </list>
-    </option>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/client/App/Components/EditReviewDialog.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -178,85 +37,12 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="948" />
-    <option name="width" value="981" />
-    <option name="height" value="1032" />
-  </component>
+  <component name="ProjectId" id="1ORtW03pmyl2aWDum3VU3nCr8sW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="atd-192" type="b2602c69:ProjectViewProjectNode" />
-              <item name="atd-192" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atd-192" type="b2602c69:ProjectViewProjectNode" />
-              <item name="atd-192" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atd-192" type="b2602c69:ProjectViewProjectNode" />
-              <item name="atd-192" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atd-192" type="b2602c69:ProjectViewProjectNode" />
-              <item name="atd-192" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atd-192" type="b2602c69:ProjectViewProjectNode" />
-              <item name="atd-192" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
-              <item name="actions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atd-192" type="b2602c69:ProjectViewProjectNode" />
-              <item name="atd-192" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atd-192" type="b2602c69:ProjectViewProjectNode" />
-              <item name="atd-192" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
-              <item name="Constants" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atd-192" type="b2602c69:ProjectViewProjectNode" />
-              <item name="atd-192" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
-              <item name="reducers" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
-  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/react-redux-saga-express-mongoose" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -267,12 +53,15 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2018.3.5\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Webstorme_modules\atd-192\src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Webstorme_modules\atd-192\src\client\App" />
+      <recent name="C:\Users\Admin\Webstorme_modules\atd-192\src\client" />
       <recent name="C:\Users\Admin\Webstorme_modules\atd-192\src\client\App\Components" />
       <recent name="C:\Users\Admin\Webstorme_modules\atd-192\src\client\App\Constants" />
       <recent name="C:\Users\Admin\Webstorme_modules\atd-192\src\client\App\actions" />
-      <recent name="C:\Users\Admin\Webstorme_modules\atd-192\src\client\App\reducers" />
-      <recent name="C:\Users\Admin\Webstorme_modules\atd-192\src\client\App\Components\ReviewForm" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -293,6 +82,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.server.js" />
+        <item itemvalue="Node.js.server.js" />
+        <item itemvalue="Node.js.server.js" />
+        <item itemvalue="Node.js.server.js" />
         <item itemvalue="Node.js.server.js" />
       </list>
     </recent_temporary>
@@ -316,7 +109,21 @@
       <workItem from="1563455148719" duration="11944000" />
       <workItem from="1563470288509" duration="3310000" />
       <workItem from="1563517243450" duration="50608000" />
-      <workItem from="1563686192202" duration="6588000" />
+      <workItem from="1563686192202" duration="54592000" />
+      <workItem from="1563856728334" duration="2143000" />
+      <workItem from="1563880157765" duration="9975000" />
+      <workItem from="1563952206967" duration="14000" />
+      <workItem from="1563952269415" duration="1358000" />
+      <workItem from="1563965882015" duration="1344000" />
+      <workItem from="1564301150782" duration="3750000" />
+      <workItem from="1564318697359" duration="9685000" />
+      <workItem from="1564363994231" duration="11260000" />
+      <workItem from="1564395771802" duration="1293000" />
+      <workItem from="1564398776896" duration="11327000" />
+      <workItem from="1564410245402" duration="5349000" />
+      <workItem from="1564417899086" duration="12899000" />
+      <workItem from="1564471984631" duration="35157000" />
+      <workItem from="1564509083634" duration="4845000" />
     </task>
     <task id="LOCAL-00001" summary="changing project structure and adding menu">
       <created>1563255007007</created>
@@ -395,40 +202,136 @@
       <option name="project" value="LOCAL" />
       <updated>1563644917550</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add reviews sort ability">
+      <created>1563692829504</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1563692829504</updated>
+    </task>
+    <task id="LOCAL-00013" summary="add reviews search ability">
+      <created>1563727628494</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1563727628494</updated>
+    </task>
+    <task id="LOCAL-00014" summary="add reviews search ability">
+      <created>1563774921703</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1563774921703</updated>
+    </task>
+    <task id="LOCAL-00015" summary="add user search ability">
+      <created>1563793033265</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1563793033265</updated>
+    </task>
+    <task id="LOCAL-00016" summary="fixing search ability">
+      <created>1563808839524</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1563808839524</updated>
+    </task>
+    <task id="LOCAL-00017" summary="adding login ability">
+      <created>1563816854217</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1563816854217</updated>
+    </task>
+    <task id="LOCAL-00018" summary="fixing new review form and adding place autocompletion">
+      <created>1563903570137</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1563903570137</updated>
+    </task>
+    <task id="LOCAL-00019" summary="adding editing review ability">
+      <created>1564337772755</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1564337772755</updated>
+    </task>
+    <task id="LOCAL-00020" summary="fixing search ability">
+      <created>1564364108699</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1564364108699</updated>
+    </task>
+    <task id="LOCAL-00021" summary="fixing advanced search ability">
+      <created>1564367168124</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1564367168124</updated>
+    </task>
+    <task id="LOCAL-00022" summary="fixing advanced search ability">
+      <created>1564413765945</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1564413765945</updated>
+    </task>
+    <task id="LOCAL-00023" summary="fixing advanced search ability">
+      <created>1564417926855</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1564417926855</updated>
+    </task>
+    <task id="LOCAL-00024" summary="fixing edit and delete review ability">
+      <created>1564467621757</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1564467621757</updated>
+    </task>
+    <task id="LOCAL-00025" summary="adding keys and removing anchor (very small change)">
+      <created>1564470001755</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1564470001755</updated>
+    </task>
+    <task id="LOCAL-00026" summary="fixing advanced search ability">
+      <created>1564486029032</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1564486029032</updated>
+    </task>
+    <task id="LOCAL-00027" summary="integrating with server">
+      <created>1564506995169</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1564506995169</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173660000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49909255" visible="true" weight="0.25596184" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" sideWeight="0.5009074" side_tool="true" weight="0.2498642" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.3285968" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.3285968" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.3991276" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3293348" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.39431617" />
-      <window_info anchor="bottom" id="TypeScript" order="12" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="changing project structure and adding menu" />
@@ -439,371 +342,17 @@
     <MESSAGE value="added list of reviews" />
     <MESSAGE value="add user profile components" />
     <MESSAGE value="add delete review and edit user name and location" />
-    <option name="LAST_COMMIT_MESSAGE" value="add delete review and edit user name and location" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/server/models/Schemas.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="15" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-bootstrap/dist/react-bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="17670" column="26" selection-start-line="17670" selection-start-column="26" selection-end-line="17670" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/mongoose/lib/helpers/update/modifiedPaths.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3264" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="28" lean-forward="true" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Constants.js" />
-    <entry file="file://$PROJECT_DIR$/src/client/App/Components/ReviewForm/actions.js" />
-    <entry file="file://$PROJECT_DIR$/src/client/App/Components/ReviewForm/Constants.js" />
-    <entry file="file://$PROJECT_DIR$/src/client/App/reducers/ReviewFormReducer.js" />
-    <entry file="file://$PROJECT_DIR$/node_modules/@material-ui/core/MenuItem/MenuItem.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@material-ui/core/styles/createSpacing.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/static/js/main.b47966d7.chunk.js.map">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1270" selection-start-column="1270" selection-end-column="1270" />
-        </state>
-      </provider>
-      <provider editor-type-id="sourcemapFileViewerProvider" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/localStorage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Components/ImageGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-132">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/actions/NewReviewActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Constants/NewReviewConstants.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/reducers/UserProfileReducer.js" />
-    <entry file="file://$PROJECT_DIR$/src/client/App/Components/UserDetailsReg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="769">
-          <caret line="63" column="16" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Components/EditNameDialog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-748">
-          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Components/ReviewForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1309">
-          <caret line="85" column="15" lean-forward="true" selection-start-line="85" selection-start-column="15" selection-end-line="85" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Components/EditLocationDialog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-98">
-          <caret line="11" column="47" lean-forward="true" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/actions/CurrentUserActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1024">
-          <caret line="78" column="26" lean-forward="true" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/reducers/CurrentUserReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="43" column="25" lean-forward="true" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Constants/CurrentUserConstants.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="59" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Components/UserImageReg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="35" column="14" lean-forward="true" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-132">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Components/UserProfileCard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-353">
-          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Components/UserProfileView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Components/DeleteReviewDialog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="63" column="5" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Components/ReviewCard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/actions/AppActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="41" column="9" lean-forward="true" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/reducers/NewReviewReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Constants/AppConstants.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="34" lean-forward="true" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/actions/AllReviewsActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Constants/AllReviewsConstants.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/reducers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/reducers/AllReviewsReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="58" selection-start-line="3" selection-start-column="58" selection-end-line="3" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Constants/NavigationConstants.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/actions/NavigationActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="66" column="21" lean-forward="true" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/reducers/NavigationReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="21" column="70" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/initialState.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-391">
-          <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/reducers/AppReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Components/ReviewsView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="94" selection-start-line="10" selection-start-column="94" selection-end-line="10" selection-end-column="94" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/App/Components/NavBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="40" column="25" lean-forward="true" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <MESSAGE value="add reviews sort ability" />
+    <MESSAGE value="add reviews search ability" />
+    <MESSAGE value="add user search ability" />
+    <MESSAGE value="adding login ability" />
+    <MESSAGE value="fixing new review form and adding place autocompletion" />
+    <MESSAGE value="adding editing review ability" />
+    <MESSAGE value="fixing search ability" />
+    <MESSAGE value="fixing edit and delete review ability" />
+    <MESSAGE value="adding keys and removing anchor (very small change)" />
+    <MESSAGE value="fixing advanced search ability" />
+    <MESSAGE value="integrating with server" />
+    <option name="LAST_COMMIT_MESSAGE" value="integrating with server" />
   </component>
 </project>

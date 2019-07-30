@@ -8,9 +8,8 @@ import AppActions from "../actions/AppActions";
 import NavigationActions from "../actions/NavigationActions";
 import PlacesAutocomplete from 'react-places-autocomplete';
 
-
 export const checkIfUserNameExists = (username, users) => {
-   return users.get(username) !== undefined;
+   return users.findIndex(i => i.get('username') === username) !== -1;
 };
 
 class UserDetailsReg extends React.Component

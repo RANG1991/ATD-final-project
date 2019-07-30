@@ -14,13 +14,16 @@ const SearchUsernameReducer = (state = initialState.userSearch, action) => {
             return state;
         case SearchUsernameConstants.ON_CLICK_SEARCH_USER:
             let users = [];
-            if (state.get('username') !== ''){
+            if (state.get('username') !== '' && state.get('location') === ''){
                 users = action.payload.users.filter(m => m.get('username') === state.get('username'));
             }
-            if (state.get('location') !== ''){
+            else if (state.get('username') === '' && state.get('location') !== ''){
                 users = action.payload.users.filter(m => m.get('location') === state.get('location'));
             }
-            console.log(users);
+            else if (state.get('username') !== '' && state.get('location') !== '') {
+                users = action.payload.users.filter(m => m.get('location') === state.get('location'));
+                users = users.filter(m => m.get('username') === state.get('username'));
+            }
             state = state.set('users', fromJS(users));
             return state;
         default:
