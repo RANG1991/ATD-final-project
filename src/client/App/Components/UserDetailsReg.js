@@ -89,7 +89,7 @@ const mapDispatchToProps = (dispatch) => {
                 dispatch(CurrentUserActions.usernameError());
             }
             else if (currentImagePath !== "" && currentLocation !== "" && currentUsername !== "") {
-                dispatch(AppActions.addUser(currentUsername, currentLocation, currentImagePath));
+                dispatch(AppActions.addUserSaga(currentUsername, currentLocation, currentImagePath));
                 dispatch(NavigationActions.onRegistrationSuccessChange(true));
                 dispatch(NavigationActions.onChangeRoute("/welcome_" + currentUsername));
             }

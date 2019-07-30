@@ -21,7 +21,7 @@ class UserImageReg extends React.Component
         let img = null;
         if (this.props.imagePath !== '')
         {
-            img = <ImageGrid img={URL.createObjectURL(this.props.imagePath)}/>
+            img = <ImageGrid img={this.props.imagePath}/>
         }
         return (<Grid
                 container
@@ -60,6 +60,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addImageHandler: (acceptedFiles) => {
+            let reader = new FileReader();
+            acceptedFiles = acceptedFiles.map(x => reader.readAsDataURL(x));
+            console.log(acceptedFiles);
             dispatch(CurrentUserActions.addImage(acceptedFiles));
         },
     }

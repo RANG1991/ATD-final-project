@@ -23,6 +23,15 @@ function addRestaurant(name, location, images, bathroom, staff, cleanliness, dri
     }
 }
 
+function addRestaurantSaga(name, location, images, bathroom, staff, cleanliness, drive, delivery, food, currentUser) {
+    return {
+        type: AppConstants.ADD_RESTAURANT_SAGA,
+        payload: {name: name, location: location, images: images, bathroom: bathroom,
+            staff: staff, cleanliness: cleanliness,
+            drive: drive, delivery: delivery, food: food, currentUser: currentUser}
+    }
+}
+
 function changeUsernameApp(oldName, newName) {
     return {
         type: AppConstants.CHANGE_USERNAME_APP,
@@ -90,6 +99,7 @@ let AppActions  = {
     addUser,
     addUserSaga,
     addRestaurant,
+    addRestaurantSaga,
     changeUsernameApp,
     changeLocationApp,
     deleteReview,

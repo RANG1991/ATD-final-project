@@ -6,7 +6,8 @@ import {Typography} from "@material-ui/core";
 
 class UserProfileView extends React.Component {
     render() {
-        let allUserReviews = this.props.users.getIn([this.props.user, 'reviews']);
+        const idxToUpdate = this.props.users.findIndex(i => i.get('username') ===this.props.user);
+        let allUserReviews = this.props.users.getIn([idxToUpdate, 'reviews']);
         let restaurants = allUserReviews.map((x) =>{
             x = x.toJS();
             return <ReviewCard name={x.name} location={x.location} bathroom={x.bathroom} staff={x.staff}
@@ -17,7 +18,7 @@ class UserProfileView extends React.Component {
                                openEditReview={x.openEditReview}/>
         });
         return (<div className={{flexGrow: 1}}>
-            <UserProfileCard img={URL.createObjectURL(this.props.image)} username={this.props.user}
+            <UserProfileCard img={this.props.image} username={this.props.user}
                              location={this.props.location} showButtons={this.props.showButtons}/>
             {<Typography variant="h4" gutterBottom>
                 Reviews:

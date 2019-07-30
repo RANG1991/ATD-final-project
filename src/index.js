@@ -11,22 +11,13 @@ import {watchDataPass} from './client/App/Sagas'
 import {loadState, saveState} from "./client/App/localStorage";
 
 //localStorage.clear();
-const sagaMiddleware = createSagaMiddleware()
-const persistedState = loadState();
+const sagaMiddleware = createSagaMiddleware();
 
 export const history = createBrowserHistory();
 
 
-const store = createStore(reducers, persistedState,applyMiddleware(sagaMiddleware));
-sagaMiddleware.run(watchDataPass)
-store.subscribe(throttle(() => {
-    let newState = {};
-    let oldState = store.getState();
-    for (let key in oldState){
-        newState[key] = oldState[key].toJS();
-    }
-    saveState(newState);
-}, 1000));
+const store = createStore(reducers, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(watchDataPass);
 
 ReactDOM.render(
     <Provider store={store}>

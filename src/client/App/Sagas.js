@@ -5,6 +5,20 @@ let fs = require('fs');
 let request = require('request');
 const image2base64 = require('image-to-base64');
 
+function getBase64(file, cb) {
+    let reader = new FileReader();
+    //foreach()
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        cb(reader.result)
+    };
+    reader.onerror = function (error) {
+        console.log('Error: ', error);
+    };
+}
+
+
+
 function* addUser(action) {
 
     image2base64('/home/ameer/Pictures/image.jpg')
@@ -42,6 +56,21 @@ function* addUser(action) {
     yield put({type:AppConstants.ADD_USER ,payload:action.payload});
 }
 
+
+function* getRes(action){
+    const res =yield   call(fetch,'http://localhost:8000/add_rev',{
+
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({action: "getUsers"})
+
+
+    });
+
+
+}
 function* getAllUsers(action){
 
     const res =yield   call(fetch,'http://localhost:8000/get_all_users',{
@@ -50,7 +79,7 @@ function* getAllUsers(action){
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({action: "getUsers"})
+        body: JSON.stringify({review:action.payload })
 
 
     });
@@ -63,6 +92,7 @@ function* getAllUsers(action){
 export function* watchDataPass() {
     yield takeEvery(AppConstants.GET_ALL_USERS_SAGA, getAllUsers);
     yield takeEvery(AppConstants.ADD_USER_SAGA, addUser);
+    //yield takeEvery(AppConstants.ADD_RESTAURANT_SAGA, addRES);
 }
 
 

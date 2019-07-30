@@ -18,11 +18,9 @@ import {connect} from "react-redux";
 class App extends React.Component {
     componentDidMount() {
         this.props.handleGetAllUsers();
-        window.addEventListener("beforeunload", () => localStorage.clear());
     }
 
     componentWillUnmount() {
-        window.removeEventListener('onbeforeunload', () => localStorage.clear());
     }
 
     render() {

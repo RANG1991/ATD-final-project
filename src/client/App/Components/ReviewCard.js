@@ -50,7 +50,7 @@ function ReviewCard(props) {
     return (<Paper>
             <Grid container justify="center" spacing={0}>
                 <Grid item xs={6}>
-                    {img !== null && <img alt="complex" className={classes.img} src={URL.createObjectURL(img)}/>}
+                    {img !== null && <img alt="complex" className={classes.img} src={img}/>}
                 </Grid>
                 <Grid item xs={4}>
                     <Typography gutterBottom variant="subtitle1">

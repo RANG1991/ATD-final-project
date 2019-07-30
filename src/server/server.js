@@ -87,22 +87,16 @@ app.post('/add_user', function (req, res) {
     res.end(JSON.stringify({ reqBody: req.body }));
 });
 
-
-app.post('/get_user/', function (req, res) {
-
+app.post('/add_rev', function (req, res) {
     res.setHeader('Content-Type', 'application/json');
-
-    var user =schemas.ReviewerModel
-
-    user.findOne({name: req.body.username}, 'name profilePhoto reviews photos', function (err, userObj) {
-        if (err) {
-            res.end(JSON.stringify({}));
-        }
-        console.log(JSON.stringify(userObj));
-        res.end(JSON.stringify(userObj));
+    let collection = database.collection('reviewermodels');
+    collection.findOne({'name':req.body.payload.currentUser}, function (err, user) {
+        user.review.push()
     })
 
+
 });
+
 
 app.post('/get_all_users', function (req, res) {
 

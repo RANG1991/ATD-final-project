@@ -6,16 +6,19 @@ const AppReducer = (state = initialState.app, action) => {
     console.log('AppReducerState=', state);
     console.log('RECEIVED ACTION:', action);
     let allReviews = null;
+    let idxToUpdate = null;
     switch (action.type) {
         case AppConstants.GET_ALL_USERS:
-            let allUsers = action.payload.map(x => ({username: x.name, imagePath: x.profilePhoto.data,
+            let allUsers = action.payload.map(x => ({username: x.name, imagePath: x.profilePhoto.data, location: x.location,
                                                     reviews: x.reviews, id: x._id}));
             state = state.set('users', fromJS(allUsers));
             return state;
         case AppConstants.ADD_USER:
-            state = state.setIn(['users', action.payload.username],
-                fromJS({location: action.payload.location,
-                imagePath: action.payload.imagePath, id: state.get('usersId'), reviews: []}));
+            let reader = new FileReader();
+            state = state.set('users', state.get('users').push(fromJS(
+                {username: action.payload.username, imagePath: reader.readAsDataURL(action.payload.imagePath),
+                    location: action.payload.location,
+                reviews: [], id: state.get('usersId')})));
             state = state.set('usersId', state.get('usersId') + 1);
             return state;
         case AppConstants.ADD_RESTAURANT:
@@ -25,22 +28,20 @@ const AppReducer = (state = initialState.app, action) => {
                 currentUser: action.payload.currentUser, id: state.get('reviewsId'), date: String(new Date().getDate()),
                 openDeleteReview: false, openEditReview: false};
             state = state.set('reviewsId', state.get('reviewsId') + 1);
-            state = state.updateIn(['users', action.payload.currentUser, 'reviews'], e => e.push(fromJS(review)));
+             idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.currentUser);
+            state = state.setIn(['users',idxToUpdate,'reviews'],state.get('users').get(idxToUpdate).get('reviews').push(fromJS(review)));
             return state;
         case AppConstants.CHANGE_USERNAME_APP:
-                state = state.update('users', e => e.mapKeys(k => {
-                    if (k === action.payload.oldName) {
-                        return action.payload.newName;
-                    } else {
-                        return k;
-                    }
-                }));
+             idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.oldName);
+            state = state.setIn(['users', idxToUpdate ,'username'],action.payload.newName);
             return state;
         case AppConstants.CHANGE_LOCATION_APP:
-            state = state.setIn(['users', action.payload.username, 'location'],  action.payload.newLocation);
+            idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.username);
+            state = state.setIn(['users', idxToUpdate, 'location'],  action.payload.newLocation);
             return state;
         case AppConstants.DELETE_REVIEW:
-            state = state.updateIn(['users', action.payload.username, 'reviews'],
+            idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.username);
+            state = state.updateIn(['users', idxToUpdate, 'reviews'],
                 function(reviews) {
                     return reviews.filter(function(reviewToDelete) {
                         return reviewToDelete.get("id") !== action.payload.id;
@@ -48,7 +49,8 @@ const AppReducer = (state = initialState.app, action) => {
                 });
             return state;
         case AppConstants.EDIT_REVIEW:
-            allReviews = state.getIn(['users', action.payload.currentUser, 'reviews']);
+            idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.currentUser);
+            allReviews = state.getIn(['users', idxToUpdate, 'reviews']);
             allReviews = allReviews.map(function(reviewToUpdate) {
                         if (reviewToUpdate.get('id') === action.payload.id)
                         {
@@ -64,27 +66,30 @@ const AppReducer = (state = initialState.app, action) => {
                             return reviewToUpdate;
                         }
                     });
-            state = state.setIn(['users', action.payload.currentUser, 'reviews'], allReviews);
+
+            state = state.setIn(['users', idxToUpdate, 'reviews'], allReviews);
             return state;
         case AppConstants.OPEN_DIALOG_EDIT_REVIEW:
-            allReviews = state.getIn(['users', action.payload.currentUser, 'reviews']);
+            idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.currentUser);
+            allReviews = state.getIn(['users', idxToUpdate, 'reviews']);
             allReviews = allReviews.map(function(reviewToUpdate) {
                 if (reviewToUpdate.get('id') === action.payload.id) {
                     reviewToUpdate = reviewToUpdate.set('openEditReview', action.payload.open);
                 }
                 return reviewToUpdate;
             });
-            state = state.setIn(['users', action.payload.currentUser, 'reviews'], allReviews);
+            state = state.setIn(['users', idxToUpdate, 'reviews'], allReviews);
             return state;
         case AppConstants.OPEN_DIALOG_DELETE_REVIEW:
-            allReviews = state.getIn(['users', action.payload.currentUser, 'reviews']);
+            idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.currentUser);
+            allReviews = state.getIn(['users', idxToUpdate, 'reviews']);
             allReviews = allReviews.map(function(reviewToUpdate) {
                 if (reviewToUpdate.get('id') === action.payload.id) {
                     reviewToUpdate = reviewToUpdate.set('openDeleteReview', action.payload.open);
                 }
                 return reviewToUpdate;
             });
-            state = state.setIn(['users', action.payload.currentUser, 'reviews'], allReviews);
+            state = state.setIn(['users', idxToUpdate, 'reviews'], allReviews);
             return state;
         default:
             return state;

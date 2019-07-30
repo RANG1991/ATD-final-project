@@ -9,8 +9,8 @@ import UserProfileCard from "./UserProfileCard";
 class SearchUsernameForm extends React.Component {
     render() {
         let userProfiles = this.props.selectedUsers.map((x) => {
-            let entry = this.props.users.get(x).toJS();
-            return <UserProfileCard img={URL.createObjectURL(entry.imagePath)} username={x}
+            let entry = x.toJS();
+            return <UserProfileCard img={entry.imagePath} username={x.username}
                                     location={entry.location} showButtons={false}/>
         });
         return (

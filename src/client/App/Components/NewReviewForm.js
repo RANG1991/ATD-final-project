@@ -82,7 +82,7 @@ class NewReviewForm extends React.Component {
             imgs = <GridList cellHeight={160} className={classes.margin} cols={9}>
             {this.props.imgs.map(x => (
                     <GridListTile key={x} cols={3}>
-                        <img src={URL.createObjectURL(x)} alt={x} />
+                        <img src={x} alt={x} />
                     </GridListTile>
                 ))}
         </GridList>
@@ -184,6 +184,9 @@ const mapDispatchToProps = (dispatch) => {
                 dispatch(NewReviewActions.changeName(name));
         },
         addImagesHandler: (acceptedFiles) => {
+            console.log(acceptedFiles);
+            let reader = new FileReader();
+            acceptedFiles = acceptedFiles.map(x => reader.readAsDataURL(x));
             dispatch(NewReviewActions.addImages(acceptedFiles))
         },
         onLocationChange: (location) => {
