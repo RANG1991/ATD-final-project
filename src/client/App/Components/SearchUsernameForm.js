@@ -4,14 +4,34 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import SearchUsernameActions from "../actions/SearchUsernameActions";
 import {connect} from "react-redux";
-import UserProfileCard from "./UserProfileCard";
+import Typography from "@material-ui/core/Typography";
+import Collapse from '@material-ui/core/Collapse';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import IconButton from '@material-ui/core/IconButton';
+import UserProfileView from "./UserProfileView";
+import CardContent from '@material-ui/core/CardContent';
 
 class SearchUsernameForm extends React.Component {
     render() {
         let userProfiles = this.props.selectedUsers.map((x) => {
             let entry = x.toJS();
-            return <UserProfileCard img={entry.imagePath} username={entry.username}
-                                    location={entry.location} showButtons={false}/>
+            console.log("hello", entry.viewProfileInSearch);
+            return <div><Typography>
+                Name: {entry.username}
+                    </Typography>
+                <IconButton
+                    onClick={() => this.props.handleExpandClick(entry.username)}
+                    aria-expanded={entry.viewProfileInSearch}
+                    aria-label="Show more">
+                    <ExpandMoreIcon />
+                </IconButton>
+                <Collapse in={entry.viewProfileInSearch} timeout="auto" unmountOnExit>
+                    <CardContent>
+                        <UserProfileView image={entry.imagePath} user={entry.username} key={entry.username}
+                                         location={entry.location} showButtons={false} showDelete={false}/>
+                    </CardContent>
+                </Collapse>
+            </div>
         });
         return (
             <Grid container justify="center" spacing={0}>
@@ -29,10 +49,7 @@ class SearchUsernameForm extends React.Component {
                                        margin="normal"
                                        variant="outlined"/>
                             <Button variant="contained" style={{margin: 15}}
-                                    onClick={() => {
-                                        this.props.onClickSearch(this.props.users);
-                                    }}
-                            >
+                                    onClick={() => {this.props.onClickSearch(this.props.users);}}>
                                 Search
                             </Button>
                         </form>
@@ -66,6 +83,9 @@ const mapDispatchToProps = (dispatch) => {
         onClickSearch: (users) => {
             dispatch(SearchUsernameActions.onClickSearchUsername(users));
         },
+        handleExpandClick: (user) => {
+            dispatch(SearchUsernameActions.onClickViewProfile(user));
+        }
     }
 };
 

@@ -27,10 +27,18 @@ function onClickSearchUsername(users) {
     }
 }
 
+function onClickViewProfile(username) {
+    return {
+        type: SearchUsernameConstants.ON_CLICK_VIEW_PROFILE,
+        payload: {username}
+    }
+}
+
 let SearchUsernameActions = {
     changeLocationSearchUsername,
     changeNameSearchUsername,
     onClickSearchUsername,
+    onClickViewProfile,
 };
 
 export default SearchUsernameActions;

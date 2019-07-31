@@ -11,15 +11,16 @@ const AppReducer = (state = initialState.app, action) => {
     switch (action.type) {
         case AppConstants.GET_ALL_USERS:
             let allUsers = action.payload.map(x => ({username: x.name, imagePath: x.profilePhoto.data, location: x.location,
-                                                    reviews: x.reviews, id: x._id}));
+                                                    reviews: x.reviews, id: x._id, viewProfileInSearch: false}));
             state = state.set('users', fromJS(allUsers));
             return state;
         case AppConstants.ADD_USER:
-            state = state.set('users', state.get('users').push(fromJS(
+            state = state.update('users', e => e.push(fromJS(
                 {username: action.payload.username, imagePath: action.payload.imagePath,
                     location: action.payload.location,
-                reviews: [], id: state.get('usersId')})));
+                reviews: [], id: state.get('usersId'), viewProfileInSearch: false})));
             state = state.set('usersId', state.get('usersId') + 1);
+            console.log(state);
             return state;
         case AppConstants.ADD_RESTAURANT:
             let review = {name: action.payload.name, location: action.payload.location, images: action.payload.images, bathroom: action.payload.bathroom,
@@ -29,7 +30,7 @@ const AppReducer = (state = initialState.app, action) => {
                 openDeleteReview: false, openEditReview: false};
             state = state.set('reviewsId', state.get('reviewsId') + 1);
              idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.currentUser);
-            state = state.setIn(['users',idxToUpdate,'reviews'],state.get('users').get(idxToUpdate).get('reviews').push(fromJS(review)));
+            state = state.updateIn(['users',idxToUpdate,'reviews'], e => e.push(fromJS(review)));
             return state;
         case AppConstants.CHANGE_USERNAME_APP:
              idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.oldName);

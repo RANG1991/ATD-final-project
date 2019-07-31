@@ -26,6 +26,14 @@ const SearchUsernameReducer = (state = initialState.userSearch, action) => {
             }
             state = state.set('users', fromJS(users));
             return state;
+        case SearchUsernameConstants.ON_CLICK_VIEW_PROFILE:
+            let idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.username);
+            console.log(action.payload.username);
+            console.log(idxToUpdate);
+            let viewProfileBoolean = state.getIn(['users', idxToUpdate, 'viewProfileInSearch']);
+            console.log(!viewProfileBoolean);
+            state = state.setIn(['users', idxToUpdate, 'viewProfileInSearch'], !viewProfileBoolean);
+            return state;
         default:
             return state;
     }

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56aca0d3-7b44-443c-b2a9-680487b8e959" name="Default Changelist" comment="fixing advanced search ability">
+    <list default="true" id="56aca0d3-7b44-443c-b2a9-680487b8e959" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Components/UserDetailsReg.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/UserDetailsReg.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Sagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Sagas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/Components/SearchUsernameForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/SearchUsernameForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/Constants/SearchUsernameConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Constants/SearchUsernameConstants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/actions/SearchUsernameActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/actions/SearchUsernameActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/reducers/AppReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/reducers/AppReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/App/reducers/SearchUsernameReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/reducers/SearchUsernameReducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -123,7 +125,9 @@
       <workItem from="1564410245402" duration="5349000" />
       <workItem from="1564417899086" duration="12899000" />
       <workItem from="1564471984631" duration="35157000" />
-      <workItem from="1564509083634" duration="4845000" />
+      <workItem from="1564509083634" duration="4876000" />
+      <workItem from="1564544998040" duration="2201000" />
+      <workItem from="1564549615610" duration="4128000" />
     </task>
     <task id="LOCAL-00001" summary="changing project structure and adding menu">
       <created>1563255007007</created>
@@ -314,7 +318,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564506995169</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="fixing advanced search ability">
+      <created>1564514015722</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1564514015722</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,8 +362,8 @@
     <MESSAGE value="fixing search ability" />
     <MESSAGE value="fixing edit and delete review ability" />
     <MESSAGE value="adding keys and removing anchor (very small change)" />
-    <MESSAGE value="fixing advanced search ability" />
     <MESSAGE value="integrating with server" />
-    <option name="LAST_COMMIT_MESSAGE" value="integrating with server" />
+    <MESSAGE value="fixing advanced search ability" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing advanced search ability" />
   </component>
 </project>
