@@ -72,6 +72,15 @@ function getAllUsersSaga() {
     }
 }
 
+function handleExpandClick(key) {
+    return {
+        type: AppConstants.OPEN_EXPAND_REVIEW,
+        payload : {
+            key,
+        }
+    }
+}
+
 let AppActions  = {
     addUserSaga,
     addRestaurantSaga,
@@ -82,6 +91,7 @@ let AppActions  = {
     getAllUsersSaga,
     openDialogEditReview,
     openDeleteReview,
+    handleExpandClick,
 };
 
 export default AppActions

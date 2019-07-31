@@ -6,7 +6,7 @@ import {Typography} from "@material-ui/core";
 
 class UserProfileView extends React.Component {
     render() {
-        const idxToUpdate = this.props.users.findIndex(i => i.get('username') ===this.props.user);
+        const idxToUpdate = this.props.users.findIndex(i => i.get('username') === this.props.user);
         let allUserReviews = this.props.users.getIn([idxToUpdate, 'reviews']);
         let restaurants = allUserReviews.map((x) =>{
             x = x.toJS();

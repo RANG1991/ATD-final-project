@@ -15,7 +15,6 @@ class SearchUsernameForm extends React.Component {
     render() {
         let userProfiles = this.props.selectedUsers.map((x) => {
             let entry = x.toJS();
-            console.log("hello", entry.viewProfileInSearch);
             return <div><Typography>
                 Name: {entry.username}
                     </Typography>

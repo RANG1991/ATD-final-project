@@ -6,13 +6,32 @@ const {fromJS} = require('immutable');
 const AppReducer = (state = initialState.app, action) => {
     console.log('AppReducerState=', state);
     console.log('RECEIVED ACTION:', action);
-    let allReviews = null;
     let idxToUpdate = null;
+    let allReviews = null;
+    let locationAndName = null;
     switch (action.type) {
         case AppConstants.GET_ALL_USERS:
             let allUsers = action.payload.map(x => ({username: x.name, imagePath: x.profilePhoto.data, location: x.location,
                                                     reviews: x.reviews, id: x.id, viewProfileInSearch: false}));
             state = state.set('users', fromJS(allUsers));
+            let allReviewsForNameLocation = [];
+            allUsers.forEach((userEntry) => {
+                allReviewsForNameLocation = allReviewsForNameLocation.concat(userEntry['reviews'])
+            });
+            let allReviewsByLocationName = {};
+            for (let i = 0; i < allReviewsForNameLocation.length; i++) {
+                let locationAndName = allReviewsForNameLocation[i].name + "_" + allReviewsForNameLocation[i].location;
+                allReviewsByLocationName[locationAndName] = {};
+                if (!(locationAndName in allReviewsByLocationName)) {
+                    allReviewsByLocationName[locationAndName]['num'] = 1;
+                    allReviewsByLocationName[locationAndName]['expand'] = false;
+                }
+                else {
+                    allReviewsByLocationName[locationAndName]['num'] += 1;
+                }
+            }
+            state = state.set('mapNameLocationReviews', fromJS(allReviewsByLocationName));
+            console.log(state);
             return state;
         case AppConstants.ADD_USER:
             state = state.update('users', e => e.push(fromJS(
@@ -22,7 +41,6 @@ const AppReducer = (state = initialState.app, action) => {
             console.log(state);
             return state;
         case AppConstants.ADD_RESTAURANT:
-            console.log(action.payload.id);
             let review = {name: action.payload.name, location: action.payload.location, images: action.payload.images, bathroom: action.payload.bathroom,
                 staff: action.payload.staff, cleanliness: action.payload.cleanliness,
                 drive: action.payload.drive, delivery: action.payload.delivery, food: action.payload.food,
@@ -30,6 +48,13 @@ const AppReducer = (state = initialState.app, action) => {
                 openDeleteReview: false, openEditReview: false};
             idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.currentUser);
             state = state.updateIn(['users',idxToUpdate,'reviews'], e => e.push(fromJS(review)));
+            locationAndName = action.payload.name + "_" + action.payload.location;
+            if (!state.hasIn(['mapNameLocationReviews', locationAndName])) {
+                state = state.setIn(['mapNameLocationReviews', locationAndName], {num: 1, expand: false});
+            }
+            else {
+                state = state.updateIn(['mapNameLocationReviews', locationAndName, 'num'], e => e + 1);
+            }
             return state;
         case AppConstants.CHANGE_USERNAME_APP:
             idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.oldName);
@@ -41,6 +66,12 @@ const AppReducer = (state = initialState.app, action) => {
             return state;
         case AppConstants.DELETE_REVIEW:
             idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.username);
+            let reviewToGet = state.getIn(['users', idxToUpdate, 'reviews']);
+            locationAndName = reviewToGet.name + "_" + reviewToGet.location;
+            state = state.updateIn(['mapNameLocationReviews', locationAndName, 'num'], e => e - 1);
+            if (state.getIn(['mapNameLocationReviews', locationAndName, 'num']) === 0) {
+                state = state.deleteIn(['mapNameLocationReviews', locationAndName]);
+            }
             state = state.updateIn(['users', idxToUpdate, 'reviews'],
                 function(reviews) {
                     return reviews.filter(function(reviewToDelete) {
@@ -90,6 +121,9 @@ const AppReducer = (state = initialState.app, action) => {
                 return reviewToUpdate;
             });
             state = state.setIn(['users', idxToUpdate, 'reviews'], allReviews);
+            return state;
+        case AppConstants.OPEN_EXPAND_REVIEW:
+            state = state.updateIn(['mapNameLocationReviews', action.payload.key, 'expand'], e => !e);
             return state;
         default:
             return state;

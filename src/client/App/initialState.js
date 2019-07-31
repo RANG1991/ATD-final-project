@@ -4,6 +4,7 @@ export default {
     app:
         Map({
         users: Map({}),
+        mapNameLocationReviews: Map({}),
         }),
     navigation:
         Map({

@@ -8,11 +8,9 @@ import {createBrowserHistory} from "history";
 import createSagaMiddleware from 'redux-saga'
 import {watchDataPass} from './client/App/Sagas'
 
-//localStorage.clear();
 const sagaMiddleware = createSagaMiddleware();
 
 export const history = createBrowserHistory();
-
 
 const store = createStore(reducers, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(watchDataPass);
