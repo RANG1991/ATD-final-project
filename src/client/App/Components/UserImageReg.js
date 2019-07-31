@@ -61,7 +61,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addImageHandler: (acceptedFiles) => {
-            console.log('file type ////////////', acceptedFiles[0])
             dispatch(CurrentUserActions.addImage(acceptedFiles));
         },
     }

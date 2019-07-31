@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="56aca0d3-7b44-443c-b2a9-680487b8e959" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Components/SearchUsernameForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/SearchUsernameForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Constants/SearchUsernameConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Constants/SearchUsernameConstants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/actions/SearchUsernameActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/actions/SearchUsernameActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/reducers/AppReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/reducers/AppReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/reducers/SearchUsernameReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/reducers/SearchUsernameReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/Components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/LoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/Components/UserImageReg.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/UserImageReg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/reducers/CurrentUserReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/reducers/CurrentUserReducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -127,7 +125,7 @@
       <workItem from="1564471984631" duration="35157000" />
       <workItem from="1564509083634" duration="4876000" />
       <workItem from="1564544998040" duration="2201000" />
-      <workItem from="1564549615610" duration="4128000" />
+      <workItem from="1564549615610" duration="5133000" />
     </task>
     <task id="LOCAL-00001" summary="changing project structure and adding menu">
       <created>1563255007007</created>
@@ -325,7 +323,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564514015722</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="fixing user search ability">
+      <created>1564553877789</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1564553877789</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -364,6 +369,7 @@
     <MESSAGE value="adding keys and removing anchor (very small change)" />
     <MESSAGE value="integrating with server" />
     <MESSAGE value="fixing advanced search ability" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing advanced search ability" />
+    <MESSAGE value="fixing user search ability" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing user search ability" />
   </component>
 </project>

@@ -51,7 +51,7 @@ const CurrentUserReducer = (state = initialState.currentUser, action) => {
             state = state.set('usernameLogin', action.payload.name);
             return state;
         case CurrentUserConstants.CHANGE_IMAGE:
-            state = state.set('currentImagePath',URL.createObjectURL(action.payload.image));
+            state = state.set('currentImagePath', action.payload.image);
             state = state.set('relativeImagePath', action.payload.image);
             return state;
         default:

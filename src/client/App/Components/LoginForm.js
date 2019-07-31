@@ -8,7 +8,7 @@ import NavigationActions from "../actions/NavigationActions";
 import Grid from "@material-ui/core/Grid";
 
 export const checkIfUserNameExists = (username, users) => {
-    return users.get(username) !== undefined;
+    return users.findIndex(i => i.get('username') === username) !== -1;
 };
 
 class LoginForm extends React.Component
@@ -53,9 +53,10 @@ const mapDispatchToProps = (dispatch) => {
         onSubmitLogin: (e, usernameLogin,users) => {
             e.preventDefault();
             if (checkIfUserNameExists(usernameLogin, users)) {
+                let idxToUpdate = users.findIndex(i => i.get('username') === usernameLogin);
                 dispatch(CurrentUserActions.changeUserName(usernameLogin));
-                dispatch(CurrentUserActions.changeLocation(users.get(usernameLogin).get('location')));
-                dispatch(CurrentUserActions.changeImage(users.get(usernameLogin).get('imagePath')));
+                dispatch(CurrentUserActions.changeLocation(users.get(idxToUpdate).get('location')));
+                dispatch(CurrentUserActions.changeImage(users.get(idxToUpdate).get('imagePath')));
                 dispatch(NavigationActions.onChangeRoute("/welcome_" + usernameLogin));
                 dispatch(NavigationActions.onRegistrationSuccessChange(true));
             }
