@@ -139,7 +139,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(AppActions.openDialogEditReview(id, username, open))
         },
         onHandleSubmit: (e, id, params, currentUser) => {
-            dispatch(AppActions.editRestaurant(...[id, ...(params.map(x => x.value)), currentUser]));
+            dispatch(AppActions.editRestaurantSaga(...[id, ...(params.map(x => x.value)), currentUser]));
             dispatch(AppActions.openDialogEditReview(id, currentUser,false));
         }
     }

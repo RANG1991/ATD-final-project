@@ -1,6 +1,15 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
+let ReviewsCounterSchema = new Schema({
+   reviewsCounter:Number
+});
+
+
+let UsersCounterSchema = new Schema({
+    usersCounter:Number
+});
+
 let PhotoSchema = new Schema({
     name:String,
     reviewerName:String,
@@ -16,6 +25,7 @@ let PlaceSchema = new Schema({
 
 let ReviewSchema = new Schema({
     restaurant:String,
+    id:Number,
     location: String, images: [String], bathroom: Number,
     staff: Number, cleanliness: Number,
     drive: Number, delivery: Number, food: Number
@@ -23,6 +33,7 @@ let ReviewSchema = new Schema({
 
 let ReviewerSchema = new Schema({
     name:String,
+    id:Number,
     location:String,
     profilePhoto:PhotoSchema,
     reviews:[String],

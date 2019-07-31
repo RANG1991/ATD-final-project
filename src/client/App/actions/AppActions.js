@@ -16,36 +16,36 @@ function addRestaurantSaga(name, location, images, bathroom, staff, cleanliness,
     }
 }
 
-function changeUsernameApp(oldName, newName) {
+function changeUsernameAppSaga(oldName, newName) {
     return {
-        type: AppConstants.CHANGE_USERNAME_APP,
+        type: AppConstants.CHANGE_USERNAME_APP_SAGA,
         payload: {
             oldName, newName
         }
     }
 }
 
-function changeLocationApp(username, newLocation) {
+function changeLocationAppSaga(username, newLocation) {
     return {
-        type: AppConstants.CHANGE_LOCATION_APP,
+        type: AppConstants.CHANGE_LOCATION_APP_SAGA,
         payload: {
             username, newLocation
         }
     }
 }
 
-function deleteReview(username, id) {
+function deleteReviewSaga(username, id) {
     return {
-        type: AppConstants.DELETE_REVIEW,
+        type: AppConstants.DELETE_REVIEW_SAGA,
         payload: {
             username, id
         }
     }
 }
 
-function editRestaurant(id, bathroom, staff, cleanliness, drive, delivery, food, currentUser) {
+function editRestaurantSaga(id, bathroom, staff, cleanliness, drive, delivery, food, currentUser) {
    return {
-       type: AppConstants.EDIT_REVIEW,
+       type: AppConstants.EDIT_REVIEW_SAGA,
        payload: {
            id, bathroom, staff, cleanliness, drive, delivery, food, currentUser
        }
@@ -75,10 +75,10 @@ function getAllUsersSaga() {
 let AppActions  = {
     addUserSaga,
     addRestaurantSaga,
-    changeUsernameApp,
-    changeLocationApp,
-    deleteReview,
-    editRestaurant,
+    changeUsernameAppSaga,
+    changeLocationAppSaga,
+    deleteReviewSaga,
+    editRestaurantSaga,
     getAllUsersSaga,
     openDialogEditReview,
     openDeleteReview,

@@ -56,7 +56,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onDeleteReview: (username, id) => {
-            dispatch(AppActions.deleteReview(username, id));
+            dispatch(AppActions.deleteReviewSaga(username, id));
             dispatch(AppActions.openDeleteReview(id, username, false));
         },
         openDialog: (id, username, open) => {

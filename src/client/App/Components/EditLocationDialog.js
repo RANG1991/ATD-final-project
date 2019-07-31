@@ -65,7 +65,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onChangeLocation: (username, newLocation) => {
-                dispatch(AppActions.changeLocationApp(username, newLocation));
+                dispatch(AppActions.changeLocationAppSaga(username, newLocation));
                 dispatch(CurrentUserActions.changeLocation(newLocation))
         },
         openDialog: (open) => {

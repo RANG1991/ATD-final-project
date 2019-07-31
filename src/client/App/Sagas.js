@@ -4,8 +4,31 @@ let fs = require('fs');
 let request = require('request');
 const image2base64 = require('image-to-base64');
 
+var UsersCounter = 0;
+var ReviewsCounter = 0;
+
+function SetUsersCounter(num){
+    UsersCounter = num;
+}
+
+function SetReviewsCounter(num){
+    ReviewsCounter = num;
+}
+
+
+function GetUsersCounter(){
+    UsersCounter += 1;
+    return UsersCounter;
+}
+
+function GetReviewsCounter(){
+    ReviewsCounter += 1;
+    return ReviewsCounter;
+}
+
 function* addUser(action) {
     console.log('Adding user///////////////////')
+    let currentUserCounter = GetUsersCounter();
     yield image2base64(action.payload.imagePath) // you can also to use url
         .then(
             (response) => {
@@ -19,7 +42,8 @@ function* addUser(action) {
                         user: {
                             name: action.payload.username,
                             location: action.payload.location,
-                            imagePath: "data:image/png;base64, " + response
+                            imagePath: "data:image/png;base64, " + response,
+                            id: currentUserCounter
                         }
                     })
                 });
@@ -33,16 +57,23 @@ function* addUser(action) {
                 console.log(error); //Exepection error....
             }
         )
-
-    yield put({type:AppConstants.ADD_USER ,payload:action.payload});
+    var newPayload = action.payload;
+    console.log('USERS COUNTER BEFORE INC//////////////////////',UsersCounter)
+    newPayload['userID'] = currentUserCounter;
+    console.log('USERS COUNTER AFTER INC//////////////////////',UsersCounter)
+    yield put({type:AppConstants.ADD_USER ,payload:newPayload});
 
 
 
 }
 
 function* addRev(action){
+
+
+
+    /*
     let allImagesPromises = action.payload.images.map(x => image2base64(x));
-    Promise.all(allImagesPromises).then((values) => {
+    yield Promise.all(allImagesPromises).then((values) => {
         values = values.map(x => "data:image/png;base64, " + x);
         let newPayload = action.payload;
         newPayload['imageData'] = values;
@@ -60,20 +91,26 @@ function* addRev(action){
                     (error) => {
                         console.log(error);
                     });
-/*
-    const res =yield   call(fetch,'http://localhost:8000/add_rev',{
 
+     */
+    let newPayload = action.payload;
+    let currentReviewsCounter = GetReviewsCounter();
+    //newPayload['imageData'] = values;
+    //action.payload.images = values;
+    newPayload['id'] = currentReviewsCounter;
+
+
+
+    console.log('THE NEW PAYLOAD ',newPayload);
+
+    const res =  yield call(fetch,'http://localhost:8000/add_rev', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({payload:action.payload})
-
-
-    });
-
-*/
-    yield put({type: AppConstants.ADD_RESTAURANT, payload: action.payload})
+        body: JSON.stringify(newPayload)
+    })
+    yield put({type: AppConstants.ADD_RESTAURANT, payload: newPayload})
 
 }
 function* getAllUsers(action){
@@ -90,14 +127,99 @@ function* getAllUsers(action){
     });
 
     const json = yield call([res,'json']);
+
+    console.log('ALL USERS DATA ////////////',json);
+
+    let UsersId=0;
+    let ReviewsId = 0;
+    for (let i=0;i<json.length;i++) {
+        console.log('CURRENT USER ID////////////////',json[i]['id']);
+        if(json[i]['id']>UsersId)
+            UsersId = json[i]['id'];
+    }
+    for (let i=0;i<json.length;i++) {
+        for(let j=0;j<json[i]['reviews'].length;j++) {
+         //   console.log('CURRENT REVIEW ID////////////////',json[i]['reviews'])
+            if (json[i]['reviews'][j]['id'] > ReviewsId)
+                ReviewsId = json[i]['reviews'][j]['id'];
+        }
+    }
+    console.log('GLOBAL USER ID : ',UsersId);
+    console.log('GLOBAL REVIEW ID : ',ReviewsId);
+    SetReviewsCounter(ReviewsId+1);
+    SetUsersCounter(UsersId+1);
     yield put({type:AppConstants.GET_ALL_USERS ,payload:json});
     console.log('---------------------------------------------')
 }
+
+function* deleteRev(action){
+
+    console.log('THE NEW PAYLOAD ',action.payload);
+
+    const res =  yield call(fetch,'http://localhost:8000/delete_rev', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(action.payload)
+    })
+    yield put({type: AppConstants.DELETE_REVIEW, payload: action.payload})
+
+}
+function* editRev(action) {
+
+    console.log('THE NEW PAYLOAD ',action.payload);
+
+    const res =  yield call(fetch,'http://localhost:8000/edit_rev', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(action.payload)
+    })
+    yield put({type: AppConstants.EDIT_REVIEW, payload: action.payload})
+
+}
+
+function* changeUsername(action){
+    console.log('THE NEW PAYLOAD ',action.payload);
+
+    const res =  yield call(fetch,'http://localhost:8000/change_username', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(action.payload)
+    })
+    yield put({type: AppConstants.CHANGE_USERNAME_APP, payload: action.payload})
+
+}
+
+function* changeLocation(action){
+
+    console.log('THE NEW PAYLOAD ',action.payload);
+
+    const res =  yield call(fetch,'http://localhost:8000/change_location', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(action.payload)
+    })
+    yield put({type: AppConstants.CHANGE_LOCATION_APP, payload: action.payload})
+
+}
+
 
 export function* watchDataPass() {
     yield takeEvery(AppConstants.GET_ALL_USERS_SAGA, getAllUsers);
     yield takeEvery(AppConstants.ADD_USER_SAGA, addUser);
     yield takeEvery(AppConstants.ADD_RESTAURANT_SAGA, addRev);
+    yield takeEvery(AppConstants.DELETE_REVIEW_SAGA, deleteRev);
+    yield takeEvery(AppConstants.EDIT_REVIEW_SAGA, editRev);
+    yield takeEvery(AppConstants.CHANGE_USERNAME_APP_SAGA, changeUsername);
+    yield takeEvery(AppConstants.CHANGE_LOCATION_APP_SAGA, changeLocation);
+
 }
 
 

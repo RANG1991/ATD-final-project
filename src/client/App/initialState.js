@@ -3,8 +3,6 @@ const {List, Map} = require('immutable');
 export default {
     app:
         Map({
-        usersId: 1,
-        reviewsId: 1,
         users: Map({}),
         }),
     navigation:

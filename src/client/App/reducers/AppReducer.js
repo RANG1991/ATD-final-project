@@ -11,29 +11,28 @@ const AppReducer = (state = initialState.app, action) => {
     switch (action.type) {
         case AppConstants.GET_ALL_USERS:
             let allUsers = action.payload.map(x => ({username: x.name, imagePath: x.profilePhoto.data, location: x.location,
-                                                    reviews: x.reviews, id: x._id, viewProfileInSearch: false}));
+                                                    reviews: x.reviews, id: x.id, viewProfileInSearch: false}));
             state = state.set('users', fromJS(allUsers));
             return state;
         case AppConstants.ADD_USER:
             state = state.update('users', e => e.push(fromJS(
                 {username: action.payload.username, imagePath: action.payload.imagePath,
                     location: action.payload.location,
-                reviews: [], id: state.get('usersId'), viewProfileInSearch: false})));
-            state = state.set('usersId', state.get('usersId') + 1);
+                reviews: [], id: action.payload.id, viewProfileInSearch: false})));
             console.log(state);
             return state;
         case AppConstants.ADD_RESTAURANT:
+            console.log(action.payload.id);
             let review = {name: action.payload.name, location: action.payload.location, images: action.payload.images, bathroom: action.payload.bathroom,
                 staff: action.payload.staff, cleanliness: action.payload.cleanliness,
                 drive: action.payload.drive, delivery: action.payload.delivery, food: action.payload.food,
-                currentUser: action.payload.currentUser, id: state.get('reviewsId'), date: String(new Date().getDate()),
+                currentUser: action.payload.currentUser, id: action.payload.id, date: String(new Date().getDate()),
                 openDeleteReview: false, openEditReview: false};
-            state = state.set('reviewsId', state.get('reviewsId') + 1);
-             idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.currentUser);
+            idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.currentUser);
             state = state.updateIn(['users',idxToUpdate,'reviews'], e => e.push(fromJS(review)));
             return state;
         case AppConstants.CHANGE_USERNAME_APP:
-             idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.oldName);
+            idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.oldName);
             state = state.setIn(['users', idxToUpdate ,'username'],action.payload.newName);
             return state;
         case AppConstants.CHANGE_LOCATION_APP:

@@ -74,6 +74,7 @@ app.post('/add_user', function (req, res) {
     });
     var newReviewerSchema = new schemas.ReviewerModel({
         name: req.body.user.name,
+        id:req.body.user.id,
         location:req.body.user.location,
         profilePhoto: photoSchema,
         reviews: [],
@@ -88,12 +89,79 @@ app.post('/add_user', function (req, res) {
 
 app.post('/add_rev', function (req, res) {
     res.setHeader('Content-Type', 'application/json');
-    console.log('current userrrrrrrrrrrrrrrrr ',req.body);
+    console.log('current userrrrrrrrrrrrrrrrr ', req.body);
     let collection = database.collection('reviewermodels');
-    console.log('current user ////////////// ',req.body.currentUser);
-    console.log('current userrrrrrrrrrrrrrrrr ',req.body);
-    collection.updateOne({'name':req.body.currentUser},{ $push: { reviews: req.body }})
+    console.log('current user ////////////// ', req.body.currentUser);
+    console.log('current userrrrrrrrrrrrrrrrr ', req.body);
+    collection.updateOne({'name': req.body.currentUser}, {$push: {reviews: req.body}})
+    res.end();
+
 });
+
+app.post('/delete_rev', function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    console.log('current userrrrrrrrrrrrrrrrr ', req.body);
+    let collection = database.collection('reviewermodels');
+    console.log('current user ////////////// ', req.body.username);
+    console.log('current userrrrrrrrrrrrrrrrr ', req.body);
+    collection.updateOne({'name': req.body.username}, {$pull: {reviews:{id:req.body.id}}})
+    res.end();
+
+});
+
+app.post('/edit_rev', function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    console.log('current userrrrrrrrrrrrrrrrr ', req.body);
+    let collection = database.collection('reviewermodels');
+    console.log('current user ////////////// ', req.body.currentUser);
+    console.log('current userrrrrrrrrrrrrrrrr ', req.body);
+    collection.updateOne({'name': req.body.currentUser,'reviews.id':req.body.id},{$set:{
+            'reviews.$.bathroom':req.body.bathroom,
+            'reviews.$.staff':req.body.staff,
+            'reviews.$.cleanliness':req.body.cleanliness,
+            'reviews.$.drive':req.body.drive,
+            'reviews.$.delivery':req.body.delivery,
+            'reviews.$.food':req.body.food,
+
+        } });
+
+    res.end();
+
+});
+
+
+app.post('/change_username', function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    console.log('current userrrrrrrrrrrrrrrrr ', req.body);
+    let collection = database.collection('reviewermodels');
+    console.log('current user ////////////// ', req.body.oldName);
+    console.log('current userrrrrrrrrrrrrrrrr ', req.body);
+    collection.updateOne({'name': req.body.oldName},{$set:{name:req.body.newName} });
+
+    collection.updateOne({'name': req.body.newName},{$set:{
+            'reviews.$[].currentUser':req.body.newName,
+
+
+        } });
+
+
+
+    res.end();
+
+});
+
+app.post('/change_location', function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    console.log('current userrrrrrrrrrrrrrrrr ', req.body);
+    let collection = database.collection('reviewermodels');
+    console.log('current userrrrrrrrrrrrrrrrr ', req.body);
+    collection.updateOne({'name': req.body.username},{$set:{location:req.body.newLocation} });
+
+    res.end();
+
+})
+
+
 
 
 app.post('/get_all_users', function (req, res) {
@@ -103,7 +171,9 @@ app.post('/get_all_users', function (req, res) {
         let collection = database.collection('reviewermodels');
 
         collection.find({}).toArray(function(err,category) {
+            console.log("printing db data://///");
             console.log(category)
+
             res.send(JSON.stringify(category))
             console.log("inside collection find");
         });

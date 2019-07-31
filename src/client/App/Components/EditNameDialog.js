@@ -68,7 +68,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onChangeUsername: (users, oldUsername, newUsername) => {
             if (!checkIfUserNameExists(newUsername, users)) {
-                dispatch(AppActions.changeUsernameApp(oldUsername, newUsername));
+                dispatch(AppActions.changeUsernameAppSaga(oldUsername, newUsername));
                 dispatch(CurrentUserActions.changeUserName(newUsername))
             }
         },
