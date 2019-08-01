@@ -70,14 +70,10 @@ function* addUser(action) {
 }
 
 function* addRev(action){
-
-
-
-    /*
     let allImagesPromises = action.payload.images.map(x => image2base64(x));
+    let newPayload = action.payload;
     yield Promise.all(allImagesPromises).then((values) => {
         values = values.map(x => "data:image/png;base64, " + x);
-        let newPayload = action.payload;
         newPayload['imageData'] = values;
         action.payload.images = values;
         console.log('THE NEW PAYLOAD ',newPayload);
@@ -93,9 +89,6 @@ function* addRev(action){
                     (error) => {
                         console.log(error);
                     });
-
-     */
-    let newPayload = action.payload;
     let currentReviewsCounter = GetReviewsCounter();
     //newPayload['imageData'] = values;
     //action.payload.images = values;
@@ -105,13 +98,6 @@ function* addRev(action){
 
     console.log('THE NEW PAYLOAD ',newPayload);
 
-    const res =  yield call(fetch,'http://localhost:8000/add_rev', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newPayload)
-    })
     yield put({type: AppConstants.ADD_RESTAURANT, payload: newPayload})
 
 }
