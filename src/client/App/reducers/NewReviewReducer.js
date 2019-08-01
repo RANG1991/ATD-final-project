@@ -35,9 +35,15 @@ const NewReviewReducer = (state = initialState.newReview, action) => {
             state = state.set('delivery', 0);
             state = state.set('food', 0);
             state = state.set('imgs', List());
+            state = state.set('selectedRestaurantName' , '');
+            state = state.set('selectedRestaurantLocation' , '');
             return state;
         case NewReviewConstants.NAME_ERROR:
             state = state.set('errorName', 'the name cannot be empty');
+            return state;
+        case NewReviewConstants.CHANGE_SELECTED_RESTAURANT:
+            state = state.set('selectedRestaurantName' , action.payload.name);
+            state = state.set('selectedRestaurantLocation' , action.payload.location);
             return state;
         default:
             return state;

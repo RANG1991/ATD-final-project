@@ -2,17 +2,19 @@ import initialState from "../initialState";
 import AppConstants from "../Constants/AppConstants";
 const {fromJS} = require('immutable');
 
-
 const AppReducer = (state = initialState.app, action) => {
     console.log('AppReducerState=', state);
     console.log('RECEIVED ACTION:', action);
     let idxToUpdate = null;
     let allReviews = null;
     let locationAndName = null;
+    let coor = null;
     switch (action.type) {
         case AppConstants.GET_ALL_USERS:
-            let allUsers = action.payload.map(x => ({username: x.name, imagePath: x.profilePhoto.data, location: x.location,
-                                                    reviews: x.reviews, id: x.id, viewProfileInSearch: false}));
+            let allUsers = action.payload.map(x => {
+                return ({username: x.name, imagePath: x.profilePhoto.data, location: x.location,
+                                                    reviews: x.reviews, id: x.id, viewProfileInSearch: false, coor: x.coor})
+            });
             state = state.set('users', fromJS(allUsers));
             let allReviewsForNameLocation = [];
             allUsers.forEach((userEntry) => {
@@ -31,21 +33,22 @@ const AppReducer = (state = initialState.app, action) => {
                 }
             }
             state = state.set('mapNameLocationReviews', fromJS(allReviewsByLocationName));
-            console.log(state);
             return state;
         case AppConstants.ADD_USER:
             state = state.update('users', e => e.push(fromJS(
                 {username: action.payload.username, imagePath: action.payload.imagePath,
                     location: action.payload.location,
-                reviews: [], id: action.payload.id, viewProfileInSearch: false})));
-            console.log(state);
+                    reviews: [], id: action.payload.id, viewProfileInSearch: false, coor: action.payload.coor})));
             return state;
         case AppConstants.ADD_RESTAURANT:
+            let idxToGet = state.get('restaurantsListToView').findIndex(i =>
+                i.get('name') === action.payload.name && i.get('location') === action.payload.location);
+            coor = state.getIn(['restaurantsListToView', idxToGet ,'coor']);
             let review = {name: action.payload.name, location: action.payload.location, images: action.payload.images, bathroom: action.payload.bathroom,
                 staff: action.payload.staff, cleanliness: action.payload.cleanliness,
                 drive: action.payload.drive, delivery: action.payload.delivery, food: action.payload.food,
                 currentUser: action.payload.currentUser, id: action.payload.id, date: String(new Date().getDate()),
-                openDeleteReview: false, openEditReview: false};
+                openDeleteReview: false, openEditReview: false, coor: action.payload.coor};
             idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.currentUser);
             state = state.updateIn(['users',idxToUpdate,'reviews'], e => e.push(fromJS(review)));
             locationAndName = action.payload.name + "_" + action.payload.location;

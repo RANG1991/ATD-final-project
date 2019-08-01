@@ -5,6 +5,7 @@ const NewReviewConstants = {
     RESET_FORM: 'RESET_FORM',
     CHANGE_LOCATION: 'CHANGE_LOCATION',
     NAME_ERROR: 'NAME_ERROR',
+    CHANGE_SELECTED_RESTAURANT: 'CHANGE_SELECTED_RESTAURANT',
 };
 
 export default NewReviewConstants

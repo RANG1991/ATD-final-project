@@ -1,18 +1,19 @@
 import AppConstants from "../Constants/AppConstants"
 
-function addUserSaga(username, location, imagePath,relativeImagePath) {
+function addUserSaga(username, location, imagePath, relativeImagePath, coor) {
     return {
         type: AppConstants.ADD_USER_SAGA,
-        payload: {username: username, imagePath: imagePath,relativeImagePath:relativeImagePath, location: location}
+        payload: {username: username, imagePath: imagePath,relativeImagePath:relativeImagePath, location: location,
+                    coor: coor}
     }
 }
 
-function addRestaurantSaga(name, location, images, bathroom, staff, cleanliness, drive, delivery, food, currentUser) {
+function addRestaurantSaga(name, location, images, bathroom, staff, cleanliness, drive, delivery, food, currentUser, coor) {
     return {
         type: AppConstants.ADD_RESTAURANT_SAGA,
         payload: {name: name, location: location, images: images, bathroom: bathroom,
             staff: staff, cleanliness: cleanliness,
-            drive: drive, delivery: delivery, food: food, currentUser: currentUser}
+            drive: drive, delivery: delivery, food: food, currentUser: currentUser, coor: coor}
     }
 }
 

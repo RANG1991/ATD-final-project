@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -12,9 +11,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppActions from "../actions/AppActions";
 import {connect} from "react-redux";
 import CurrentUserActions from "../actions/CurrentUserActions";
+import AutoComplete from "material-ui/AutoComplete";
 
 function EditLocationDialog(props) {
-
+    let allPlaces = props.placesList.map( x => x.get('name')).toJS();
     const useStyles = makeStyles(theme => ({
         fab: {
             margin: theme.spacing(1),
@@ -33,13 +33,12 @@ function EditLocationDialog(props) {
                     <DialogContentText>
                         {props.editText}
                     </DialogContentText>
-                    <TextField onChange={(e) => props.editLocation(e.target.value)}
-                               autoFocus
-                               margin="dense"
-                               id="name"
-                               label="New Location"
-                               type="text"
-                               fullWidth
+                    <AutoComplete
+                        hintText="Type anything"
+                        dataSource={allPlaces}
+                        onUpdateInput={props.editLocation}
+                        margin="normal"
+                        variant="outlined"
                     />
                 </DialogContent>
                 <DialogActions>
@@ -58,6 +57,7 @@ const mapStateToProps = (state) => {
         openEditLocation: state['currentUser'].get('openEditLocation'),
         users: state['app'].get('users'),
         editedLocation: state['currentUser'].get('editedLocation'),
+        placesList: state['currentUser'].get('placesList'),
     }
 };
 

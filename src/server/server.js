@@ -72,9 +72,14 @@ app.post('/add_user', function (req, res) {
         reviewerName: req.body.user.name,
         data: req.body.user.imagePath
     });
+    var coorSchema = new schemas.coor({
+        lat:req.body.user.lat,
+        lng:req.body.user.lng
+    })
     var newReviewerSchema = new schemas.ReviewerModel({
         name: req.body.user.name,
         id:req.body.user.id,
+        coor:coorSchema,
         location:req.body.user.location,
         profilePhoto: photoSchema,
         reviews: [],

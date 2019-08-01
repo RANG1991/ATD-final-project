@@ -6,7 +6,7 @@ import CurrentUserActions from "../actions/CurrentUserActions";
 import { withRouter } from 'react-router-dom';
 import AppActions from "../actions/AppActions";
 import NavigationActions from "../actions/NavigationActions";
-import PlacesAutocomplete from 'react-places-autocomplete';
+import AutoComplete from 'material-ui/AutoComplete';
 
 export const checkIfUserNameExists = (username, users) => {
    return users.findIndex(i => i.get('username') === username) !== -1;
@@ -14,24 +14,8 @@ export const checkIfUserNameExists = (username, users) => {
 
 class UserDetailsReg extends React.Component
 {
-        renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
-        <div className="autocomplete-root">
-            <TextField id="outlined-name" {...getInputProps()}
-                       label="Location"
-                       margin="normal"
-                       variant="outlined"
-                />
-            <div className="autocomplete-dropdown-container">
-                {suggestions.map(suggestion => (
-                    <div {...getSuggestionItemProps(suggestion)}>
-                        <span>{suggestion.description}</span>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
-
     render() {
+        let allPlaces = this.props.placesList.map( x => x.get('name')).toJS();
         return (
             <form autoComplete="on">
                 <TextField
@@ -40,18 +24,15 @@ class UserDetailsReg extends React.Component
                            helperText={this.props.errorUsername}
                            label="User Name"
                            onChange={(e) => this.props.onChangeUsername(e.target.value, this.props.users)}
-                           margin="normal"
-                           variant="outlined"/>
-                <PlacesAutocomplete
-                    value={this.props.currentLocation}
-                    onChange={this.props.onChangeLocation}
-                    onSelect={this.props.handleSelectAddress}
-                >
-                    {this.renderFunc}
-                </PlacesAutocomplete>
+                           margin="normal"/>
+                <AutoComplete
+                    hintText="Location"
+                    dataSource={allPlaces}
+                    onUpdateInput={this.props.onChangeLocation}
+                />
                 <Button variant="contained" style={{margin: 15}}
                         onClick={(e) => this.props.onSubmit(e, this.props.currentUsername, this.props.currentLocation,
-                            this.props.currentImagePath,this.props.relativeImagePath, this.props.users)}
+                            this.props.currentImagePath,this.props.relativeImagePath, this.props.users, this.props.placesList)}
                         href={"/welcome_" + this.props.currentUsername}>
                     Submit
                 </Button>
@@ -69,13 +50,13 @@ const mapStateToProps = (state) => {
         relativeImagePath: state['currentUser'].get('relativeImagePath'),
         errorImage: state['currentUser'].get('errorImage'),
         currentLocation: state['currentUser'].get("currentLocation"),
+        placesList: state['currentUser'].get('placesList'),
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         onChangeLocation: (location) => {
-
             dispatch(CurrentUserActions.changeLocation(location));
         },
         onChangeUsername:  (username, users) => {
@@ -84,20 +65,27 @@ const mapDispatchToProps = (dispatch) => {
                 dispatch(CurrentUserActions.usernameError());
             }
         },
-        onSubmit: (e, currentUsername, currentLocation, currentImagePath,relativeImagePath, users) => {
+        onSubmit: (e, currentUsername, currentLocation, currentImagePath,relativeImagePath, users, placesList) => {
             e.preventDefault();
             if (checkIfUserNameExists(currentUsername, users)) {
                 dispatch(CurrentUserActions.usernameError());
             }
             else if (currentImagePath !== "" && currentLocation !== "" && currentUsername !== "") {
-                dispatch(AppActions.addUserSaga(currentUsername, currentLocation, currentImagePath,relativeImagePath));
+                let coor = null;
+                let place = placesList.find(i =>
+                    i.get('name') === currentLocation);
+                if (place !== undefined)
+                {
+                    coor = place.get('coor');
+                }
+                else {
+                    coor = {lat: 0, lng: 0};
+                }
+                dispatch(AppActions.addUserSaga(currentUsername, currentLocation, currentImagePath,relativeImagePath, coor));
                 dispatch(NavigationActions.onRegistrationSuccessChange(true));
                 dispatch(NavigationActions.onChangeRoute("/welcome_" + currentUsername));
             }
         },
-        handleSelectAddress: (address) => {
-            dispatch(CurrentUserActions.changeLocation(address));
-        }
     }
 };
 

@@ -40,6 +40,13 @@ function nameError() {
     }
 }
 
+function changeSelectedRestaurant(name, location) {
+    return {
+        type: newReviewConstants.CHANGE_SELECTED_RESTAURANT,
+        payload: {name, location}
+    }
+}
+
 let NewReviewActions  = {
     changeParamValue,
     changeName,
@@ -47,6 +54,7 @@ let NewReviewActions  = {
     resetForm,
     changeLocation,
     nameError,
+    changeSelectedRestaurant,
 };
 
 export default NewReviewActions

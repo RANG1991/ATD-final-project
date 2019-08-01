@@ -45,12 +45,22 @@ function changeRadioButtonSearchBy(value) {
     }
 }
 
+function changeSlider(value, coor) {
+    return {
+        type: AdvancedSearchConstants.ON_CHANGE_SLIDER,
+        payload: {
+            value, coor
+        }
+    }
+}
+
 let AdvancedSearchActions = {
     changeNameSearch,
     changeLocationSearch,
     onClickSearch,
     changeRadioButton,
     changeRadioButtonSearchBy,
+    changeSlider,
 };
 
 export default AdvancedSearchActions;

@@ -3,10 +3,6 @@ import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
 import NewReviewActions from '../actions/NewReviewActions'
 import {connect} from "react-redux";
 import Button from "@material-ui/core/Button";
@@ -102,29 +98,24 @@ class NewReviewForm extends React.Component {
         </TextField>);
         return (
             <div className={classes.root}>
-                <FormControl fullWidth className={classes.margin}>
-                    <InputLabel htmlFor="adornment-amount">Restaurant Name</InputLabel>
-                    <Input
-                        error={this.props.errorName !== ''}
-                        id="adornment-amount"
-                        value={this.props.name}
-                        onChange={(e) => this.props.onNameChange(e.target.value)}
-                        startAdornment={<InputAdornment position="start">Name</InputAdornment>}
-                    />
-                </FormControl>
-                {/*<FormControl fullWidth className={classes.margin}>*/}
-                {/*    <InputLabel htmlFor="adornment-amount">Restaurant Location</InputLabel>*/}
-                {/*    <Input*/}
-                {/*        id="adornment-amount"*/}
-                {/*        value={this.props.location}*/}
-                {/*        onChange={(e) => this.props.onLocationChange(e.target.value)}*/}
-                {/*        startAdornment={<InputAdornment position="start">Location</InputAdornment>}*/}
-                {/*    />*/}
-                {/*</FormControl>*/}
+                <TextField fullWidth={true}
+                    select
+                    key={"name and location"}
+                    label={"Name and Location"}
+                    value={this.props.selectedName + "," + this.props.selectedLocation}
+                    onChange={(e) => this.props.onRestaurantSelect(e.target.value)}
+                    className={clsx(classes.margin, classes.textField)}>
+                    {this.props.restaurantsList.map(option => (
+                        <MenuItem key={option.get('name') + "," + option.get('location')}
+                                  value={option.get('name') + "," + option.get('location')}>
+                            {option.get('name') + "," + option.get('location')}
+                        </MenuItem>
+                    ))}
+                </TextField>
                 {elements}
                 <Button variant="contained"
-                        onClick={(e) => this.props.onHandleSubmit(e, this.props.name, this.props.location, this.props.imgs, parameters,
-                            this.props.currentUser)}
+                        onClick={(e) => this.props.onHandleSubmit(e, this.props.selectedName, this.props.selectedLocation, this.props.imgs, parameters,
+                            this.props.currentUser, this.props.restaurantsList)}
                         href={"/new_review"}>
                     Submit
                 </Button>
@@ -156,12 +147,13 @@ const mapStateToProps = (state) => {
         drive: state['newReview'].get('drive'),
         delivery: state['newReview'].get('delivery'),
         food: state['newReview'].get('food'),
-        name: state['newReview'].get('name'),
         errorName: state['newReview'].get('errorName'),
-        location: state['currentUser'].get('currentLocation'),
         imgs: state['newReview'].get('imgs'),
         imagesMessage: state['newReview'].get('imagesMessage'),
         currentUser: state['currentUser'].get('currentUsername'),
+        restaurantsList: state['app'].get('restaurantsListToView'),
+        selectedName: state['newReview'].get('selectedRestaurantName'),
+        selectedLocation: state['newReview'].get('selectedRestaurantLocation'),
     }
 };
 
@@ -170,10 +162,12 @@ const mapDispatchToProps = (dispatch) => {
         onValueChange: (paramName, paramValue) => {
             dispatch(NewReviewActions.changeParamValue(paramName, paramValue))
         },
-        onHandleSubmit: (e, name, location, images, params, currentUser) => {
+        onHandleSubmit: (e, name, location, images, params, currentUser, restaurantsList) => {
+            let coor = restaurantsList.find(i =>
+                i.get('name') === name && i.get('location') === location).get('coor');
             e.preventDefault();
             if (name !== "") {
-                dispatch(AppActions.addRestaurantSaga(...[name, location, images, ...(params.map(x => x.value)), currentUser]));
+                dispatch(AppActions.addRestaurantSaga(...[name, location, images, ...(params.map(x => x.value)), currentUser, coor]));
                 dispatch(NewReviewActions.resetForm());
             }
             else {
@@ -184,10 +178,12 @@ const mapDispatchToProps = (dispatch) => {
                 dispatch(NewReviewActions.changeName(name));
         },
         addImagesHandler: (acceptedFiles) => {
-            dispatch(NewReviewActions.addImages(acceptedFiles))
+            dispatch(NewReviewActions.addImages(acceptedFiles));
         },
-        onLocationChange: (location) => {
-            dispatch(NewReviewActions.changeLocation(location))
+        onRestaurantSelect: (nameAndLocation) => {
+            let name = nameAndLocation.split(",")[0];
+            let location = nameAndLocation.split(",")[1];
+            dispatch(NewReviewActions.changeSelectedRestaurant(name, location))
         }
     }
 };

@@ -134,6 +134,9 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(NavigationActions.onChangeRoute(newPath));
             dispatch(NavigationActions.showSortMenu(false));
             dispatch(AllReviewsActions.sortBy(''));
+            dispatch(CurrentUserActions.resetCurrentState());
+            dispatch(NavigationActions.onRegistrationSuccessChange(false));
+            dispatch(NavigationActions.onCloseMenuClick());
         },
         onClickSortMenu: () => {
             dispatch(NavigationActions.onOpenSortMenu(true))

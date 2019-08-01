@@ -8,6 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import AdvancedSearchActions from "../actions/AdvancedSearchActions";
 import {connect} from "react-redux";
 import ReviewCard from "./ReviewCard";
+import Slider from '@material-ui/core/Slider';
 
 class AdvancedSearchForm extends React.Component {
     render() {
@@ -17,7 +18,10 @@ class AdvancedSearchForm extends React.Component {
                             cleanliness={x.cleanliness} drive={x.drive} showDeleteDialog={false}
                             delivery={x.delivery} food={x.food} img={x.images.length > 0 ? x.images[0] : undefined}/>);
     });
-
+        let allReviews = [];
+        this.props.users.forEach((userEntry) => {
+            allReviews = allReviews.concat(userEntry.get('reviews').toJS())
+        });
         return (
             <Grid container justify="center" spacing={0}>
             <Grid item xs={4}>
@@ -82,22 +86,30 @@ class AdvancedSearchForm extends React.Component {
                         </RadioGroup>
                         <TextField id="outlined-name"
                                    label="Restaurant Name"
+                                   value={this.props.name}
                                    onChange={(e) => this.props.onChangeNameSearch(e.target.value)}
                                    margin="normal"
                                    variant="outlined"
                                    disabled={!this.props.enableName}/>
                         <TextField id="outlined-name"
                                    label="Restaurant Location"
+                                   value={this.props.location}
                                    onChange={(e) => this.props.onChangeLocationSearch(e.target.value)}
                                    margin="normal"
                                    variant="outlined"
                                     disabled={!this.props.enableLocation}/>
+                        <Slider
+                            defaultValue={90}
+                            aria-labelledby="discrete-slider"
+                            onChange={(e, v) => this.props.handleSliderChange(v, this.props.currentCoor)}
+                            valueLabelDisplay="auto"
+                            step={10}
+                            marks
+                            min={0}
+                            max={100}
+                        />
                         <Button variant="contained" style={{margin: 15}}
                                 onClick={() => {
-                                    let allReviews = [];
-                                    this.props.users.forEach((userEntry) => {
-                                        allReviews = allReviews.concat(userEntry.get('reviews').toJS())
-                                    });
                                     this.props.onClickSearch(this.props.name, this.props.location, allReviews)
                                 }}
                             >
@@ -125,6 +137,7 @@ const mapStateToProps = (state) => {
         enableButtons: state['advancedSearch'].get('enableButtons'),
         name: state['advancedSearch'].get('name'),
         location: state['advancedSearch'].get('location'),
+        currentCoor: state['currentUser'].get('currentCoor'),
     }
 };
 
@@ -144,6 +157,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         onChangeRadioButtonSearchBy: (value) => {
             dispatch(AdvancedSearchActions.changeRadioButtonSearchBy(parseInt(value)));
+        },
+        handleSliderChange: (value, coor) => {
+            dispatch(AdvancedSearchActions.changeSlider(value, coor));
         },
     }
 };

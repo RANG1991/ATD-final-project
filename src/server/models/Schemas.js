@@ -9,7 +9,10 @@ let ReviewsCounterSchema = new Schema({
 let UsersCounterSchema = new Schema({
     usersCounter:Number
 });
-
+let coor = new Schema({
+    lat:Number,
+    lng:Number
+});
 let PhotoSchema = new Schema({
     name:String,
     reviewerName:String,
@@ -26,6 +29,7 @@ let PlaceSchema = new Schema({
 let ReviewSchema = new Schema({
     restaurant:String,
     id:Number,
+    coor:coor,
     location: String, images: [String], bathroom: Number,
     staff: Number, cleanliness: Number,
     drive: Number, delivery: Number, food: Number
@@ -34,6 +38,7 @@ let ReviewSchema = new Schema({
 let ReviewerSchema = new Schema({
     name:String,
     id:Number,
+    coor:coor,
     location:String,
     profilePhoto:PhotoSchema,
     reviews:[String],
@@ -44,5 +49,6 @@ module.exports = {
      PhotoModel : mongoose.model('PhotoModel', PhotoSchema),
      PlaceModel :mongoose.model('PlaceModel', PlaceSchema),
      ReviewModel : mongoose.model('ReviewModel', ReviewSchema),
-     ReviewerModel : mongoose.model('ReviewerModel', ReviewerSchema)
+     ReviewerModel : mongoose.model('ReviewerModel', ReviewerSchema),
+    coor : mongoose.model('CoorModel', coor)
 };

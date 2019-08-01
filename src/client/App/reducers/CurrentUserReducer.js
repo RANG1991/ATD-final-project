@@ -1,5 +1,6 @@
 import {CurrentUserConstants} from '../Constants/CurrentUserConstants.js';
 import initialState from '../initialState';
+const {fromJS} = require('immutable');
 
 const CurrentUserReducer = (state = initialState.currentUser, action) => {
     console.log('AppReducerState=', state);
@@ -21,6 +22,15 @@ const CurrentUserReducer = (state = initialState.currentUser, action) => {
                 state = state.set('errorUsername', '');
             return state;
         case CurrentUserConstants.CHANGE_LOCATION_CURRENT:
+                let place = state.get('placesList').find(i =>
+                i.get('name') === action.payload.location);
+                if (place !== undefined)
+                {
+                    state = state.set('currentCoor', fromJS(place.get('coor')));
+                }
+                else {
+                    state = state.set('currentCoor', fromJS({lat: 0, lng: 0}));
+                }
                 state = state.set('currentLocation', action.payload.location);
                 return state;
         case CurrentUserConstants.ADD_IMAGE:

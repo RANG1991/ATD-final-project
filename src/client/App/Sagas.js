@@ -42,6 +42,8 @@ function* addUser(action) {
                         user: {
                             name: action.payload.username,
                             location: action.payload.location,
+                            lat:action.payload.coor['lat'],
+                            lng:action.payload.coor['lng'],
                             imagePath: "data:image/png;base64, " + response,
                             id: currentUserCounter
                         }

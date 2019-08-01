@@ -1,10 +1,18 @@
-const {List, Map} = require('immutable');
+const {List, Map, fromJS} = require('immutable');
+
+const restaurantsList = [{name: 'McDonalds', location: 'Beer Sheva', coor: {lat: 31.247208, lng: 40.811947}},
+    {name: 'McDonalds', location: 'Rehovot', coor: {lat: 31.247208, lng: 100.811947}},
+    {name: 'McDonalds', location: 'Jerusalem', coor: {lat: 31.247208, lng: 1000.811947}}
+];
+
+const placesList = [{name: 'Beer Sheva', coor: {lat: 31.247208, lng: 40.811947}}];
 
 export default {
     app:
         Map({
-        users: Map({}),
+        users: List(),
         mapNameLocationReviews: Map({}),
+        restaurantsListToView: fromJS(restaurantsList),
         }),
     navigation:
         Map({
@@ -17,6 +25,7 @@ export default {
         Map({
         currentUsername: "",
         currentLocation: "",
+        currentCoor: Map({lat: 0, lng: 0}),
         errorUsername : "",
         relativeImagePath:"",
         currentImagePath: "",
@@ -26,6 +35,7 @@ export default {
         editedName: "",
         editedLocation: "",
         usernameLogin: "",
+        placesList: fromJS(placesList),
     }),
     newReview:
     Map ({
@@ -39,7 +49,9 @@ export default {
         delivery: 0,
         food: 0,
         imgs: List(),
-        imagesMessage: "please drop here your images!"
+        imagesMessage: "please drop here your images!",
+        selectedRestaurantName: "",
+        selectedRestaurantLocation: "",
     }),
     allReviews:
         Map({
@@ -61,6 +73,7 @@ export default {
         enableName: true,
         enableLocation: true,
         enableButtons: true,
+        savedReviews: List(),
         reviews: List(),
         valueRadioButton: 0,
     }),
