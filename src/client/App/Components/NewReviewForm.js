@@ -163,10 +163,10 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(NewReviewActions.changeParamValue(paramName, paramValue))
         },
         onHandleSubmit: (e, name, location, images, params, currentUser, restaurantsList) => {
-            let coor = restaurantsList.find(i =>
-                i.get('name') === name && i.get('location') === location).get('coor');
             e.preventDefault();
             if (name !== "") {
+            let coor = restaurantsList.find(i =>
+                i.get('name') === name && i.get('location') === location).get('coor');
                 dispatch(AppActions.addRestaurantSaga(...[name, location, images, ...(params.map(x => x.value)), currentUser, coor]));
                 dispatch(NewReviewActions.resetForm());
             }

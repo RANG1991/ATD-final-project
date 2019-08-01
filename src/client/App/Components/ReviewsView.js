@@ -32,7 +32,7 @@ class ReviewsView extends React.Component {
         let restaurantsList = Object.keys(allReviewsSorted).map(key => {
             let reviewsCards = allReviewsSorted[key].map(x => <ReviewCard name={x.name} location={x.location} bathroom={x.bathroom} staff={x.staff}
                         cleanliness={x.cleanliness} drive={x.drive}
-                        delivery={x.delivery} food={x.food} img={x.images.length > 0 ? x.images[0] : undefined}
+                        delivery={x.delivery} food={x.food} imgs={x.images.length > 0 ? x.images : undefined}
                         id={x.id} key={x.id} showDeleteDialog={this.props.showDelete}
                         openDeleteReview={x.openDeleteReview}
                         openEditReview={x.openEditReview}/>);

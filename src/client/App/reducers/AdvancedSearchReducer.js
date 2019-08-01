@@ -62,11 +62,12 @@ const AdvancedSearchReducer = (state = initialState.advancedSearch, action) => {
             let reviewsJS = reviews.toJS();
             console.log(reviewsJS);
             reviewsJS = reviewsJS.sort((x, y) => {
-                console.log(action.payload.value);
-                let value = (action.payload.value * (calculateDistance(x['coor'], action.payload.coor.toJS()))
-                    + (1 - action.payload.value) * calculateAverage(x)) -
-                    (action.payload.value * (calculateDistance(y['coor'], action.payload.coor.toJS())) +
-                        (1 - action.payload.value) * calculateAverage(y));
+                console.log(action.payload.value / 100);
+                let value = ((action.payload.value / 100) * (calculateDistance(x['coor'], action.payload.coor.toJS()))
+                    + (1 - (action.payload.value / 100)) * calculateAverage(x)) -
+                    ((action.payload.value / 100) * (calculateDistance(y['coor'], action.payload.coor.toJS())) +
+                        (1 - (action.payload.value / 100)) * calculateAverage(y));
+                console.log(value);
                 return value}
             );
             console.log(reviewsJS);

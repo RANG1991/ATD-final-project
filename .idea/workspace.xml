@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="56aca0d3-7b44-443c-b2a9-680487b8e959" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Sagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Sagas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/initialState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/initialState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/Components/AdvancedSearchForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/AdvancedSearchForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/Components/NewReviewForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/NewReviewForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/Components/ReviewCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/ReviewCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/Components/ReviewsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/ReviewsView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/Components/UserProfileView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/UserProfileView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/reducers/AdvancedSearchReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/reducers/AdvancedSearchReducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +130,8 @@
       <workItem from="1564544998040" duration="2201000" />
       <workItem from="1564549615610" duration="41851000" />
       <workItem from="1564638408946" duration="2841000" />
-      <workItem from="1564642989356" duration="36132000" />
+      <workItem from="1564642989356" duration="36310000" />
+      <workItem from="1564683730129" duration="2404000" />
     </task>
     <task id="LOCAL-00001" summary="changing project structure and adding menu">
       <created>1563255007007</created>
@@ -366,7 +371,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564678975466</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="fixing sort reviews ability">
+      <created>1564680803290</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1564680803290</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

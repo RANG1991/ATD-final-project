@@ -16,7 +16,7 @@ class AdvancedSearchForm extends React.Component {
         x = x.toJS();
         return (<ReviewCard name={x.name} location={x.location} bathroom={x.bathroom} staff={x.staff}
                             cleanliness={x.cleanliness} drive={x.drive} showDeleteDialog={false}
-                            delivery={x.delivery} food={x.food} img={x.images.length > 0 ? x.images[0] : undefined}/>);
+                            delivery={x.delivery} food={x.food} imgs={x.images.length > 0 ? x.images : undefined}/>);
     });
         let allReviews = [];
         this.props.users.forEach((userEntry) => {
