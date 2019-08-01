@@ -86,6 +86,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onClickReg: (e) => {
             e.preventDefault();
+            dispatch(NavigationActions.showSortMenu(false));
+            dispatch(AllReviewsActions.sortBy(''));
             dispatch(NavigationActions.onClickRegisterNavBar());
             dispatch(NavigationActions.onChangeRoute("/register"));
             dispatch(NavigationActions.onRegistrationSuccessChange(false));
@@ -93,6 +95,8 @@ const mapDispatchToProps = (dispatch) => {
         },
         onClickLogin: (e) => {
             e.preventDefault();
+            dispatch(NavigationActions.showSortMenu(false));
+            dispatch(AllReviewsActions.sortBy(''));
             dispatch(NavigationActions.onChangeRoute("/login"));
         },
         onClickMenu: () => {

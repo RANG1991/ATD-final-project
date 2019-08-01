@@ -3,17 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="56aca0d3-7b44-443c-b2a9-680487b8e959" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Components/DeleteReviewDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/DeleteReviewDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Components/EditLocationDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/EditLocationDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Components/EditNameDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/EditNameDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Components/EditReviewDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/EditReviewDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Constants/AppConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Constants/AppConstants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Sagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Sagas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/actions/AppActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/actions/AppActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/initialState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/initialState.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/reducers/AppReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/reducers/AppReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/models/Schemas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/Schemas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/Components/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/NavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/App/Components/ReviewsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/ReviewsView.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -133,7 +124,8 @@
       <workItem from="1564471984631" duration="35157000" />
       <workItem from="1564509083634" duration="4876000" />
       <workItem from="1564544998040" duration="2201000" />
-      <workItem from="1564549615610" duration="20165000" />
+      <workItem from="1564549615610" duration="41851000" />
+      <workItem from="1564638408946" duration="2809000" />
     </task>
     <task id="LOCAL-00001" summary="changing project structure and adding menu">
       <created>1563255007007</created>
@@ -345,7 +337,21 @@
       <option name="project" value="LOCAL" />
       <updated>1564554993478</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="fixing editing ability">
+      <created>1564570349261</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1564570349261</updated>
+    </task>
+    <task id="LOCAL-00032" summary="fixing editing ability">
+      <created>1564592019437</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1564592019437</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,6 +392,7 @@
     <MESSAGE value="fixing advanced search ability" />
     <MESSAGE value="fixing user search ability" />
     <MESSAGE value="fixing login ability" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing login ability" />
+    <MESSAGE value="fixing editing ability" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing editing ability" />
   </component>
 </project>
