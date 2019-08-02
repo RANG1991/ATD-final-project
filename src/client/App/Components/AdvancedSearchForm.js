@@ -14,7 +14,7 @@ class AdvancedSearchForm extends React.Component {
     render() {
         let restaurants = this.props.reviews.map((x) => {
         x = x.toJS();
-        return (<ReviewCard name={x.name} location={x.location} bathroom={x.bathroom} staff={x.staff}
+        return (<ReviewCard key={x.id} name={x.name} location={x.location} bathroom={x.bathroom} staff={x.staff}
                             cleanliness={x.cleanliness} drive={x.drive} showDeleteDialog={false}
                             delivery={x.delivery} food={x.food} imgs={x.images.length > 0 ? x.images : undefined}/>);
     });

@@ -39,12 +39,12 @@ function ReviewCard(props) {
             {name: "food quality", value: props.food},
         ];
 
-    const parameters_elements = parameters.map( x => (<Typography gutterBottom variant="subtitle1">
+    const parameters_elements = parameters.map( x => (<Typography key={props.id + "_" + x.name + "_" + x.value} gutterBottom variant="subtitle1">
                                 {x.name}: {x.value}
                             </Typography>));
     let imgs = null;
     if (props.imgs !== undefined) {
-        imgs = props.imgs.map(img => <img alt={"complex"} className={classes.img} src={img}/>)
+        imgs = props.imgs.map(img => <img key={img.toString()} alt={"complex"} className={classes.img} src={img}/>)
     }
     return (<Paper>
             <Grid container justify="center" spacing={0}>

@@ -77,7 +77,7 @@ export default {
         name: "",
         searchBy: '1',
         enableName: true,
-        enableLocation: true,
+        enableLocation: false,
         enableButtons: true,
         savedReviews: List(),
         reviews: List(),

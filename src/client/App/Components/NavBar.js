@@ -23,6 +23,9 @@ class ButtonAppBar extends React.Component {
                     Menu
                 </Button>
                 <Menu id="fade-menu"
+                      anchorEl={document.getElementById('root')}
+                      getContentAnchorEl={null}
+                      anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
                       transformOrigin={{ vertical: "top", horizontal: "left" }}
                       open={this.props.displayMenu} onClose={this.props.onCloseMenu}>
                     <MenuItem onClick={() => this.props.onClickMyProfile("/my_profile")}>My Profile</MenuItem>
@@ -41,6 +44,9 @@ class ButtonAppBar extends React.Component {
                     Menu
                 </Button>
                 <Menu id="fade-menu"
+                      anchorEl={document.getElementById('root')}
+                      getContentAnchorEl={null}
+                      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
                       transformOrigin={{ vertical: "top", horizontal: "right" }}
                       open={this.props.openSortMenu} onClose={this.props.onCloseSortMenu}>
                     <MenuItem onClick={() => this.props.onClickOptionSortMenu('date')}>Sort By Date</MenuItem>
