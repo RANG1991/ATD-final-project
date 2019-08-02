@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56aca0d3-7b44-443c-b2a9-680487b8e959" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Components/AdvancedSearchForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/AdvancedSearchForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Components/NewReviewForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/NewReviewForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Components/ReviewCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/ReviewCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Components/ReviewsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/ReviewsView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/Components/UserProfileView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/Components/UserProfileView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App/reducers/AdvancedSearchReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App/reducers/AdvancedSearchReducer.js" afterDir="false" />
-    </list>
+    <list default="true" id="56aca0d3-7b44-443c-b2a9-680487b8e959" name="Default Changelist" comment="preparing to submit" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -378,7 +370,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564680803290</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="preparing to submit">
+      <created>1564756041331</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1564756041331</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,6 +420,7 @@
     <MESSAGE value="fixing login ability" />
     <MESSAGE value="fixing editing ability" />
     <MESSAGE value="fixing sort reviews ability" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing sort reviews ability" />
+    <MESSAGE value="preparing to submit" />
+    <option name="LAST_COMMIT_MESSAGE" value="preparing to submit" />
   </component>
 </project>
