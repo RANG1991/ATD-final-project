@@ -11,16 +11,40 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppActions from "../actions/AppActions";
 import {connect} from "react-redux";
 import CurrentUserActions from "../actions/CurrentUserActions";
-import AutoComplete from "material-ui/AutoComplete";
+import Autosuggest from "react-autosuggest";
+
+const theme = {
+    input : {
+        variant: 'outlined',
+        width: '222px',
+        height: '56px',
+        fontSize: '16px',
+        border: '1px solid #aaa',
+        borderRadius: '4px',
+    }
+};
+
+const getSuggestionValue = suggestion => suggestion.name;
+
+const renderSuggestion = suggestion => (
+    <div>
+        {suggestion.name}
+    </div>
+);
 
 function EditLocationDialog(props) {
-    let allPlaces = props.placesList.map( x => x.get('name')).toJS();
     const useStyles = makeStyles(theme => ({
         fab: {
             margin: theme.spacing(1),
         },
     }));
     const classes = useStyles();
+
+    const inputProps = {
+        placeholder: 'Location',
+        value: props.value,
+        onChange: props.onEditLocation,
+    };
 
     return (
         <div>
@@ -33,12 +57,14 @@ function EditLocationDialog(props) {
                     <DialogContentText>
                         {props.editText}
                     </DialogContentText>
-                    <AutoComplete
-                        hintText="Type anything"
-                        dataSource={allPlaces}
-                        onUpdateInput={props.editLocation}
-                        margin="normal"
-                        variant="outlined"
+                    <Autosuggest
+                        suggestions={props.suggestions.toJS()}
+                        onSuggestionsFetchRequested={props.onSuggestionsFetchRequested}
+                        onSuggestionsClearRequested={props.onSuggestionsClearRequested}
+                        getSuggestionValue={getSuggestionValue}
+                        renderSuggestion={renderSuggestion}
+                        inputProps={inputProps}
+                        theme={theme}
                     />
                 </DialogContent>
                 <DialogActions>
@@ -58,6 +84,8 @@ const mapStateToProps = (state) => {
         users: state['app'].get('users'),
         editedLocation: state['currentUser'].get('editedLocation'),
         placesList: state['currentUser'].get('placesList'),
+        value: state['currentUser'].get('editedLocation'),
+        suggestions: state['currentUser'].get('placesSuggestions'),
     }
 };
 
@@ -71,10 +99,16 @@ const mapDispatchToProps = (dispatch) => {
         openDialog: (open) => {
             dispatch(CurrentUserActions.openDialogLocation(open))
         },
-        editLocation: (newLocation) => {
-            dispatch(CurrentUserActions.editingLocation(newLocation))
+        onSuggestionsFetchRequested: ({value}) => {
+            dispatch(CurrentUserActions.SuggestionsFetchRequest(value));
+        },
+        onSuggestionsClearRequested:  () => {
+            dispatch(CurrentUserActions.SuggestionsClearRequest());
+        },
+        onEditLocation: (event, { newValue }) => {
+            dispatch(CurrentUserActions.editingLocation(newValue));
         },
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditLocationDialog);
+export default (connect(mapStateToProps, mapDispatchToProps)(EditLocationDialog));

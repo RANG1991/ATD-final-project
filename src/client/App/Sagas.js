@@ -76,7 +76,8 @@ function* addRev(action){
         values = values.map(x => "data:image/png;base64, " + x);
         newPayload['imageData'] = values;
         action.payload.images = values;
-        console.log('THE NEW PAYLOAD ',newPayload);
+        let currentReviewsCounter = GetReviewsCounter();
+        newPayload['id'] = currentReviewsCounter;
         const res =  request('http://localhost:8000/add_rev', {
             method: 'POST',
             headers: {
@@ -89,14 +90,7 @@ function* addRev(action){
                     (error) => {
                         console.log(error);
                     });
-    let currentReviewsCounter = GetReviewsCounter();
-    //newPayload['imageData'] = values;
-    //action.payload.images = values;
-    newPayload['id'] = currentReviewsCounter;
-
-
-
-    console.log('THE NEW PAYLOAD ',newPayload);
+    console.log('THE NEW PAYLOAD OF REVIEW ',newPayload);
 
     yield put({type: AppConstants.ADD_RESTAURANT, payload: newPayload})
 

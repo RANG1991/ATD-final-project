@@ -40,6 +40,7 @@ function EditNameDialog(props) {
                         id="name"
                         label="New Name"
                         type="text"
+                       variant="outlined"
                         fullWidth
                     />
                 </DialogContent>

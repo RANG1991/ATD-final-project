@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
 
 function UserProfileCard(props) {
 
-    console.log(props.img);
+    console.log("hello", props);
 
     const classes = useStyles();
     return (<Paper>

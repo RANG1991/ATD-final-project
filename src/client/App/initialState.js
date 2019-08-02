@@ -41,6 +41,7 @@ export default {
         editedLocation: "",
         usernameLogin: "",
         placesList: fromJS(placesList),
+        placesSuggestions: List(),
     }),
     newReview:
     Map ({
@@ -74,13 +75,13 @@ export default {
     Map({
         location: "",
         name: "",
-        searchBy: "",
+        searchBy: '1',
         enableName: true,
         enableLocation: true,
         enableButtons: true,
         savedReviews: List(),
         reviews: List(),
-        valueRadioButton: 0,
+        valueRadioButton: '0',
     }),
     userSearch:
     Map({

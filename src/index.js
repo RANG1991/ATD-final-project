@@ -7,7 +7,6 @@ import reducers from './client/App/reducers';
 import {createBrowserHistory} from "history";
 import createSagaMiddleware from 'redux-saga'
 import {watchDataPass} from './client/App/Sagas'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -18,8 +17,6 @@ sagaMiddleware.run(watchDataPass);
 
 ReactDOM.render(
     <Provider store={store}>
-        <MuiThemeProvider>
         <App />
-        </MuiThemeProvider>
     </Provider>
     , document.getElementById('root'));

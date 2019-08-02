@@ -64,6 +64,17 @@ const CurrentUserReducer = (state = initialState.currentUser, action) => {
             state = state.set('currentImagePath', action.payload.image);
             state = state.set('relativeImagePath', action.payload.image);
             return state;
+        case CurrentUserConstants.SUGGESTIONS_FETCH_REQUEST:
+            const inputValue = action.payload.name.trim().toLowerCase();
+            const inputLength = inputValue.length;
+            let suggestionsList = (inputLength === 0 ? [] : state.get('placesList').toJS().filter(place =>
+                place.name.toLowerCase().slice(0, inputLength) === inputValue));
+            state = state.set('placesSuggestions', fromJS(suggestionsList));
+            console.log(state.get('placesSuggestions'));
+            return state;
+        case CurrentUserConstants.SUGGESTIONS_CLEAR_REQUEST:
+            state = state.set('placesSuggestions', fromJS([]));
+            return state;
         default:
             return state;
     }

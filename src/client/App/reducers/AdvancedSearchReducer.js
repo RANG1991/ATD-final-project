@@ -34,9 +34,10 @@ const AdvancedSearchReducer = (state = initialState.advancedSearch, action) => {
             state.set('name', "");
             return state;
         case AdvancedSearchConstants.ON_CHANGE_RADIO_BUTTON:
-            state = state.set('valueRadioButton', action.payload.value);
+            state = state.set('valueRadioButton', action.payload.value.toString());
             return state;
         case AdvancedSearchConstants.ON_CHANGE_RADIO_BUTTON_SEARCH_BY:
+            state = state.set('searchBy', action.payload.value.toString());
             switch(action.payload.value) {
                 case 1:
                     state = state.set('enableLocation', false);
@@ -84,7 +85,8 @@ const calculateAverage = (review) => {
 };
 
 const calculateDistance = (coor1, coor2) => {
-    return  getDistanceFromLatLonInKm(coor1['lat'], coor1['lng'], coor2['lat'], coor2['lng']);
+    console.log("the coordinates are: ", coor1, coor2);
+    return  getDistanceBetweenPoints(coor1['lat'], coor1['lng'], coor2['lat'], coor2['lng']);
 };
 
 function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
@@ -100,6 +102,11 @@ function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
     let d = R * c;
     return d;
 }
+
+function getDistanceBetweenPoints(x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+}
+
 
 function deg2rad(deg) {
     return deg * (Math.PI/180)

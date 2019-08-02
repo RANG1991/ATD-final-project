@@ -27,7 +27,7 @@ class AdvancedSearchForm extends React.Component {
             <Grid item xs={4}>
                 <Paper>
                     <form autoComplete="on">
-                    <RadioGroup aria-label="position" name="position" row onChange={(e) => this.props.onChangeRadioButtonSearchBy(e.target.value)}>
+                    <RadioGroup value={this.props.searchBy} aria-label="position" name="position" row onChange={(e) => this.props.onChangeRadioButtonSearchBy(e.target.value)}>
                         <FormControlLabel
                             value='1'
                             control={<Radio color="primary" />}
@@ -47,7 +47,7 @@ class AdvancedSearchForm extends React.Component {
                             labelPlacement="top"
                         />
                     </RadioGroup>
-                        <RadioGroup aria-label="position" name="position" row onChange={(e) => this.props.onChangeRadioButton(e.target.value)}>
+                        <RadioGroup value={this.props.valueRadioButton} aria-label="position" name="position" row onChange={(e) => this.props.onChangeRadioButton(e.target.value)}>
                             <FormControlLabel
                                 value="0"
                                 control={<Radio color="primary" />}
@@ -138,6 +138,8 @@ const mapStateToProps = (state) => {
         name: state['advancedSearch'].get('name'),
         location: state['advancedSearch'].get('location'),
         currentCoor: state['currentUser'].get('currentCoor'),
+        searchBy: state['advancedSearch'].get('searchBy'),
+        valueRadioButton: state['advancedSearch'].get('valueRadioButton'),
     }
 };
 

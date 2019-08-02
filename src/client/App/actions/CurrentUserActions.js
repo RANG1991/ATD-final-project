@@ -85,6 +85,21 @@ function changeImage(image)
     }
 }
 
+function SuggestionsFetchRequest(name) {
+    return {
+        type: CurrentUserConstants.SUGGESTIONS_FETCH_REQUEST,
+        payload: {
+            name
+        }
+    }
+}
+
+function SuggestionsClearRequest() {
+    return {
+        type: CurrentUserConstants.SUGGESTIONS_CLEAR_REQUEST,
+    }
+}
+
     let CurrentUserActions  = {
         changeUserName,
         changeLocation,
@@ -97,6 +112,8 @@ function changeImage(image)
         editingLocation,
         changeUsernameLogin,
         changeImage,
+        SuggestionsFetchRequest,
+        SuggestionsClearRequest,
     };
 
 export default CurrentUserActions

@@ -49,6 +49,7 @@ const AppReducer = (state = initialState.app, action) => {
                 drive: action.payload.drive, delivery: action.payload.delivery, food: action.payload.food,
                 currentUser: action.payload.currentUser, id: action.payload.id, date: String(new Date().getDate()),
                 openDeleteReview: false, openEditReview: false, coor: action.payload.coor};
+            console.log(review);
             idxToUpdate = state.get('users').findIndex(i => i.get('username') === action.payload.currentUser);
             state = state.updateIn(['users',idxToUpdate,'reviews'], e => e.push(fromJS(review)));
             locationAndName = action.payload.name + "_" + action.payload.location;
